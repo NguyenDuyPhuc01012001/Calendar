@@ -42,15 +42,6 @@ public class AddEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         init();
-        Button btnExit = (Button) findViewById(R.id.exitBtn);
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                finish();
-                System.exit(0);
-            }
-        });
         Button btnSave = (Button) findViewById(R.id.saveBtn);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +51,16 @@ public class AddEvent extends AppCompatActivity {
                 System.exit(0);
             }
         });
+        Button btnExit = (Button) findViewById(R.id.exitBtn);
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+                System.exit(0);
+            }
+        });
+
     }
 
     private void getID()
