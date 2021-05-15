@@ -22,9 +22,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:onClick="TodayBtn"
+                android:onClick="ShowWeather"
                 android:background="@null"
-                android:src="@drawable/calendar_today"
+                android:src="@drawable/weather_icon"
                 android:scaleType="centerInside"
                 />
             <Button

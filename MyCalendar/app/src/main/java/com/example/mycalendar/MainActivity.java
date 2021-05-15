@@ -8,11 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -203,10 +200,11 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         startActivity(intent);
         Check = 0;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void TodayBtn(View view) {
-        selectedDate = LocalDate.now();
-        setMonthView();
+    public void ShowWeather(View view) {
+        Intent intent = new Intent(this, WeatherActivity.class);
+        startActivity(intent);
     }
 
     @Override

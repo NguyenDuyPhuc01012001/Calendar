@@ -27,17 +27,17 @@
                 android:layout_height="wrap_content">
                 <EditText
                     android:id="@+id/findCityTxt"
+                    android:textColor="@color/white"
                     android:hint="Enter city, state"
-                    android:layout_width="275dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
                 <Button
                     android:id="@+id/search_button"
                     android:text="OK"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="searchOnClick"/>
-
-
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/address"
@@ -316,10 +316,9 @@
                     <Space
                         android:layout_height="wrap_content"
                         android:layout_width="5dp">
-
                     </Space>
                     <TextView
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         android:text="Thinh Nguyen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -340,7 +339,6 @@
     <ProgressBar
         android:id="@+id/loader"
         android:layout_centerInParent="true"
-
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

@@ -51,7 +51,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_weather);
         Mapping();
         getCurrentWeatherData("Quebec");
         searchBTN.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +70,7 @@ public class WeatherActivity extends AppCompatActivity {
             }
         });
     }
+
     private void getCurrentWeatherData(String city)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(WeatherActivity.this);
@@ -127,6 +128,7 @@ public class WeatherActivity extends AppCompatActivity {
                     Picasso.with(WeatherActivity.this).load("https://openweathermap.org/img/wn/"+icon+".png").into(img);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.e("MYAPP", "unexpected JSON exception", e);
                 }
             }
         }, new Response.ErrorListener() {
@@ -140,7 +142,7 @@ public class WeatherActivity extends AppCompatActivity {
     private JSONObject getWeatherData(String response) throws JSONException {
         return new JSONObject(response);
     }
-    @SuppressLint("CutPasteId")
+
     private void Mapping()
     {
         address = (TextView) findViewById(R.id.address);
@@ -159,10 +161,4 @@ public class WeatherActivity extends AppCompatActivity {
         findTXT = (EditText)findViewById(R.id.findCityTxt);
 
     }
-    public void searchOnClick(View view)
-    {
-
-    }
-
-
 }
