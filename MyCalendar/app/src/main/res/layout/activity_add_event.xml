@@ -102,8 +102,7 @@
             android:layout_weight="1"
             android:text="Save"
             android:textSize="20dp"
-            android:background="@null"
-            android:onClick="saveOnClick"/>
+            android:background="@null"/>
         <Button
             android:id="@+id/deleteBtn"
             android:layout_width="0dp"
@@ -121,8 +120,7 @@
             android:layout_weight="1"
             android:textSize="20dp"
             android:text="Exit"
-            android:background="@null"
-            android:onClick="exitOnClick"/>
+            android:background="@null"/>
     </LinearLayout>
 
 

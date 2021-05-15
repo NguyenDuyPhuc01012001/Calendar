@@ -5,21 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,6 +42,24 @@ public class AddEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         init();
+        Button btnExit = (Button) findViewById(R.id.exitBtn);
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+                System.exit(0);
+            }
+        });
+        Button btnSave = (Button) findViewById(R.id.saveBtn);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveOnClick(v);
+                finish();
+                System.exit(0);
+            }
+        });
     }
 
     private void getID()
@@ -167,11 +180,6 @@ public class AddEvent extends AppCompatActivity {
         timePickerDialog.show();
     }
 
-    public void exitOnClick(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     public void dateOnClick(View view) {
         TextView Date = (TextView) findViewById(R.id.datepickerTV);
         DatePickerDialog datePickerDialog = new DatePickerDialog(AddEvent.this,
@@ -203,9 +211,6 @@ public class AddEvent extends AppCompatActivity {
             eventInfo = new EventInfo(id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd);
             eventDatabase.EditEvent(eventInfo);
             Toast.makeText(AddEvent.this,"Edit successfully",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-
         }
         else
         {
@@ -218,10 +223,7 @@ public class AddEvent extends AppCompatActivity {
                     eventInfo = new EventInfo(-1,Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd);
                     eventDatabase.addOne(eventInfo);
                     Toast.makeText(AddEvent.this,"Saved successfully",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
                 }
-
             }
             catch (Exception e){
                 Toast.makeText(AddEvent.this,"undetectable error",Toast.LENGTH_SHORT).show();
