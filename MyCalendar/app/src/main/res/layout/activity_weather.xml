@@ -29,6 +29,7 @@
                     android:id="@+id/findCityTxt"
                     android:textColor="@color/white"
                     android:hint="Enter city, state"
+                    android:textColorHint="@color/white"
                     android:layout_weight="2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -43,6 +44,7 @@
                 android:id="@+id/address"
                 android:textSize="24sp"
                 android:text="Location"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -50,6 +52,7 @@
                 android:id="@+id/updateAt"
                 android:textSize="14sp"
                 android:text="Updated at"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -73,10 +76,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Clear Sky"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/temperature"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -95,6 +100,7 @@
                     android:id="@+id/minTemperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="Min 19" />
 
                 <Space
@@ -105,6 +111,7 @@
                     android:id="@+id/maxTemperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="Max 28" />
             </LinearLayout>
         </LinearLayout>
