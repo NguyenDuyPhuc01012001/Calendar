@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-
             android:id="@+id/addressContainer"
             android:orientation="vertical"
             android:gravity="center"
@@ -153,12 +152,14 @@
                     <TextView
                         android:textSize="12sp"
                         android:text="Sunrise"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/sunriseTime"
                         android:textSize="14sp"
                         android:text="5:30am"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -186,12 +187,14 @@
                     <TextView
                         android:textSize="12sp"
                         android:text="Sunset"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/sunsetTime"
                         android:textSize="14sp"
                         android:text="5:30am"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -219,11 +222,13 @@
                     <TextView
                         android:textSize="12sp"
                         android:text="Wind"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/windSpeed"
                         android:textSize="14sp"
+                        android:textColor="@color/white"
                         android:text="2.51 m/s"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -262,11 +267,13 @@
                     <TextView
                         android:textSize="12sp"
                         android:text="Pressure"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/pressure"
                         android:textSize="14sp"
+                        android:textColor="@color/white"
                         android:text="1005"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -295,12 +302,14 @@
                     <TextView
                         android:textSize="12sp"
                         android:text="Humidity"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/humidity"
                         android:textSize="14sp"
                         android:text="80%"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -327,11 +336,13 @@
                     <TextView
                         android:textSize="10sp"
                         android:text="Thinh Nguyen"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/info"
                         android:textSize="14sp"
+                        android:textColor="@color/white"
                         android:text="5:30am"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
