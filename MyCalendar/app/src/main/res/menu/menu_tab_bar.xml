@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tab_day_calendar"
+        android:icon="@drawable/day_calendar"
+        android:title="@string/tab_day_calendar"/>
+    <item
+        android:id="@+id/tab_monh_calendar"
+        android:enabled="true"
+        android:icon="@drawable/monh_calendar"
+        android:title="@string/tab_monh_calendar"/>
+    <item
+        android:id="@+id/tab_astrology"
+        android:enabled="true"
+        android:icon="@drawable/astrology"
+        android:title="@string/tab_astrology"/>
+    <item
+        android:id="@+id/tab_weather"
+        android:enabled="true"
+        android:icon="@drawable/weather"
+        android:title="@string/tab_weather"/>
+</menu>

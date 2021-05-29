@@ -1,5 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">My Calendar</string>
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
+    <string name="tab_day_calendar">Ngày</string>
+    <string name="tab_monh_calendar">Tháng</string>
+    <string name="tab_astrology">Tử vi</string>
+    <string name="tab_weather">Thời tiết</string>
+    <string name="event_in">Event in </string>
+    <string name="huong_xuat_hanh">
+        - Hỷ Thần Đông Bắc <br/>
+        - Tài Thần Chính Nam <br/>
+        - Kê Thần Đông Bắc</string>
+    <string name="good_bad_star">
+        - SAO TỐT: Thiên Ân, Lục Hợp, Bất Tương, Phổ Hộ, Trừ Thần, Minh Phệ, Bảo Quang <br/>
+        - SAO XẤU: Đại Thời, Đại Bại, Hàm Trì, Tiểu Hao, Ngũ Hư, Thổ Phù</string>
+    <string name="should_do">Tốt cho các việc tạo tác, sửa giếng, thu người làm.</string>
+    <string name="should_not_do">Xấu cho các việc xuất nhập vốn liếng, khai kho, an sàng</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

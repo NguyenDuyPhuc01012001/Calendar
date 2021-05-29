@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MonthCalendarFragment"
+    android:background="@drawable/gradient_day_detail"
+    android:id="@+id/month_calendar_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="@dimen/margin_top">
+        <Button
+            android:id="@+id/nextMonth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:background="@null"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size"/>
+
+        <TextView
+            android:background="#55ffffff"
+            android:id="@+id/monthYearTV"
+            android:layout_width="0dp"
+            android:layout_weight="2.6"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Feb 2021"
+            android:textSize="@dimen/text_size"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/previousMonth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/forward"
+            android:background="@null"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_rectangle"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_top">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="H"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/day_in_week_text_size"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="B"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/day_in_week_text_size"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="T"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/day_in_week_text_size"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="N"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/day_in_week_text_size"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="S"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/day_in_week_text_size"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="B"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/day_in_week_text_size"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="C"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/day_in_week_text_size"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginBottom="@dimen/margin_top"/>
+    </LinearLayout>
+
+    <TextView
+        android:background="#55ffffff"
+        android:id="@+id/eventIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/event_in"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/margin_top"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_top"/>
+</LinearLayout>

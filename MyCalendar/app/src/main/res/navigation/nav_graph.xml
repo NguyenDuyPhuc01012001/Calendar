@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_control"
+    app:startDestination="@id/dayCalendarFragment">
+
+    <fragment
+        android:id="@+id/dayCalendarFragment"
+        android:name="com.example.mycalendar.DayCalendarFragment"
+        android:label="fragment_day_calendar"
+        tools:layout="@layout/fragment_day_calendar">
+        <action
+            android:id="@+id/action_dayCalendarFragment_to_monthCalendarFragment"
+            app:destination="@id/monthCalendarFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_dayCalendarFragment_to_astrologyFragment"
+            app:destination="@id/astrologyFragment" />
+        <action
+            android:id="@+id/action_dayCalendarFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/monthCalendarFragment"
+        android:name="com.example.mycalendar.MonthCalendarFragment"
+        android:label="fragment_month_calendar"
+        tools:layout="@layout/fragment_month_calendar"/>
+    <fragment
+        android:id="@+id/astrologyFragment"
+        android:name="com.example.mycalendar.AstrologyFragment"
+        android:label="fragment_astrology"
+        tools:layout="@layout/fragment_astrology"/>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.mycalendar.WeatherFragment"
+        android:label="WeatherFragment" />
+</navigation>

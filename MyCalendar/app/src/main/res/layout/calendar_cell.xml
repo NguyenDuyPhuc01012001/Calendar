@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calendar_cell"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_margin="4dp"
@@ -11,7 +12,7 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -19,6 +20,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
                 android:id="@+id/cellDayText"
                 android:text="1"
                 android:textSize="15sp"
@@ -28,12 +31,19 @@
                 android:id="@+id/cellLunarDayText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginTop="5dp"
                 android:text="1"
                 android:textColor="@color/black"
                 android:textSize="10sp" />
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/imgWeather"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
     </FrameLayout>
 
 </androidx.cardview.widget.CardView>

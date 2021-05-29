@@ -1,6 +1,7 @@
  package com.example.mycalendar;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,39 +17,50 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.Locale;
 import java.util.stream.IntStream;
 
  public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     private final ArrayList<String> daysOfMonth;
     private final ArrayList<String> daysLunar;
-    private final OnItemListener onItemListener;
-    private LocalDate selectedDate;
+    private final LocalDate selectedDate;
+    private final TextView eventIn;
+     MyClickListener listener;
+     /*
 
-    public CalendarAdapter(ArrayList<String> daysOfMonth, ArrayList<String> daysLunar, OnItemListener onItemListener, LocalDate selectedDate)
-    {
-        this.daysOfMonth = daysOfMonth;
-        this.daysLunar = daysLunar;
-        this.onItemListener = onItemListener;
-        this.selectedDate = selectedDate;
-    }
+     public interface OnClickListener{
+         String monthYearFromDate(LocalDate date);
+         void setEventView(int day);
+     }*/
+     public CalendarAdapter(ArrayList<String> daysOfMonth, ArrayList<String> daysLunar, LocalDate selectedDate, TextView eventIn, MyClickListener Listener) {
+         this.daysOfMonth = daysOfMonth;
+         this.daysLunar = daysLunar;
+         this.selectedDate = selectedDate;
+         this.eventIn = eventIn;
+         this.listener = Listener;
+     }
 
     @NonNull
     @Override
-    public CalendarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-    {
+    public CalendarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-
-        //layoutParams.height = (int) (parent.getHeight() * 0.166666666);
-        return new CalendarViewHolder(view, onItemListener);
+        CalendarViewHolder viewHolder = new CalendarViewHolder(view);
+        viewHolder.calendar_cell.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                onItemClick(viewHolder.dayOfMonth.toString());
+            }
+        });
+        return viewHolder;
     }
 
     @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull CalendarViewHolder holder, final int position)
-    {
+    public void onBindViewHolder(@NonNull CalendarViewHolder holder, final int position) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
         String today=LocalDate.now().format(formatter);
         String dayOfMonth=daysOfMonth.get(position);
@@ -76,17 +88,28 @@ import java.util.stream.IntStream;
 
         holder.dayOfMonth.setText(dayOfMonth.split("/")[0]);
         holder.dayLunar.setText(dayLunar);
+
+        holder.calendar_cell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick(dayOfMonth);
+            }
+        });
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+     public void onItemClick(String dayText) {
+         if(!dayText.equals(""))
+         {
+             //eventIn.setText("Event in " + dayText + " " + listener.monthYearFromDate(selectedDate));
+             //listener.setEventView(Integer.valueOf(dayText));
+         }
+     }
 
     @Override
     public int getItemCount()
     {
         return daysOfMonth.size();
-    }
-
-    public interface  OnItemListener
-    {
-        void onItemClick(int position, String dayText);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

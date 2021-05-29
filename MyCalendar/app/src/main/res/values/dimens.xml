@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_radius">5dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="rectangle_corner">15dp</dimen>
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="text_size_content_in_detail_day">20dp</dimen>
+    <dimen name="text_size_title_in_detail_day">25dp</dimen>
+    <dimen name="day_in_week_text_size">16sp</dimen>
+    <dimen name="zodiac_size">50dp</dimen>
 </resources>

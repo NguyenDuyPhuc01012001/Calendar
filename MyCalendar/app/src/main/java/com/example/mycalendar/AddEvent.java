@@ -63,24 +63,23 @@ public class AddEvent extends AppCompatActivity {
 
     }
 
-    private void getID()
-    {
+    private void getID() {
         EventInfo eventInfo;
         Intent preIntent = getIntent();
-        if(MainActivity.Check == 1)
+        if(MonthCalendarFragment.Check == 1)
         {
             int position = preIntent.getIntExtra("position", 0);
-            eventInfo = MainActivity.listEvent.get(position);
+            eventInfo = MonthCalendarFragment.listEvent.get(position);
             id = eventInfo.getId();
             showResult(eventInfo.getTitle(),eventInfo.getDay(),eventInfo.getMonth(),eventInfo.getYear(),eventInfo.getStartHour(),eventInfo.getStartMinute(),eventInfo.getEndHour(),eventInfo.getEndMinute());
         }
-        if(MainActivity.Check == 0)
+        if(MonthCalendarFragment.Check == 0)
         {
             id = preIntent.getIntExtra("id",-1);
         }
     }
-    private void init()
-    {
+
+    private void init() {
         TextView Date = (TextView) findViewById(R.id.datepickerTV);
         DeleteBtn = (Button) findViewById(R.id.deleteBtn);
         TitleText = (TextView)findViewById(R.id.titleTV);
@@ -233,6 +232,7 @@ public class AddEvent extends AppCompatActivity {
 
 
     }
+
     public void showResult(String Title, int day,int month, int year, int hourstart,int minutestart, int hourend,int minuteend)
     {
         TextView title = (TextView) findViewById(R.id.titleET);

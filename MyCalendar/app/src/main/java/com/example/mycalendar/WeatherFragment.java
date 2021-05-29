@@ -1,16 +1,18 @@
 package com.example.mycalendar;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,7 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class WeatherActivity extends AppCompatActivity {
+public class WeatherFragment extends Fragment {
     String city;
     String API = "5a0aeaee604f73e90337988b11cf7ae0";
     String degreeUnit = "metric";
@@ -47,13 +49,17 @@ public class WeatherActivity extends AppCompatActivity {
     private Button searchBTN;
     private EditText findTXT;
     private ProgressBar progressBar;
+    public WeatherFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather);
-        Mapping();
-        getCurrentWeatherData("Quebec");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v= inflater.inflate(R.layout.fragment_weather, container, false);
+        Mapping(v);
+        getCurrentWeatherData("SaiGon");
         searchBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,11 +75,11 @@ public class WeatherActivity extends AppCompatActivity {
                 getCurrentWeatherData(city);
             }
         });
+        return v;
     }
-
     private void getCurrentWeatherData(String city)
     {
-        RequestQueue requestQueue = Volley.newRequestQueue(WeatherActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
         url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&units="+degreeUnit+"&appid="+API;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -125,7 +131,7 @@ public class WeatherActivity extends AppCompatActivity {
                     sunriseTime.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunrise1*1000)));
                     sunsetTime.setText(new SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(new Date(sunset1*1000)));
 
-                    Picasso.with(WeatherActivity.this).load("https://openweathermap.org/img/wn/"+icon+".png").into(img);
+                    Picasso.with(getActivity()).load("https://openweathermap.org/img/wn/"+icon+".png").into(img);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.e("MYAPP", "unexpected JSON exception", e);
@@ -143,22 +149,21 @@ public class WeatherActivity extends AppCompatActivity {
         return new JSONObject(response);
     }
 
-    private void Mapping()
+    private void Mapping(View v)
     {
-        address = (TextView) findViewById(R.id.address);
-        updateAt = (TextView)findViewById(R.id.updateAt);
-        status = (TextView) findViewById(R.id.status);
-        temperature = (TextView) findViewById(R.id.temperature);
-        minTemperature = (TextView)findViewById(R.id.minTemperature);
-        maxTemperature = (TextView)findViewById(R.id.maxTemperature);
-        sunriseTime = (TextView)findViewById(R.id.sunriseTime);
-        sunsetTime = (TextView)findViewById(R.id.sunsetTime);
-        windSpeed = (TextView)findViewById(R.id.windSpeed);
-        pressure = (TextView)findViewById(R.id.pressure);
-        humidity = (TextView)findViewById(R.id.humidity);
-        searchBTN = (Button)findViewById(R.id.search_button);
-        img = (ImageView)findViewById(R.id.statusIcon);
-        findTXT = (EditText)findViewById(R.id.findCityTxt);
-
+        address = (TextView) v.findViewById(R.id.address);
+        updateAt = (TextView)v.findViewById(R.id.updateAt);
+        status = (TextView) v.findViewById(R.id.status);
+        temperature = (TextView) v.findViewById(R.id.temperature);
+        minTemperature = (TextView)v.findViewById(R.id.minTemperature);
+        maxTemperature = (TextView)v.findViewById(R.id.maxTemperature);
+        sunriseTime = (TextView)v.findViewById(R.id.sunriseTime);
+        sunsetTime = (TextView)v.findViewById(R.id.sunsetTime);
+        windSpeed = (TextView)v.findViewById(R.id.windSpeed);
+        pressure = (TextView)v.findViewById(R.id.pressure);
+        humidity = (TextView)v.findViewById(R.id.humidity);
+        searchBTN = (Button)v.findViewById(R.id.search_button);
+        img = (ImageView)v.findViewById(R.id.statusIcon);
+        findTXT = (EditText)v.findViewById(R.id.findCityTxt);
     }
 }

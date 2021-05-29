@@ -1,157 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/bgBottomNavigation"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/menu_tab_bar"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:onClick="ShowWeather"
-                android:background="@null"
-                android:src="@drawable/weather_icon"
-                android:scaleType="centerInside"
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/back"
-                android:textColor="@color/blue"
-                android:background="@null"
-                android:textStyle="bold"
-                android:onClick="previousMonthAction"
-                android:textSize="20sp"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        android:layout_above="@id/bottomnav"
+        app:navGraph="@navigation/nav_graph" />
 
-            <TextView
-                android:id="@+id/monthYearTV"
-                android:layout_width="0dp"
-                android:layout_weight="2.6"
-                android:layout_height="wrap_content"
-                android:text="Feb 2021"
-                android:textSize="20dp"
-                android:textAlignment="center"
-                android:textColor="@color/black"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/forward"
-                android:textColor="@color/blue"
-                android:background="@null"
-                android:textStyle="bold"
-                android:onClick="nextMonthAction"
-                android:textSize="20sp"/>
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:onClick="AddAction"
-                android:background="@null"
-                android:src="@drawable/add_event"
-                android:scaleType="centerInside"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="H"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="B"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="T"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="N"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="S"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="B"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="C"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"/>
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calendarRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/eventIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Event in "/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/eventRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
