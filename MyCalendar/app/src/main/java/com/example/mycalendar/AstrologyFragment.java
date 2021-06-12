@@ -48,8 +48,6 @@ public class AstrologyFragment extends Fragment implements AdapterView.OnItemSel
             @Override
             public void onClick(View v) {
                 GetZodiacAstrology(zodiacInEnglish);
-
-
             }
         });
 
@@ -91,6 +89,7 @@ public class AstrologyFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         zodiacInEnglish = "Aries";
+        GetZodiacAstrology(zodiacInEnglish);
         SetImageZodiac(zodiacInEnglish);
         SetZodiacDateRange(zodiacInEnglish);
     }

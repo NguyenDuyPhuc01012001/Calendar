@@ -55,6 +55,7 @@
             android:layout_gravity="center"
             android:textStyle="bold"
             android:background="#ebaf09"
+            android:backgroundTint="#ebaf09"
             android:text="Xem"
             android:layout_height="wrap_content" />
     </LinearLayout>
