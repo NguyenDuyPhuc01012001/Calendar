@@ -103,7 +103,16 @@ public class AstrologyFragment extends Fragment implements AdapterView.OnItemSel
     private void GetZodiacAstrology(String zodiacName)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        url = "https://horoscope-api.herokuapp.com/horoscope/today/"+zodiacName;
+        if(zodiacName.equals("Lion"))
+        {
+            url = "https://horoscope-api.herokuapp.com/horoscope/today/Leo";
+        }
+        else if (zodiacName.equals("Scorpion"))
+        {
+            url = "https://horoscope-api.herokuapp.com/horoscope/today/Scorpio";
+        }
+        else
+            url = "https://horoscope-api.herokuapp.com/horoscope/today/"+zodiacName;
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -149,7 +158,7 @@ public class AstrologyFragment extends Fragment implements AdapterView.OnItemSel
         {
             zodiacImg.setImageResource(R.drawable.cancer);
         }
-        if(zodiacName.equals("Leo"))
+        if(zodiacName.equals("Lion"))
         {
             zodiacImg.setImageResource(R.drawable.leo);
         }
@@ -161,7 +170,7 @@ public class AstrologyFragment extends Fragment implements AdapterView.OnItemSel
         {
             zodiacImg.setImageResource(R.drawable.libra);
         }
-        if(zodiacName.equals("Scorpio"))
+        if(zodiacName.equals("Scorpion"))
         {
             zodiacImg.setImageResource(R.drawable.scorpio);
         }
@@ -201,7 +210,7 @@ public class AstrologyFragment extends Fragment implements AdapterView.OnItemSel
         {
             zodiacRange.setText("21/6 - 22/7");
         }
-        else if(zodiacName.equals("Leo"))
+        else if(zodiacName.equals("Lion"))
         {
             zodiacRange.setText("23/7 - 22/8");
         }
@@ -213,7 +222,7 @@ public class AstrologyFragment extends Fragment implements AdapterView.OnItemSel
         {
             zodiacRange.setText("23/9 - 22/10");
         }
-        else if(zodiacName.equals("Scorpio"))
+        else if(zodiacName.equals("Scorpion"))
         {
             zodiacRange.setText("23/10 - 22/11");
         }
