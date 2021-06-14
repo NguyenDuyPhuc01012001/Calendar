@@ -25,6 +25,8 @@ public class ChinaCalendar {
     public int mLunarYear;
     public int mLunarMonth;
 
+    String[] can = new String[] {"Giáp", "Ất","Bính","Đinh","Mậu","Kỉ","Canh","Tân","Nhâm","Quí"};
+
     public ChinaCalendar(){
     }
 
@@ -172,23 +174,22 @@ public class ChinaCalendar {
     }
 
     public String getLunarDate(){
-        String[] can = new String[] {"Giap", "At","Binh","Dinh","Mau","Ki","Canh","Tan","Nham","Qui"};
-        String[] chi = new String[] {"Ti","Suu","Dan","Mao","Thinh","Ti","Ngo","Mui","Than","Dau","Tuat","Hoi"};
+        String[] chi = new String[] {"Tý","Sửu","Dần","Mão","Thìn","Tị","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"};
         long juliusDay = convertToJuliusDay();
+
         return can[(int)((juliusDay + 9) % 10)] + " " + chi[(int)((juliusDay +1) % 12)];
     }
 
     public String getLunarMonth(){
-        String[] can = new String[] {"Giap", "At","Binh","Dinh","Mau","Ki","Canh","Tan","Nham","Qui"};
-        String[] chi = new String[] {"Dan","Mao","Thinh","Ti","Ngo","Mui","Than","Dau","Tuat","Hoi","Ti","Suu"};
-
+        String[] chi = new String[] {"Dần","Mão","Thìn","Tị","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi","Tý","Sửu"};
         int mod = (mLunarYear*12+ mLunarMonth+3)%10;
+
         return can[mod]+" "+chi[mLunarMonth-1];
     }
 
     public String getLunarYear(){
-        String[] can = new String[] {"Giap", "At","Binh","Dinh","Mau","Ki","Canh","Tan","Nham","Qui"};
-        String[] chi = new String[] {"Ty","Suu","Dan","Mao","Thinh","Ti","Ngo","Mui","Than","Dau","Tuat","Hoi"};
+        String[] chi = new String[] {"Tý","Sửu","Dần","Mão","Thìn","Tị","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"};
+
         return can[(mYear+6)%10] +" "+chi[(mYear+8)%12];
     }
 
@@ -200,5 +201,22 @@ public class ChinaCalendar {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM", new Locale("vn"));
         return localDate.format(formatter);
     }
-
+    public String Time2TimeLunar(String strHour){
+        int[][] matrix =   {{0, 2, 4, 6, 8},
+                {1, 3, 5, 7, 9},
+                {2, 4, 6, 8, 0},
+                {3, 5, 7, 9, 1},
+                {4, 6, 8, 0, 2},
+                {5, 7, 9, 1, 3},
+                {6, 8, 0, 2, 4},
+                {7, 9, 1, 3, 5},
+                {8, 0, 2, 4, 6},
+                {9, 1, 3, 5, 7},
+                {0, 2, 4, 6, 8},
+                {1, 3, 5, 7, 9}};
+        long juliusDay = convertToJuliusDay();
+        String[] chi = new String[] {"Tý","Sửu","Dần","Mão","Thìn","Tị","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"};
+        int iHour=Integer.parseInt(strHour);
+        return can[matrix[((iHour +1)/2)%12][(int)(((juliusDay + 9) % 10)%5)]]+" "+chi[((iHour +1)/2)%12];
+    }
 }

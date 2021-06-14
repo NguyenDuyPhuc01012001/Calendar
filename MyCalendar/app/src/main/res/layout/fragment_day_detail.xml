@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_day_detail"
-    tools:context=".DayDetailFragment">
+    tools:context=".fragment.DayDetailFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

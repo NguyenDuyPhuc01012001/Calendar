@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/tab_day_calendar"
-        android:icon="@drawable/day_calendar"
+        android:icon="@drawable/tab_day_calendar"
         android:title="@string/tab_day_calendar"/>
     <item
         android:id="@+id/tab_monh_calendar"
         android:enabled="true"
-        android:icon="@drawable/monh_calendar"
+        android:icon="@drawable/tab_monh_calendar"
         android:title="@string/tab_monh_calendar"/>
     <item
         android:id="@+id/tab_astrology"
         android:enabled="true"
-        android:icon="@drawable/astrology"
+        android:icon="@drawable/tab_astrology"
         android:title="@string/tab_astrology"/>
     <item
-        android:id="@+id/tab_weather"
+        android:id="@+id/tab_more"
         android:enabled="true"
-        android:icon="@drawable/weather"
-        android:title="@string/tab_weather"/>
+        android:icon="@drawable/tab_more"
+        android:title="@string/tab_more"/>
 </menu>

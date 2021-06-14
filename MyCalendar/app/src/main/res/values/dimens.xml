@@ -8,4 +8,5 @@
     <dimen name="text_size_title_in_detail_day">25dp</dimen>
     <dimen name="day_in_week_text_size">16sp</dimen>
     <dimen name="zodiac_size">50dp</dimen>
+    <dimen name="rectangle_corner_big">100dp</dimen>
 </resources>

@@ -6,17 +6,64 @@
     <string name="tab_day_calendar">Ngày</string>
     <string name="tab_monh_calendar">Tháng</string>
     <string name="tab_astrology">Tử vi</string>
-    <string name="tab_weather">Thời tiết</string>
     <string name="event_in">Event in </string>
     <string name="huong_xuat_hanh">
-        - Hỷ Thần Đông Bắc <br/>
-        - Tài Thần Chính Nam <br/>
+        - Hỷ Thần Đông Bắc <br />
+        - Tài Thần Chính Nam <br />
         - Kê Thần Đông Bắc</string>
     <string name="good_bad_star">
-        - SAO TỐT: Thiên Ân, Lục Hợp, Bất Tương, Phổ Hộ, Trừ Thần, Minh Phệ, Bảo Quang <br/>
+        - SAO TỐT: Thiên Ân, Lục Hợp, Bất Tương, Phổ Hộ, Trừ Thần, Minh Phệ, Bảo Quang <br />
         - SAO XẤU: Đại Thời, Đại Bại, Hàm Trì, Tiểu Hao, Ngũ Hư, Thổ Phù</string>
     <string name="should_do">Tốt cho các việc tạo tác, sửa giếng, thu người làm.</string>
     <string name="should_not_do">Xấu cho các việc xuất nhập vốn liếng, khai kho, an sàng</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="month_year_solar">Tháng 5 - 2021</string>
+    <string name="day_solar">18</string>
+    <string name="day_of_week">THỨ HAI</string>
+    <string name="maxim">Người quan tâm đến tôi, tôi sẽ quan tâm lại gấp bội! - Vô danh</string>
+    <string name="time">21:28</string>
+    <string name="time_solar">Kỷ Hợi</string>
+    <string name="day_lunar">7</string>
+    <string name="month_lunar">Tháng 4</string>
+    <string name="str_day_lunar">Ng. Bính Dần</string>
+    <string name="str_month_lunar">Th. Quý Tỵ</string>
+    <string name="str_year_lunar">Năm Tân Sửu</string>
+    <string name="tab_more">Mở rộng</string>
+    <string-array name="contentPageAstrology">
+        <item>Tử vi 2021</item>
+        <item>Tử vi trọn đời</item>
+        <item>Xem sao coi hạn</item>
+        <item>Bói phương đông</item>
+        <item>Xem ngày tốt</item>
+        <item>Xem bói</item>
+        <item>Cung hoàng đạo</item>
+        <item>Phong thủy nhà cửa</item>
+        <item>Gieo quẻ</item>
+    </string-array>
+    <string-array name="contentPageMore">
+        <item>Thời tiết</item>
+        <item>Văn khấn</item>
+        <item>La bàn</item>
+        <item>Đổi ngày</item>
+        <item>Ý nghĩa ngày lễ</item>
+        <item>Chia sẻ</item>
+        <item>Phản hồi</item>
+        <item>Chính sách bảo mật</item>
+        <item>Đánh giá</item>
+    </string-array>
+    <string-array name="zodiac_array">
+        <item>Bạch Dương</item>
+        <item>Kim Ngưu</item>
+        <item>Song Tử</item>
+        <item>Cự Giải</item>
+        <item>Sư Tử</item>
+        <item>Xử Nữ</item>
+        <item>Thiên Bình</item>
+        <item>Bọ cạp</item>
+        <item>Nhân Mã</item>
+        <item>Ma Kết</item>
+        <item>Bảo Bình</item>
+        <item>Song Ngư</item>
+    </string-array>
 </resources>

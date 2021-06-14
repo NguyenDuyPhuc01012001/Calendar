@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dayCalendarFragment"
-        android:name="com.example.mycalendar.DayCalendarFragment"
+        android:name="com.example.mycalendar.fragment.DayCalendarFragment"
         android:label="fragment_day_calendar"
         tools:layout="@layout/fragment_day_calendar">
         <action
@@ -19,23 +19,27 @@
             app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_dayCalendarFragment_to_astrologyFragment"
-            app:destination="@id/astrologyFragment" />
+            app:destination="@id/astrologyFragment"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_dayCalendarFragment_to_weatherFragment"
-            app:destination="@id/weatherFragment" />
+            app:destination="@id/weatherFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/monthCalendarFragment"
-        android:name="com.example.mycalendar.MonthCalendarFragment"
+        android:name="com.example.mycalendar.fragment.MonthCalendarFragment"
         android:label="fragment_month_calendar"
         tools:layout="@layout/fragment_month_calendar"/>
     <fragment
         android:id="@+id/astrologyFragment"
-        android:name="com.example.mycalendar.AstrologyFragment"
+        android:name="com.example.mycalendar.fragment.AstrologyFragment"
         android:label="fragment_astrology"
         tools:layout="@layout/fragment_astrology"/>
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="com.example.mycalendar.WeatherFragment"
+        android:name="com.example.mycalendar.fragment.WeatherFragment"
         android:label="WeatherFragment" />
 </navigation>

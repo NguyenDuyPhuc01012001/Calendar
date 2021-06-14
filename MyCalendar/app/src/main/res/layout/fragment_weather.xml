@@ -141,7 +141,7 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/sunrise"
+                        android:src="@drawable/weather_sunrise"
                         app:tint="#FFF">
                     </ImageView>
                     <Space
@@ -176,7 +176,7 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/sunset"
+                        android:src="@drawable/weather_sunset"
                         app:tint="#FFF">
                     </ImageView>
                     <Space
@@ -211,7 +211,7 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/wind"
+                        android:src="@drawable/weather_wind"
                         app:tint="#FFF">
                     </ImageView>
                     <Space
@@ -256,7 +256,7 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/pressure"
+                        android:src="@drawable/weather_pressure"
                         app:tint="#FFF">
                     </ImageView>
                     <Space
@@ -291,7 +291,7 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/humidity"
+                        android:src="@drawable/weather_humidity"
                         app:tint="#FFF">
                     </ImageView>
                     <Space
@@ -315,7 +315,38 @@
                 </LinearLayout>
                 <Space android:layout_width="10dp"
                     android:layout_height="wrap_content"></Space>
-
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="#3CF1EBF1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/weather_info"
+                        app:tint="#FFF">
+                    </ImageView>
+                    <Space
+                        android:layout_height="wrap_content"
+                        android:layout_width="5dp">
+                    </Space>
+                    <TextView
+                        android:textSize="10sp"
+                        android:text="Thinh Nguyen"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/info"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:text="5:30am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
                 <Space android:layout_width="10dp"
                     android:layout_height="wrap_content"></Space>
             </LinearLayout>
