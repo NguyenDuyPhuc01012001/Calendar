@@ -1,5 +1,6 @@
 package com.example.mycalendar.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,7 @@ public class AstrologyFragment extends Fragment {
                 R.drawable.feng_shui_good_day, R.drawable.feng_shui,
                 R.drawable.feng_shui_astrology, R.drawable.feng_shui_home,
                 R.drawable.feng_shui_good_teller};
+        
     }
 
     @Override

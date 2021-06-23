@@ -95,15 +95,58 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
-                >
+                android:orientation="vertical"
+                android:layout_marginTop="20sp">
                 <TextView
-                    android:id="@+id/descriptionTextview"
+                    android:id="@+id/colorSuitTV"
+                    android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:text="Màu ưa thích: "/>
+                <TextView
+                    android:id="@+id/compatZodiacTV"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:text="Cung hoàng đạo thích hợp: "/>
+                <TextView
+                    android:id="@+id/descriptionZodiacTV"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:textColor="@color/white"
                     android:text="Mô tả ngày của bạn: "/>
+                <TextView
+                    android:id="@+id/luckyNumberTV"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:text="Số may mắn: "/>
+                <TextView
+                    android:id="@+id/luckyTimeTV"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:text="Giờ hoàng đạo: "/>
+                <TextView
+                    android:id="@+id/moodTV"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:text="Tâm trạng: "/>
+
+
             </LinearLayout>
 
         </LinearLayout>
