@@ -18,12 +18,13 @@ import android.widget.TextView;
 
 import com.example.mycalendar.AddEvent;
 import com.example.mycalendar.ChinaCalendar;
-import com.example.mycalendar.MyClickListener;
+import com.example.mycalendar.EventDialog;
 import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.CalendarAdapter;
 import com.example.mycalendar.adapter.EventAdapter;
 import com.example.mycalendar.database.EventDatabase;
 import com.example.mycalendar.model.EventInfo;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -31,13 +32,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MonthCalendarFragment extends Fragment implements MyClickListener{
+public class MonthCalendarFragment extends Fragment implements CalendarAdapter.OnItemListener {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private RecyclerView eventRecyclerView;
     private LocalDate selectedDate;
     private Button nextMonth;
     private Button previousMonth;
+    private FloatingActionButton addEvent;
     public static ArrayList<EventInfo> listEvent = new ArrayList<EventInfo>();
     private TextView eventIn;
     public static int Check = 0;
@@ -75,6 +77,13 @@ public class MonthCalendarFragment extends Fragment implements MyClickListener{
                 previousMonthAction(v);
             }
         });
+        addEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventDialog eventDialog = new EventDialog();
+                eventDialog.show(getActivity().getSupportFragmentManager(), "Thêm sự kiện");
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -96,7 +105,8 @@ public class MonthCalendarFragment extends Fragment implements MyClickListener{
         nextMonth=v.findViewById(R.id.nextMonth);
         previousMonth=v.findViewById(R.id.previousMonth);
         eventIn = v.findViewById(R.id.eventIn);
-        eventIn.setText("Event in " + selectedDate.getDayOfMonth() + " " + monthYearFromDate(selectedDate));
+        addEvent = v.findViewById(R.id.addEventBtn);
+        eventIn.setText("Sự kiện trong ngày " + selectedDate.getDayOfMonth() + " " + monthYearFromDate(selectedDate));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -104,7 +114,7 @@ public class MonthCalendarFragment extends Fragment implements MyClickListener{
         monthYearText.setText(monthYearFromDate(selectedDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
         ArrayList<String> daysLunar = daysLunarArray(selectedDate);
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, daysLunar, selectedDate, eventIn, (MyClickListener) this);
+        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, daysLunar, selectedDate, eventIn, this);
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
@@ -206,7 +216,7 @@ public class MonthCalendarFragment extends Fragment implements MyClickListener{
     public void previousMonthAction(View view) {
         selectedDate = selectedDate.minusMonths(1);
         setMonthView();
-        eventIn.setText("Event in " + 1 + " " + monthYearFromDate(selectedDate));
+        eventIn.setText("Sự kiện trong ngày " + 1 + " " + monthYearFromDate(selectedDate));
         setEventView(Integer.valueOf(1));
     }
 
@@ -214,21 +224,14 @@ public class MonthCalendarFragment extends Fragment implements MyClickListener{
     public void nextMonthAction(View view) {
         selectedDate = selectedDate.plusMonths(1);
         setMonthView();
-        eventIn.setText("Event in " + 1 + " " + monthYearFromDate(selectedDate));
+        eventIn.setText("Sự kiện trong ngày " + 1 + " " + monthYearFromDate(selectedDate));
         setEventView(Integer.valueOf(1));
     }
 
-    public void AddAction(View view) {
-        Intent intent = new Intent(getActivity(), AddEvent.class);
-        intent.putExtra("id",-1);
-        startActivity(intent);
-        Check = 0;
-    }
-
-    public void onEventClick(int position) {
-        Intent detailIntent = new Intent(getActivity(),AddEvent.class);
-        detailIntent.putExtra("position",position);
-        startActivity(detailIntent);
-        Check = 1;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onItemClick(int position, String dayText) {
+        eventIn.setText("Sự kiện trong ngày " + dayText + " " + monthYearFromDate(selectedDate));
+        setEventView(Integer.valueOf(dayText));
     }
 }

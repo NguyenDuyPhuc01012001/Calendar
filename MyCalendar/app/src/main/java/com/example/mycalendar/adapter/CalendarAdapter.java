@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mycalendar.MyClickListener;
 import com.example.mycalendar.R;
 
 import java.time.LocalDate;
@@ -26,14 +25,14 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     private final ArrayList<String> daysLunar;
     private final LocalDate selectedDate;
     private final TextView eventIn;
-    MyClickListener listener;
+    private final OnItemListener onItemListener;
 
-    public CalendarAdapter(ArrayList<String> daysOfMonth, ArrayList<String> daysLunar, LocalDate selectedDate, TextView eventIn, MyClickListener Listener) {
+    public CalendarAdapter(ArrayList<String> daysOfMonth, ArrayList<String> daysLunar, LocalDate selectedDate, TextView eventIn, OnItemListener onItemListener) {
         this.daysOfMonth = daysOfMonth;
         this.daysLunar = daysLunar;
         this.selectedDate = selectedDate;
         this.eventIn = eventIn;
-        this.listener = Listener;
+        this.onItemListener = onItemListener;
     }
 
     @NonNull
@@ -41,14 +40,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     public CalendarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
-        CalendarViewHolder viewHolder = new CalendarViewHolder(view);
-        viewHolder.calendar_cell.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                onItemClick(viewHolder.dayOfMonth.toString());
-            }
-        });
+        CalendarViewHolder viewHolder = new CalendarViewHolder(view,onItemListener);
         return viewHolder;
     }
 
@@ -83,21 +75,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
 
         holder.dayOfMonth.setText(dayOfMonth.split("/")[0]);
         holder.dayLunar.setText(dayLunar);
-
-        holder.calendar_cell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClick(dayOfMonth);
-            }
-        });
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void onItemClick(String dayText) {
-        if (!dayText.equals("")) {
-            //eventIn.setText("Event in " + dayText + " " + listener.monthYearFromDate(selectedDate));
-            //listener.setEventView(Integer.valueOf(dayText));
-        }
+    public interface  OnItemListener
+    {
+        void onItemClick(int position, String dayText);
     }
 
     @Override

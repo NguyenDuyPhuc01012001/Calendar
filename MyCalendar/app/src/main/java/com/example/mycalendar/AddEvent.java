@@ -227,12 +227,14 @@ public class AddEvent extends AppCompatActivity {
                     eventInfo = new EventInfo(-1,Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd);
                     eventDatabase.addOne(eventInfo);
                     Toast.makeText(AddEvent.this,"Saved successfully",Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
             catch (Exception e){
                 Toast.makeText(AddEvent.this,"undetectable error",Toast.LENGTH_SHORT).show();
             }
         }
+
 
 
     }
@@ -278,7 +280,8 @@ public class AddEvent extends AppCompatActivity {
         EventDatabase eventDatabase = new EventDatabase(AddEvent.this);
         eventDatabase.deleteDatabase(id);
         Toast.makeText(AddEvent.this,"Deleted successfully",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
+        finish();
     }
 }
