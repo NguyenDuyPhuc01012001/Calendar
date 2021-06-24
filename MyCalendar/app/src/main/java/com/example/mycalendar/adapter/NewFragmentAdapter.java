@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mycalendar.R;
+import com.example.mycalendar.fragment.LifetimeAstrologyFragment;
 import com.example.mycalendar.fragment.WeatherFragment;
 import com.example.mycalendar.fragment.ZodiacFragment;
 
@@ -112,6 +113,8 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
             case 0:
                 break;
             case 1:
+                fragment = new LifetimeAstrologyFragment();
+                LoadFragment(R.id.astrologyContainer,fragment);
                 break;
             case 2:
                 break;

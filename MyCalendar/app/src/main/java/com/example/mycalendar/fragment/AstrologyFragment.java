@@ -15,6 +15,7 @@ import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.EventAdapter;
 import com.example.mycalendar.adapter.NewFragmentAdapter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class AstrologyFragment extends Fragment {

@@ -45,7 +45,6 @@ public class ZodiacFragment extends Fragment implements AdapterView.OnItemSelect
     Button confirmButton;
     private String TAG = "ZodiacFragment";
     ImageView zodiacImg;
-    String colorInVietnamese;
 
     TextView colorSuitTV;
     TextView zodiacSuitTV;

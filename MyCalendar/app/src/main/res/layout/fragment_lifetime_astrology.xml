@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:id="@+id/pickerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="2"
+    android:layout_marginTop="40sp"
+    android:layout_centerInParent="true"
+    android:layout_alignParentTop="true">
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Năm sinh"/>
+    <Spinner
+        android:id="@+id/yearPicker"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Năm sinh"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="20sp"
+        android:text="Giới tính"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/sexPicker"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Giới tính"/>
+</LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/detailLayout"
+        android:layout_below="@id/pickerLayout"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/lifeTimeEasternZodiacImage"
+            android:src="@drawable/ty"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <ScrollView
+            android:background="@drawable/lifetime_astrology_relative_layout_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lifeTimeEasternZodiacImage">
+            <TextView
+                android:id="@+id/lifeTimeEasternZodiacDescriptionTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

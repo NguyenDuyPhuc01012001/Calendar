@@ -41,6 +41,7 @@
         <item>Phong thủy nhà cửa</item>
         <item>Gieo quẻ</item>
     </string-array>
+
     <string-array name="contentPageMore">
         <item>Thời tiết</item>
         <item>Văn khấn</item>
@@ -52,6 +53,7 @@
         <item>Chính sách bảo mật</item>
         <item>Đánh giá</item>
     </string-array>
+
     <string-array name="zodiac_array">
         <item>Bạch Dương</item>
         <item>Kim Ngưu</item>
@@ -65,5 +67,33 @@
         <item>Ma Kết</item>
         <item>Bảo Bình</item>
         <item>Song Ngư</item>
+    </string-array>
+
+    <string-array name="year_picker_array">
+        <item>1990</item>
+        <item>1991</item>
+        <item>1992</item>
+        <item>1993</item>
+        <item>1994</item>
+        <item>1995</item>
+        <item>1996</item>
+        <item>1997</item>
+        <item>1998</item>
+        <item>1999</item>
+        <item>2000</item>
+        <item>2001</item>
+        <item>2002</item>
+        <item>2003</item>
+        <item>2004</item>
+        <item>2005</item>
+        <item>2006</item>
+        <item>2007</item>
+        <item>2008</item>
+        <item>2009</item>
+    </string-array>
+
+    <string-array name="sex_picker_array">
+        <item>Nam</item>
+        <item>Nữ</item>
     </string-array>
 </resources>
