@@ -31,7 +31,7 @@ public class MoreFragment extends Fragment {
                 R.drawable.more_compass, R.drawable.more_change_day,
                 R.drawable.more_holiday, R.drawable.more_share,
                 R.drawable.more_mail, R.drawable.more_mail,
-                R.drawable.more_rate};
+                R.drawable.more_rate, R.drawable.more_history_event};
     }
 
     @Override

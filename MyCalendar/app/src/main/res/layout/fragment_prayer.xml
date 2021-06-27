@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDC7C0"
+    tools:context=".fragment.PrayerFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VĂN KHẤN"
+            android:background="#5E72BC"
+            android:gravity="center_horizontal"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:paddingTop="4dp"
+            android:paddingBottom="2dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <!--    Văn khấn dịp lễ tết Nguyên Đán-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Văn khấn dịp lễ tết Nguyên Đán"
+                        android:textColor="#7E83B6"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textSize="20sp"
+                        android:paddingBottom="2dp"/>
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLOT"
+                        android:text="Văn khấn lễ ông Táo chầu trời ngày 23 tháng chạp" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLGT"
+                        android:text="Văn khấn lễ giao thừa: trong nhà và ngoài trời" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTN"
+                        android:text="Văn khấn Tất Niên" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLTM"
+                        android:text="Văn khấn lễ tạ mộ, rước ông bà ngày 30 Tết" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTT"
+                        android:text="Văn khấn tổ tiên ngày mùng 1 Tết" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTL"
+                        android:text="Văn khấn Thần linh trong nhà ngày mùng 1 Tết" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKNM"
+                        android:text="Văn khấn lễ tạ năm mới" />
+
+                </LinearLayout>
+
+                <!--    Văn khấn khi đi lễ Chùa, Đình, Miếu-->
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Văn khấn khi đi lễ Chùa, Đình, Miếu"
+                        android:textColor="#7E83B6"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textSize="20dp"
+                        android:paddingBottom="2dp"/>
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLP"
+                        android:text="Văn khấn lễ Phật" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKQABT"
+                        android:text="Văn khấn Quan Âm Bồ Tát" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTH"
+                        android:text="Văn khấn Thành Hoàng" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKMTN"
+                        android:text="Văn khấn Mẫu Thượng Ngàn" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTMLH"
+                        android:text="Văn khấn thánh mẫu Liễu Hạnh" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLDTT"
+                        android:text="Văn khấn lễ Đức Thánh Trần" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKBCKH"
+                        android:text="Văn khấn bà chúa Kho" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKDO"
+                        android:text="Văn khấn Đức Ông" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKDTH"
+                        android:text="Văn khấn Đức Thánh Hiền" />
+                </LinearLayout>
+
+                <!--    Văn khấn lễ rằm, mồng 1 và các lễ khác-->
+                <LinearLayout
+                    android:layout_margin="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Văn khấn lễ rằm, mùng 1 và các lễ khác"
+                        android:textColor="#7E83B6"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textSize="20sp"
+                        android:paddingBottom="2dp"/>
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLNT"
+                        android:text="Văn khấn lễ Nguyên Tiêu" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLTMTTM"
+                        android:text="Văn khấn lễ tảo mộ Tiết Thanh Minh" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTHT"
+                        android:text="Văn khấn Tết Hàn Thực" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTDN"
+                        android:text="Văn khấn Tết Đoan Ngọ" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTTT"
+                        android:text="Văn khấn Tết Trung Thu" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKRT7"
+                        android:text="Văn khấn Rằm tháng 7" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKN115"
+                        android:text="Văn khấn ngày 1 và 15 hàng tháng" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKTTTD"
+                        android:text="Văn khấn Thần tài và Thổ địa" />
+                </LinearLayout>
+
+                <!--    Văn khấn lễ tang, giỗ tổ tiên-->
+                <LinearLayout
+                    android:layout_margin="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Văn khấn lễ tang, giỗ tổ tiên"
+                        android:textColor="#7E83B6"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textSize="20sp"
+                        android:paddingBottom="2dp"/>
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLCT"
+                        android:text="Văn khấn lễ Cải táng, Bốc mộ, Cải cát" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLDT"
+                        android:text="Văn khấn lễ đàm tế" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLCTTK"
+                        android:text="Văn khấn lễ Chung thất và Tốt khốc" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKNGD"
+                        android:text="Văn khấn ngày giỗ đầu" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKNGH"
+                        android:text="Văn khấn ngày giỗ hết" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKNGT"
+                        android:text="Văn khấn ngày giỗ thường hàng năm" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKNCG"
+                        android:text="Văn khấn ngày cáo giỗ" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKGT"
+                        android:text="Văn khấn gia tiên khi đi thăm mộ" />
+
+                </LinearLayout>
+
+                <!--    Văn khấn lễ cưới hỏi & sinh con-->
+                <LinearLayout
+                    android:layout_margin="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Văn khấn lễ cưới hỏi và sinh con"
+                        android:textColor="#7E83B6"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textSize="20sp"
+                        android:paddingBottom="2dp"/>
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKCBMTN"
+                        android:text="Văn khấn cúng Bà Mụ ngày đầu tháng, thôi nôi" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKNLCH"
+                        android:text="Văn khấn ngày lễ cưới hỏi" />
+                </LinearLayout>
+
+                <!--    Văn khấn làm nhà, chuyển nhà, tân gia-->
+                <LinearLayout
+                    android:layout_margin="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Văn khấn làm nhà, chuyển nhà, tân gia"
+                        android:textColor="#7E83B6"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textSize="20sp"
+                        android:paddingBottom="2dp"/>
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKCNSN"
+                        android:text="Văn khấn khi chuyển nhà, sửa nhà" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKNT"
+                        android:text="Văn khấn lễ nhập trạch" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKMTG"
+                        android:text="Văn khấn mừng tân gia" />
+                </LinearLayout>
+
+                <!--    Các bài văn khấn khác-->
+                <LinearLayout
+                    android:layout_margin="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Các bài văn khấn khác"
+                        android:textColor="#7E83B6"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textSize="20sp"
+                        android:paddingBottom="2dp"/>
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLKT"
+                        android:text="Văn khấn lễ khai trương cửa hàng" />
+
+                    <Button
+                        android:background="@drawable/shape"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnVKLMT"
+                        android:text="Văn khấn lễ mừng thọ ông bà, cha mẹ" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F4F1F0"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:textSize="20sp"
+            android:id="@+id/textview"
+            android:scrollbars="vertical"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnZoom"
+            android:orientation="horizontal"
+            android:background="#5E72BC"
+            android:layout_alignParentBottom="true"
+            android:weightSum="2">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="#5E72BC"
+                android:src="@drawable/zoomin"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:id="@+id/zoomIn" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="#5E72BC"
+                android:src="@drawable/zoomout"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:id="@+id/zoomOut" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -16,7 +16,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mycalendar.R;
+import com.example.mycalendar.fragment.HistoryEventFragment;
 import com.example.mycalendar.fragment.LifetimeAstrologyFragment;
+import com.example.mycalendar.fragment.PrayerFragment;
 import com.example.mycalendar.fragment.WeatherFragment;
 import com.example.mycalendar.fragment.ZodiacFragment;
 
@@ -89,6 +91,8 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
                 LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 1:
+                fragment = new PrayerFragment();
+                LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 2:
                 break;
@@ -103,6 +107,10 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
             case 7:
                 break;
             case 8:
+                break;
+            case 9:
+                fragment = new HistoryEventFragment();
+                LoadFragment(R.id.moreContainer,fragment);
                 break;
         }
     }
