@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:id="@+id/moreContainer"
     android:background="@drawable/gradient_day_detail"
-    tools:context=".fragment.MoreFragment">
+    tools:context=".fragment.MoreFragment"
+    android:clickable="true"
+    android:focusable="true">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/moreView"

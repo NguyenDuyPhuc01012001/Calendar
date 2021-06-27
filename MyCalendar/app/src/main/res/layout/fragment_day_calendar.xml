@@ -7,7 +7,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/wallpaper_pic1"
     android:orientation="vertical"
-    tools:context=".fragment.DayCalendarFragment">
+    tools:context=".fragment.DayCalendarFragment"
+    android:clickable="true"
+    android:focusable="true">
 
     <FrameLayout
         android:layout_width="match_parent"

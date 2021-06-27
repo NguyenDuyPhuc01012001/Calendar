@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".fragment.MonthCalendarFragment"
     android:background="@drawable/gradient_day_detail"
-    android:id="@+id/month_calendar_fragment">
+    android:id="@+id/month_calendar_fragment"
+    android:clickable="true"
+    android:focusable="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

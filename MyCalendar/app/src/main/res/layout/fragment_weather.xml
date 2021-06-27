@@ -7,7 +7,9 @@
     android:padding="25sp"
     android:background="@drawable/gradient_background"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:clickable="true"
+    android:focusable="true">
 
     <RelativeLayout
         android:id="@+id/mainContainer"

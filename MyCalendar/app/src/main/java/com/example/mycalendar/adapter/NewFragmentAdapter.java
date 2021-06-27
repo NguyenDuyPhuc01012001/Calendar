@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mycalendar.R;
 import com.example.mycalendar.fragment.ChangeDateFragment;
+import com.example.mycalendar.fragment.CompassFragment;
 import com.example.mycalendar.fragment.HistoryEventFragment;
 import com.example.mycalendar.fragment.LifetimeAstrologyFragment;
 import com.example.mycalendar.fragment.PrayerFragment;
@@ -96,6 +97,8 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
                 LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 2:
+                fragment = new CompassFragment();
+                LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 3:
                 fragment = new ChangeDateFragment();
@@ -104,6 +107,8 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
             case 4:
                 break;
             case 5:
+                fragment = new HistoryEventFragment();
+                LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 6:
                 break;
@@ -112,8 +117,6 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
             case 8:
                 break;
             case 9:
-                fragment = new HistoryEventFragment();
-                LoadFragment(R.id.moreContainer,fragment);
                 break;
         }
     }
@@ -150,7 +153,7 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
         FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-        fragmentTransaction.replace(container, fragment);
+        fragmentTransaction.add(container, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

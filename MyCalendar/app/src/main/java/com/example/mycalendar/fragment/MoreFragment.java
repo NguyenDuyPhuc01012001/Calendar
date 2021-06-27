@@ -29,9 +29,9 @@ public class MoreFragment extends Fragment {
         idPictureOfFragment = new int[]{
                 R.drawable.more_weather, R.drawable.more_book,
                 R.drawable.more_compass, R.drawable.more_change_day,
-                R.drawable.more_holiday, R.drawable.more_share,
+                R.drawable.more_holiday,R.drawable.more_history_event ,
                 R.drawable.more_mail, R.drawable.more_mail,
-                R.drawable.more_rate, R.drawable.more_history_event};
+                R.drawable.more_rate, R.drawable.more_share};
     }
 
     @Override

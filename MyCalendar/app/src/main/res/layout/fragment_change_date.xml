@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_day_detail"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ChangeDateFragment">
+    tools:context=".fragment.ChangeDateFragment"
+    android:clickable="true"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/titleChangeDay"
