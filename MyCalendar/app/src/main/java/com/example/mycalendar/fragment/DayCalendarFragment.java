@@ -44,6 +44,7 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
     private TextView tvStrDayLunar,tvStrMonthLunar,tvStrYearLunar,tvStrTimeLunar;
     private TextView tvMaxim;
 
+    private ImageView imgIsGoodDay,imgIsGoodTime;
     private ImageSwitcher imageSwitcher;
     private Integer ListWallpaper[]={R.drawable.wallpaper_pic1,R.drawable.wallpaper_pic2,R.drawable.wallpaper_pic3};
     private Integer lengthListWallpaper=ListWallpaper.length;
@@ -87,6 +88,8 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
         tvMaxim=v.findViewById(R.id.tvMaxim);
         imageSwitcher=v.findViewById(R.id.imgWallpaper);
         btnToday=v.findViewById(R.id.btnToday);
+        imgIsGoodDay=v.findViewById(R.id.imgIsGoodDay);
+        imgIsGoodTime=v.findViewById(R.id.imgIsGoodTime);
         db=new MaximDatabase(getContext());
     }
 
@@ -205,6 +208,21 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
         tvStrMonthLunar.setText("Th. "+dateTimeInfo.getStrMonthLunar());
         tvStrYearLunar.setText("Năm "+dateTimeInfo.getStrYearLunar());
         tvStrTimeLunar.setText(dateTimeInfo.getTimeLunar());
+
+        if(dateTimeInfo.getIsGoodDay()==1){
+            imgIsGoodDay.setVisibility(View.VISIBLE);
+            imgIsGoodDay.setImageResource(R.mipmap.yin_yang_red);
+        }
+        if(dateTimeInfo.getIsGoodDay()==0)
+            imgIsGoodDay.setVisibility(View.GONE);
+        if(dateTimeInfo.getIsGoodDay()==-1){
+            imgIsGoodDay.setVisibility(View.VISIBLE);
+            imgIsGoodDay.setImageResource(R.mipmap.yin_yang_black);
+        }
+        if(dateTimeInfo.getIsGoodTime())
+            imgIsGoodTime.setImageResource(R.mipmap.yin_yang_red);
+        else
+            imgIsGoodTime.setImageResource(R.mipmap.yin_yang_black);
     }
 
     @Override
@@ -223,13 +241,7 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
     @Override
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void LoadNewDate(LocalDateTime selectedDate){
-        mDCPresenter = new DayCalendarPresenter(this);
-
-        mDCPresenter.GetData(selectedDate);
-        mDCPresenter.GetMaxim(db);
-        mDCPresenter.ShowBTN(selectedDate);
+        this.selectedDate=selectedDate;
+        LoadData(this.selectedDate);
     }
-
-
-
 }

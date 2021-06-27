@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClick
     public final TextView dayOfMonth;
     public final TextView dayLunar;
     public final FrameLayout background;
+    public final ImageView imgGoodOrBadDay;
     private final CalendarAdapter.OnItemListener onItemListener;
 
     public CalendarViewHolder(@NonNull View itemView, CalendarAdapter.OnItemListener onItemListener)
@@ -31,8 +33,10 @@ class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClick
         this.dayOfMonth = itemView.findViewById(R.id.cellDayText);
         this.dayLunar = itemView.findViewById(R.id.cellLunarDayText);
         this.background= itemView.findViewById(R.id.background);
+        this.imgGoodOrBadDay = itemView.findViewById(R.id.imgGoodOrBadDay);
         this.onItemListener =onItemListener;
         itemView.setOnClickListener(this);
+
     }
 
 

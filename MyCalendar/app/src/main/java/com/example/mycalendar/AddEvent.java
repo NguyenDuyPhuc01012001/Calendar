@@ -187,7 +187,7 @@ public class AddEvent extends AppCompatActivity {
     public void dateOnClick(View view) {
         TextView Date = (TextView) findViewById(R.id.datepickerTV);
         DatePickerDialog datePickerDialog = new DatePickerDialog(AddEvent.this,
-                android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor, new DatePickerDialog.OnDateSetListener() {
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(android.widget.DatePicker view, int year, int month, int dayOfMonth) {
                 day1 = dayOfMonth;

@@ -1,5 +1,6 @@
 package com.example.mycalendar.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,17 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Build;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.mycalendar.AddEvent;
 import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.EventDialog;
+import com.example.mycalendar.OnSwipeTouchListener;
 import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.CalendarAdapter;
 import com.example.mycalendar.adapter.EventAdapter;
@@ -34,14 +40,13 @@ import java.util.Locale;
 
 public class MonthCalendarFragment extends Fragment implements CalendarAdapter.OnItemListener {
     private TextView monthYearText;
+    private TextView eventIn;
     private RecyclerView calendarRecyclerView;
     private RecyclerView eventRecyclerView;
-    private LocalDate selectedDate;
-    private Button nextMonth;
-    private Button previousMonth;
     private FloatingActionButton addEvent;
+
+    private LocalDate selectedDate;
     public static ArrayList<EventInfo> listEvent = new ArrayList<EventInfo>();
-    private TextView eventIn;
     public static int Check = 0;
 
     public MonthCalendarFragment() {
@@ -57,26 +62,23 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         initWidgets(v);
         setMonthView();
         setEventView(selectedDate.getDayOfMonth());
-        setOnCLick();
+        setEvent();
         return v;
     }
 
-    private void setOnCLick() {
-        nextMonth.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                nextMonthAction(v);
+    @SuppressLint("ClickableViewAccessibility")
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void setEvent() {
+        calendarRecyclerView.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+            public void onSwipeRight() {
+                previousMonthAction();
+            }
+
+            public void onSwipeLeft() {
+                nextMonthAction();
             }
         });
 
-        previousMonth.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                previousMonthAction(v);
-            }
-        });
         addEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,8 +104,6 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         calendarRecyclerView = v.findViewById(R.id.calendarRecyclerView);
         monthYearText = v.findViewById(R.id.monthYearTV);
         eventRecyclerView = v.findViewById(R.id.eventRecyclerView);
-        nextMonth=v.findViewById(R.id.nextMonth);
-        previousMonth=v.findViewById(R.id.previousMonth);
         eventIn = v.findViewById(R.id.eventIn);
         addEvent = v.findViewById(R.id.addEventBtn);
         eventIn.setText("Sự kiện trong ngày " + selectedDate.getDayOfMonth() + " " + monthYearFromDate(selectedDate));
@@ -213,7 +213,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void previousMonthAction(View view) {
+    public void previousMonthAction() {
         selectedDate = selectedDate.minusMonths(1);
         setMonthView();
         eventIn.setText("Sự kiện trong ngày " + 1 + " " + monthYearFromDate(selectedDate));
@@ -221,7 +221,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void nextMonthAction(View view) {
+    public void nextMonthAction() {
         selectedDate = selectedDate.plusMonths(1);
         setMonthView();
         eventIn.setText("Sự kiện trong ngày " + 1 + " " + monthYearFromDate(selectedDate));

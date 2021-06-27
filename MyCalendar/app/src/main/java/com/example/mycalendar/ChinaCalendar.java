@@ -193,16 +193,18 @@ public class ChinaCalendar {
         return can[(mYear+6)%10] +" "+chi[(mYear+8)%12];
     }
 
+    /*----------------------------------------------------------------------------*/
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public String Solar2Lunar(int day, int month, int year){
+    public String Solar2Lunar(int day, int month, int year) {
         ChinaCalendar chinaCalendar = new ChinaCalendar(day, month, year, 7);
-        Date date= chinaCalendar.ConVertToLunar();
-        LocalDate localDate= date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Date date = chinaCalendar.ConVertToLunar();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM", new Locale("vn"));
         return localDate.format(formatter);
     }
-    public String Time2TimeLunar(String strHour){
-        int[][] matrix =   {{0, 2, 4, 6, 8},
+
+    public String Time2TimeLunar(String strHour) {
+        int[][] matrix = {{0, 2, 4, 6, 8},
                 {1, 3, 5, 7, 9},
                 {2, 4, 6, 8, 0},
                 {3, 5, 7, 9, 1},
@@ -215,8 +217,89 @@ public class ChinaCalendar {
                 {0, 2, 4, 6, 8},
                 {1, 3, 5, 7, 9}};
         long juliusDay = convertToJuliusDay();
-        String[] chi = new String[] {"Tý","Sửu","Dần","Mão","Thìn","Tị","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"};
-        int iHour=Integer.parseInt(strHour);
-        return can[matrix[((iHour +1)/2)%12][(int)(((juliusDay + 9) % 10)%5)]]+" "+chi[((iHour +1)/2)%12];
+        String[] chi = new String[]{"Tý", "Sửu", "Dần", "Mão", "Thìn", "Tị", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"};
+        int iHour = Integer.parseInt(strHour);
+        return can[matrix[((iHour + 1) / 2) % 12][(int) (((juliusDay + 9) % 10) % 5)]] + " " + chi[((iHour + 1) / 2) % 12];
+    }
+
+    public boolean IsGoodTime(String strHour) {
+        String dayChi = getLunarDate().split(" ")[1];
+        String timeChi = Time2TimeLunar(strHour).split(" ")[1];
+
+        if (dayChi.compareToIgnoreCase("dần") == 0 || dayChi.compareToIgnoreCase("thân") == 0)
+            if (timeChi.compareToIgnoreCase("tý") == 0 || timeChi.compareToIgnoreCase("sửu") == 0 ||
+                    timeChi.compareToIgnoreCase("thìn") == 0 || timeChi.compareToIgnoreCase("Tị") == 0 ||
+                    timeChi.compareToIgnoreCase("mùi") == 0 || timeChi.compareToIgnoreCase("tuất") == 0)
+                return true;
+        if (dayChi.compareToIgnoreCase("mão") == 0 || dayChi.compareToIgnoreCase("dậu") == 0)
+            if (timeChi.compareToIgnoreCase("tý") == 0 || timeChi.compareToIgnoreCase("dần") == 0 ||
+                    timeChi.compareToIgnoreCase("mão") == 0 || timeChi.compareToIgnoreCase("mùi") == 0 ||
+                    timeChi.compareToIgnoreCase("ngọ") == 0 || timeChi.compareToIgnoreCase("dậu") == 0)
+                return true;
+        if (dayChi.compareToIgnoreCase("thìn") == 0 || dayChi.compareToIgnoreCase("tuất") == 0)
+            if (timeChi.compareToIgnoreCase("dần") == 0 || timeChi.compareToIgnoreCase("Tị") == 0 ||
+                    timeChi.compareToIgnoreCase("thìn") == 0 || timeChi.compareToIgnoreCase("thân") == 0 ||
+                    timeChi.compareToIgnoreCase("hợi") == 0 || timeChi.compareToIgnoreCase("dậu") == 0)
+                return true;
+        if (dayChi.compareToIgnoreCase("Tị") == 0 || dayChi.compareToIgnoreCase("hợi") == 0)
+            if (timeChi.compareToIgnoreCase("ngọ") == 0 || timeChi.compareToIgnoreCase("sửu") == 0 ||
+                    timeChi.compareToIgnoreCase("thìn") == 0 || timeChi.compareToIgnoreCase("mùi") == 0 ||
+                    timeChi.compareToIgnoreCase("tuất") == 0 || timeChi.compareToIgnoreCase("hợi") == 0)
+                return true;
+        if (dayChi.compareToIgnoreCase("tý") == 0 || dayChi.compareToIgnoreCase("ngọ") == 0)
+            if (timeChi.compareToIgnoreCase("tý") == 0 || timeChi.compareToIgnoreCase("sửu") == 0 ||
+                    timeChi.compareToIgnoreCase("mão") == 0 || timeChi.compareToIgnoreCase("ngọ") == 0 ||
+                    timeChi.compareToIgnoreCase("thân") == 0 || timeChi.compareToIgnoreCase("dậu") == 0)
+                return true;
+        if (dayChi.compareToIgnoreCase("sửu") == 0 || dayChi.compareToIgnoreCase("mùi") == 0)
+            if (timeChi.compareToIgnoreCase("dần") == 0 || timeChi.compareToIgnoreCase("Tị") == 0 ||
+                    timeChi.compareToIgnoreCase("mão") == 0 || timeChi.compareToIgnoreCase("tuất") == 0 ||
+                    timeChi.compareToIgnoreCase("thân") == 0 || timeChi.compareToIgnoreCase("hợi") == 0)
+                return true;
+        return false;
+    }
+
+    // Trả về 1 là ngày hoàng đạo
+    // Trả về 0 là ngày bình thường
+    // Trả về -1 là ngày hắc đạo
+    public int IsZodiacDay(int lunnarmonth) {
+        String dayChi = getLunarDate().split(" ")[1];
+        if (lunnarmonth == 1 || lunnarmonth == 7) {
+            if (dayChi.equals("Tý") || dayChi.equals("Sửu") || dayChi.equals("Tị") || dayChi.equals("Mùi"))
+                return 1;
+            if (dayChi.equals("Ngọ") || dayChi.equals("Mão") || dayChi.equals("Hợi") || dayChi.equals("Dậu"))
+                return -1;
+            return 0;
+        } else if (lunnarmonth == 2 || lunnarmonth == 8) {
+            if (dayChi.equals("Dần") || dayChi.equals("Mão") || dayChi.equals("Mùi") || dayChi.equals("Dậu"))
+                return 1;
+            if (dayChi.equals("Thân") || dayChi.equals("Tị") || dayChi.equals("Sửu") || dayChi.equals("Hợi"))
+                return -1;
+            return 0;
+        } else if (lunnarmonth == 3 || lunnarmonth == 9) {
+            if (dayChi.equals("Thìn") || dayChi.equals("Tị") || dayChi.equals("Dậu") || dayChi.equals("Hợi"))
+                return 1;
+            if (dayChi.equals("Tuất") || dayChi.equals("Mão") || dayChi.equals("Mùi") || dayChi.equals("Sửu"))
+                return -1;
+            return 0;
+        } else if (lunnarmonth == 4 || lunnarmonth == 10) {
+            if (dayChi.equals("Ngọ") || dayChi.equals("Mùi") || dayChi.equals("Sửu") || dayChi.equals("Hợi"))
+                return 1;
+            if (dayChi.equals("Tý") || dayChi.equals("Mão") || dayChi.equals("Tị") || dayChi.equals("Dậu"))
+                return -1;
+            return 0;
+        } else if (lunnarmonth == 5 || lunnarmonth == 11) {
+            if (dayChi.equals("Thân") || dayChi.equals("Sửu") || dayChi.equals("Dậu") || dayChi.equals("Mão"))
+                return 1;
+            if (dayChi.equals("Dần") || dayChi.equals("Hợi") || dayChi.equals("Mùi") || dayChi.equals("Tị"))
+                return -1;
+            return 0;
+        } else {
+            if (dayChi.equals("Tuất") || dayChi.equals("Hợi") || dayChi.equals("Tị") || dayChi.equals("Mão"))
+                return 1;
+            if (dayChi.equals("Thìn") || dayChi.equals("Sửu") || dayChi.equals("Mùi") || dayChi.equals("Dậu"))
+                return -1;
+            return 0;
+        }
     }
 }

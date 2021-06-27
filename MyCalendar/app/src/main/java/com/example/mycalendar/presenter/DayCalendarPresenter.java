@@ -53,6 +53,9 @@ public class DayCalendarPresenter {
         dateTimeInfo.setMonthSolar(month);
         dateTimeInfo.setYearSolar(year);
 
+        dateTimeInfo.setIsGoodTime(chinaCalendar.IsGoodTime(hour));
+        dateTimeInfo.setIsGoodDay(chinaCalendar.IsZodiacDay(dateTimeInfo.getMonthLunar()));
+
         mDCInterface.LoadData(dateTimeInfo);
     }
 

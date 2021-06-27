@@ -17,4 +17,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="bgBottomNavigation">#fe485a</color>
     <color name ="yellow">#FFFF00</color>
+    <color name="text_color">#FF000000</color>
 </resources>

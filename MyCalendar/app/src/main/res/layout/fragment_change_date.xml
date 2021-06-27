@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_day_detail"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ChangeDateFragment">
+
+    <TextView
+        android:id="@+id/titleChangeDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:text="Đổi ngày"
+        android:textSize="30sp"
+        android:textColor="@color/text_color"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/titleSolarDay"
+        android:layout_below="@id/titleChangeDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icn_sun"
+        android:textColor="@color/text_color"
+        android:background="@drawable/rounded_corner"
+        android:drawablePadding="5dp"
+        android:text="Dương Lịch"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"/>
+    <DatePicker
+        android:id="@+id/dpSolarDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/titleSolarDay"/>
+    <TextView
+        android:id="@+id/titleLunarDay"
+        android:layout_below="@id/dpSolarDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icn_moon"
+        android:background="@drawable/rounded_corner"
+        android:drawablePadding="5dp"
+        android:text="Âm Lịch"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"/>
+    <DatePicker
+        android:id="@+id/dpLunarDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/titleLunarDay"/>
+    <CheckBox
+        android:id="@+id/ckbIsLeap"
+        android:layout_below="@id/dpLunarDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/leap_month"
+        android:textSize="15sp"/>
+    <Button
+        android:id="@+id/btnShowDayDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xem ngày chi tiết"
+        android:layout_below="@id/ckbIsLeap"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.mycalendar.adapter;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.R;
 
 import java.time.LocalDate;
@@ -68,14 +70,56 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
             layout.setBackgroundResource(R.drawable.today_card);
         }
         if (dayLunar.startsWith("01") || dayLunar.startsWith("15")) {
-            tvDayLunar.setTextColor(R.color.red);
+            tvDayLunar.setTextColor(Color.parseColor("#FF0000"));
         }
         if (!isInMonth(dayOfMonth))
-            tvDaySolar.setTextColor(R.color.gray);
+            tvDaySolar.setTextColor(Color.parseColor("#a9a9a9"));
+
+        int monthLunar=Integer.parseInt(daysLunar.get(position).substring(3, 5));
+        if(IsGoodOrBadDay(dayOfMonth,monthLunar)==1){
+            holder.imgGoodOrBadDay.setVisibility(View.VISIBLE);
+            holder.imgGoodOrBadDay.setImageResource(R.mipmap.yin_yang_red);
+        }
+        if(IsGoodOrBadDay(dayOfMonth,monthLunar)==0)
+            holder.imgGoodOrBadDay.setVisibility(View.GONE);
+        if(IsGoodOrBadDay(dayOfMonth,monthLunar)==-1){
+            holder.imgGoodOrBadDay.setVisibility(View.VISIBLE);
+            holder.imgGoodOrBadDay.setImageResource(R.mipmap.yin_yang_black);
+        }
 
         holder.dayOfMonth.setText(dayOfMonth.split("/")[0]);
         holder.dayLunar.setText(dayLunar);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private int IsGoodOrBadDay(String dayOfMonth,int LunarMonth) {
+        ChinaCalendar chinaCalendar=null;
+        if(isInMonth(dayOfMonth)){
+            LocalDate date=selectedDate;
+            int day=Integer.parseInt(dayOfMonth.split("/")[0]);
+            int month=date.getMonthValue()+1;
+            int year=date.getYear();
+            chinaCalendar=new ChinaCalendar(day,month,year,7);
+        }
+        if(isInPreviousMonth(dayOfMonth)){
+            LocalDate date=selectedDate.withDayOfMonth(1).minusDays(1);
+            int day=Integer.parseInt(dayOfMonth.split("/")[0]);
+            int month=date.getMonthValue()+1;
+            int year=date.getYear();
+            chinaCalendar=new ChinaCalendar(day,month,year,7);
+        }
+        if(isInNextMonth(dayOfMonth)){
+            LocalDate date=selectedDate.withDayOfMonth(1).plusMonths(1);
+            int day=Integer.parseInt(dayOfMonth.split("/")[0]);
+            int month=date.getMonthValue()+1;
+            int year=date.getYear();
+            chinaCalendar=new ChinaCalendar(day,month,year,7);
+        }
+        assert chinaCalendar != null;
+        chinaCalendar.ConVertToLunar();
+        return chinaCalendar.IsZodiacDay(LunarMonth);
+    }
+
     public interface  OnItemListener
     {
         void onItemClick(int position, String dayText);
@@ -99,5 +143,33 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         LocalDate ldtDay = LocalDate.parse(day, formatter);
 
         return (ldtDay.isAfter(start) && ldtDay.isBefore(end));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private boolean isInPreviousMonth(String day) {
+        YearMonth yearMonth = YearMonth.from(selectedDate);
+        LocalDate start = selectedDate.withDayOfMonth(1);
+
+        //DateTimeFormatterBuilder fmb = new DateTimeFormatterBuilder();
+        //fmb.parseCaseInsensitive();
+        //fmb.append(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        LocalDate ldtDay = LocalDate.parse(day, formatter);
+
+        return ldtDay.isBefore(start);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private boolean isInNextMonth(String day) {
+        YearMonth yearMonth = YearMonth.from(selectedDate);
+        LocalDate end = selectedDate.withDayOfMonth(1).plusMonths(1).minusDays(1);
+
+        //DateTimeFormatterBuilder fmb = new DateTimeFormatterBuilder();
+        //fmb.parseCaseInsensitive();
+        //fmb.append(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        LocalDate ldtDay = LocalDate.parse(day, formatter);
+
+        return ldtDay.isAfter(end);
     }
 }

@@ -115,6 +115,7 @@
                             android:textSize="30sp" />
 
                         <ImageView
+                            android:id="@+id/imgIsGoodTime"
                             android:layout_marginTop="10dp"
                             android:layout_width="80dp"
                             android:layout_height="15dp"
@@ -143,6 +144,7 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
+                                android:id="@+id/imgIsGoodDay"
                                 android:layout_width="30dp"
                                 android:layout_height="15dp"
                                 android:layout_gravity="right"

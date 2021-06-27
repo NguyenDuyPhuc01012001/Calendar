@@ -6,6 +6,24 @@ public class DateTimeInfo {
     String strDayOfMonthLunar,strMonthLunar,strYearLunar;
     String dayOfWeek;
     String timeLunar;
+    boolean isGoodTime;
+    int isGoodDay;
+
+    public boolean getIsGoodTime() {
+        return isGoodTime;
+    }
+
+    public void setIsGoodTime(boolean goodTime) {
+        isGoodTime = goodTime;
+    }
+
+    public int getIsGoodDay() {
+        return isGoodDay;
+    }
+
+    public void setIsGoodDay(int isGoodDay) {
+        this.isGoodDay = isGoodDay;
+    }
 
     public int getDayOfMonthSolar() {
         return dayOfMonthSolar;

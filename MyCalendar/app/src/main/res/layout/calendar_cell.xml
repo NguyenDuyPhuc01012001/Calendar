@@ -25,7 +25,8 @@
                 android:id="@+id/cellDayText"
                 android:text="1"
                 android:textSize="15sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:layout_marginTop="3dp"/>
 
             <TextView
                 android:id="@+id/cellLunarDayText"
@@ -38,11 +39,13 @@
                 android:textColor="@color/black"
                 android:textSize="10sp" />
             <ImageView
-                android:id="@+id/imgWeather"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:id="@+id/imgGoodOrBadDay"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"/>
+                android:paddingTop="2dp"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="2dp"/>
         </RelativeLayout>
     </FrameLayout>
 
