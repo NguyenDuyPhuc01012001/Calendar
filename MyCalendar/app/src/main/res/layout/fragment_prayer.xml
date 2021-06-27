@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FDC7C0"
+    android:id="@+id/frame_container"
     tools:context=".fragment.PrayerFragment">
 
     <LinearLayout
@@ -625,55 +626,6 @@
             </LinearLayout>
 
         </ScrollView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F4F1F0"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:textSize="20sp"
-            android:id="@+id/textview"
-            android:scrollbars="vertical"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnZoom"
-            android:orientation="horizontal"
-            android:background="#5E72BC"
-            android:layout_alignParentBottom="true"
-            android:weightSum="2">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="#5E72BC"
-                android:src="@drawable/zoomin"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:id="@+id/zoomIn" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="#5E72BC"
-                android:src="@drawable/zoomout"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:id="@+id/zoomOut" />
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.mycalendar.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -23,10 +24,7 @@ import java.io.InputStream;
  * create an instance of this fragment.
  */
 public class PrayerFragment extends Fragment {
-    TextView textView;
-    ImageButton zoomIn;
-    ImageButton zoomOut;
-    float scale = 20;
+
     String response;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,25 +72,6 @@ public class PrayerFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_prayer, container, false);
 
-        textView = view.findViewById(R.id.textview);
-        textView.setMovementMethod(new ScrollingMovementMethod());
-
-        zoomOut = view.findViewById(R.id.zoomOut);  //thu nhỏ
-        zoomIn = view.findViewById(R.id.zoomIn);    //phóng to
-        zoomOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scale -= 2;
-                textView.setTextSize(scale);
-            }
-        });
-        zoomIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scale += 2;
-                textView.setTextSize(scale);
-            }
-        });
 
         //Văn khấn dịp lễ tết Nguyên Đán
         Button btnVKLOT = view.findViewById(R.id.btnVKLOT);
@@ -104,52 +83,87 @@ public class PrayerFragment extends Fragment {
         Button btnVKNM = view.findViewById(R.id.btnVKNM);
 
         btnVKLOT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLOT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKLGT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLGT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTN.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTN.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKLTM.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLTM.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTL.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTL.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKNM.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKNM.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
 
@@ -164,66 +178,111 @@ public class PrayerFragment extends Fragment {
         Button btnVKDO = view.findViewById(R.id.btnVKDO);
         Button btnVKDTH = view.findViewById(R.id.btnVKDTH);
         btnVKLP.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLP.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKQABT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKQABT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTH.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTH.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKMTN.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKMTN.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTMLH.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTMLH.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKLDTT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLDTT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKBCKH.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKBCKH.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKDO.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKDO.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKDTH.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKDTH.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
 
@@ -237,59 +296,99 @@ public class PrayerFragment extends Fragment {
         Button btnVKN115 = view.findViewById(R.id.btnVKN115);
         Button btnVKTTTD = view.findViewById(R.id.btnVKTTTD);
         btnVKLNT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLNT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKLTMTTM.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLTMTTM.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTHT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTHT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTDN.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTDN.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKN115.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKN115.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTTT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTTT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKRT7.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
-                response = loadTextFileFromAsset("btnVKRT7.txt");
-                textView.setText(response);
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
+                response = loadTextFileFromAsset("VKRT7.txt");
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKTTTD.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKTTTD.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
 
@@ -303,59 +402,99 @@ public class PrayerFragment extends Fragment {
         Button btnVKNCG = view.findViewById(R.id.btnVKNCG);
         Button btnVKGT = view.findViewById(R.id.btnVKGT);
         btnVKLCT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLCT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKLDT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLDT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKLCTTK.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLCTTK.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKNGD.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKNGD.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKNGH.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKNGH.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKNGT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKNGT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKNCG.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKNCG.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKGT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKGT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
 
@@ -363,17 +502,27 @@ public class PrayerFragment extends Fragment {
         Button btnVKCBMTN = view.findViewById(R.id.btnVKCBMTN);
         Button btnVKNLCH = view.findViewById(R.id.btnVKNLCH);
         btnVKCBMTN.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKCBMTN.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKNLCH.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKNLCH.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
 
@@ -382,24 +531,39 @@ public class PrayerFragment extends Fragment {
         Button btnVKNT = view.findViewById(R.id.btnVKNT);
         Button btnVKMTG = view.findViewById(R.id.btnVKMTG);
         btnVKCNSN.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKCNSN.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKNT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKNT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKMTG.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKMTG.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
 
@@ -407,17 +571,27 @@ public class PrayerFragment extends Fragment {
         Button btnVKLKT = view.findViewById(R.id.btnVKLKT);
         Button btnVKLMT = view.findViewById(R.id.btnVKLMT);
         btnVKLKT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLKT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
         btnVKLMT.setOnClickListener(new View.OnClickListener() {
+            Fragment fragment = null;
             @Override
             public void onClick(View v) {
+                fragment = new PrayerContentFragment();
+                replaceFragment(fragment);
                 response = loadTextFileFromAsset("VKLMT.txt");
-                textView.setText(response);
+                Bundle bundle = new Bundle();
+                bundle.putString("key", response);
+                fragment.setArguments(bundle);
             }
         });
 
@@ -439,5 +613,12 @@ public class PrayerFragment extends Fragment {
             return null;
         }
         return content;
+    }
+
+    public void replaceFragment(Fragment someFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, someFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

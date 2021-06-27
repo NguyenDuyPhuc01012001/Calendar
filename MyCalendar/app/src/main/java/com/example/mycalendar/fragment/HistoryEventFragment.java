@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.mycalendar.R;
 import com.example.mycalendar.database.DatabaseOpenHelper;
@@ -85,27 +86,41 @@ public class HistoryEventFragment extends Fragment {
         worldHistorybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper = new DatabaseOpenHelper(getContext());
-                dbHelper.CreateDatabase();
-                dbHelper.openDatabase();
-                String d = date.getText().toString();
-                String m = month.getText().toString();
-                List<String> Events = dbHelper.WORLDQUERYHISTORY(d, m);
-                listEvent.setAdapter(new ArrayAdapter<String>(view.getContext(),
-                        android.R.layout.simple_list_item_1 , Events));
+                try
+                {
+                    dbHelper = new DatabaseOpenHelper(getContext());
+                    dbHelper.CreateDatabase();
+                    dbHelper.openDatabase();
+                    String d = date.getText().toString();
+                    String m = month.getText().toString();
+                    List<String> Events = dbHelper.WORLDQUERYHISTORY(d, m);
+                    listEvent.setAdapter(new ArrayAdapter<String>(view.getContext(),
+                            android.R.layout.simple_list_item_1 , Events));
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getActivity(), "Vui lòng nhập đầy đủ ngày và tháng!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         vietHistorybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper = new DatabaseOpenHelper(getContext());
-                dbHelper.CreateDatabase();
-                dbHelper.openDatabase();
-                String d = date.getText().toString();
-                String m = month.getText().toString();
-                List<String> Events = dbHelper.VIETQUERYHISTORY(d, m);
-                listEvent.setAdapter(new ArrayAdapter<String>(view.getContext(),
-                        android.R.layout.simple_list_item_1 , Events));
+                try
+                {
+                    dbHelper = new DatabaseOpenHelper(getContext());
+                    dbHelper.CreateDatabase();
+                    dbHelper.openDatabase();
+                    String d = date.getText().toString();
+                    String m = month.getText().toString();
+                    List<String> Events = dbHelper.VIETQUERYHISTORY(d, m);
+                    listEvent.setAdapter(new ArrayAdapter<String>(view.getContext(),
+                            android.R.layout.simple_list_item_1 , Events));
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getActivity(), "Vui lòng nhập đầy đủ ngày và tháng!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;

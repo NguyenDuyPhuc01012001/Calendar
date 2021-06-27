@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".fragment.PrayerContentFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5E72BC"
+        android:id="@+id/title">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VĂN KHẤN"
+            android:gravity="center_horizontal"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:paddingTop="4dp"
+            android:paddingBottom="2dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:scrollbars="vertical"
+        android:textSize="20sp"
+        android:layout_below="@+id/title"
+        android:layout_above="@+id/btnZoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnZoom"
+        android:orientation="horizontal"
+        android:background="#5E72BC"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="#5E72BC"
+            android:src="@drawable/zoomin"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/zoomIn"
+            android:onClick="button"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="#5E72BC"
+            android:src="@drawable/zoomout"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/zoomOut"
+            android:onClick="button"/>
+    </LinearLayout>
+
+</RelativeLayout>
