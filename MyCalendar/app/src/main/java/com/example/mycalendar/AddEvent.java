@@ -46,22 +46,12 @@ public class AddEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         init();
-        Button btnSave = (Button) findViewById(R.id.saveBtn);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveOnClick(v);
-                finish();
-                System.exit(0);
-            }
-        });
         Button btnExit = (Button) findViewById(R.id.exitBtn);
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 finish();
-                System.exit(0);
             }
         });
 
@@ -212,7 +202,7 @@ public class AddEvent extends AppCompatActivity {
         listEvent = (ArrayList<EventInfo>) eventDatabase.CheckID(id);
         if(listEvent.size() == 1)
         {
-            eventInfo = new EventInfo(id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd);
+            eventInfo = new EventInfo(id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, 1, false);
             eventDatabase.EditEvent(eventInfo);
             Toast.makeText(AddEvent.this,"Edit successfully",Toast.LENGTH_SHORT).show();
         }
@@ -224,19 +214,17 @@ public class AddEvent extends AppCompatActivity {
                     Toast.makeText(AddEvent.this,"unavailable title",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    eventInfo = new EventInfo(-1,Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd);
+                    eventInfo = new EventInfo(-1,Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, 1, false);
                     eventDatabase.addOne(eventInfo);
                     Toast.makeText(AddEvent.this,"Saved successfully",Toast.LENGTH_SHORT).show();
-                    finish();
+
                 }
             }
             catch (Exception e){
                 Toast.makeText(AddEvent.this,"undetectable error",Toast.LENGTH_SHORT).show();
             }
         }
-
-
-
+        finish();
     }
 
     public void showResult(String Title, int day,int month, int year, int hourstart,int minutestart, int hourend,int minuteend)
