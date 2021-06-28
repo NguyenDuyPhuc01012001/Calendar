@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -53,6 +54,7 @@ public class ZodiacFragment extends Fragment implements AdapterView.OnItemSelect
     TextView luckyTimeTV;
     TextView moodTV;
     JSONObject allZodiacData;
+    ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,7 +67,9 @@ public class ZodiacFragment extends Fragment implements AdapterView.OnItemSelect
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
                 GetZodiacAstrology();
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
         return view;
@@ -84,6 +88,7 @@ public class ZodiacFragment extends Fragment implements AdapterView.OnItemSelect
         luckyNumberTV = view.findViewById(R.id.luckyNumberTV);
         luckyTimeTV = view.findViewById(R.id.luckyTimeTV);
         moodTV=  view.findViewById(R.id.moodTV);
+        progressBar = view.findViewById(R.id.progressBar);
     }
 
     @Override
