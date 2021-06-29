@@ -88,7 +88,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLOT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLOT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -100,7 +100,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLGT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLGT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -112,7 +112,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTN.txt");
+                response = loadTextFileFromAsset("prayertext/VKTN.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -124,7 +124,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLTM.txt");
+                response = loadTextFileFromAsset("prayertext/VKLTM.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -136,7 +136,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTT.txt");
+                response = loadTextFileFromAsset("prayertext/VKTT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -148,7 +148,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTL.txt");
+                response = loadTextFileFromAsset("prayertext/VKTL.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -160,7 +160,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKNM.txt");
+                response = loadTextFileFromAsset("prayertext/VKNM.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -183,7 +183,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLP.txt");
+                response = loadTextFileFromAsset("prayertext/VKLP.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -195,7 +195,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKQABT.txt");
+                response = loadTextFileFromAsset("prayertext/VKQABT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -207,7 +207,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTH.txt");
+                response = loadTextFileFromAsset("prayertext/VKTH.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -219,7 +219,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKMTN.txt");
+                response = loadTextFileFromAsset("prayertext/VKMTN.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -231,7 +231,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTMLH.txt");
+                response = loadTextFileFromAsset("prayertext/VKTMLH.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -243,7 +243,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLDTT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLDTT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -255,7 +255,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKBCKH.txt");
+                response = loadTextFileFromAsset("prayertext/VKBCKH.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -267,7 +267,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKDO.txt");
+                response = loadTextFileFromAsset("prayertext/VKDO.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -279,7 +279,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKDTH.txt");
+                response = loadTextFileFromAsset("prayertext/VKDTH.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -301,7 +301,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLNT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLNT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -313,7 +313,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLTMTTM.txt");
+                response = loadTextFileFromAsset("prayertext/VKLTMTTM.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -325,7 +325,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTHT.txt");
+                response = loadTextFileFromAsset("prayertext/VKTHT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -337,7 +337,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTDN.txt");
+                response = loadTextFileFromAsset("prayertext/VKTDN.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -349,7 +349,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKN115.txt");
+                response = loadTextFileFromAsset("prayertext/VKN115.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -361,7 +361,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTTT.txt");
+                response = loadTextFileFromAsset("prayertext/VKTTT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -373,7 +373,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKRT7.txt");
+                response = loadTextFileFromAsset("prayertext/VKRT7.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -385,7 +385,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKTTTD.txt");
+                response = loadTextFileFromAsset("prayertext/VKTTTD.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -407,7 +407,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLCT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLCT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -419,7 +419,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLDT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLDT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -431,7 +431,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLCTTK.txt");
+                response = loadTextFileFromAsset("prayertext/VKLCTTK.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -443,7 +443,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKNGD.txt");
+                response = loadTextFileFromAsset("prayertext/VKNGD.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -455,7 +455,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKNGH.txt");
+                response = loadTextFileFromAsset("prayertext/VKNGH.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -467,7 +467,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKNGT.txt");
+                response = loadTextFileFromAsset("prayertext/VKNGT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -479,7 +479,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKNCG.txt");
+                response = loadTextFileFromAsset("prayertext/VKNCG.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -491,7 +491,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKGT.txt");
+                response = loadTextFileFromAsset("prayertext/VKGT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -507,7 +507,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKCBMTN.txt");
+                response = loadTextFileFromAsset("prayertext/VKCBMTN.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -519,7 +519,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKNLCH.txt");
+                response = loadTextFileFromAsset("prayertext/VKNLCH.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -536,7 +536,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKCNSN.txt");
+                response = loadTextFileFromAsset("prayertext/VKCNSN.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -548,7 +548,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKNT.txt");
+                response = loadTextFileFromAsset("prayertext/VKNT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -560,7 +560,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKMTG.txt");
+                response = loadTextFileFromAsset("prayertext/VKMTG.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -576,7 +576,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLKT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLKT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
@@ -588,7 +588,7 @@ public class PrayerFragment extends Fragment {
             public void onClick(View v) {
                 fragment = new PrayerContentFragment();
                 replaceFragment(fragment);
-                response = loadTextFileFromAsset("VKLMT.txt");
+                response = loadTextFileFromAsset("prayertext/VKLMT.txt");
                 Bundle bundle = new Bundle();
                 bundle.putString("key", response);
                 fragment.setArguments(bundle);
