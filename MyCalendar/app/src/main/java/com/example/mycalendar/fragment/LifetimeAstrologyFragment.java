@@ -33,6 +33,7 @@ public class LifetimeAstrologyFragment extends Fragment {
     Spinner sexPicker;
     TextView lifeTimeZodiacDescription;
     String sex = "nam";
+    String folderName = "lifetime";
     int birthYear;
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
@@ -109,9 +110,10 @@ public class LifetimeAstrologyFragment extends Fragment {
     {
         LifeTimeAstrologyHandler lifeTimeAstrologyHandler = new LifeTimeAstrologyHandler();
         String fileName =lifeTimeAstrologyHandler.GetFileName(birthYear)+"_"+sex+".txt";
-        Log.d(TAG, "LoadZodiacDescription: "+fileName);
+        String fileLocation = folderName+"/"+fileName;
+        Log.d(TAG, "LoadZodiacDescription: "+fileLocation);
         try {
-            InputStream inputStream = getContext().getAssets().open(fileName);
+            InputStream inputStream = getContext().getAssets().open(fileLocation);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuffer stringBuffer = new StringBuffer();
             String data = "";
