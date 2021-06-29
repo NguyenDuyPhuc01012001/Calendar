@@ -14,13 +14,11 @@ import java.util.List;
 
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
-    public static String DB_PATH = "";
+    public static String DB_PATH = "/databases/";
 
     public static int dbVersion = 1;
 
     public static String DB_NAME = "TodayInHistory.db";
-
-    public static String DB_NAME_EVENT = "ImportantEvent.db";
 
     private SQLiteDatabase myDatabase;
 

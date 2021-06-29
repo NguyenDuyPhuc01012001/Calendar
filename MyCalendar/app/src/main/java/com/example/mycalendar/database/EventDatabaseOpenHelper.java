@@ -15,7 +15,7 @@ import java.util.List;
 
 public class EventDatabaseOpenHelper extends SQLiteOpenHelper {
 
-    public static String DB_PATH = "";
+    public static String DB_PATH = "/databases/";
 
     public static int dbVersion = 1;
 
