@@ -15,52 +15,13 @@
         android:layout_marginLeft="10dp"
         android:textColor="@color/black"/>
     <LinearLayout
-        android:id="@+id/timeTV"
+        android:id="@+id/time1TV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:layout_marginTop="5dp">
         <TextView
-            android:id="@+id/starthTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="00"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=":"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/startmTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="00"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="-"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/endhTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="00"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text=":"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/endmTV"
+            android:id="@+id/timeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

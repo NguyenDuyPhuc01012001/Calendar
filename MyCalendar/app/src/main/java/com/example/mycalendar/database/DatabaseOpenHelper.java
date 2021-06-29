@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
-    private Context context;
 
     public static String DB_PATH = "";
 
@@ -21,12 +20,15 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     public static String DB_NAME = "TodayInHistory.db";
 
+    public static String DB_NAME_EVENT = "ImportantEvent.db";
+
     private SQLiteDatabase myDatabase;
 
     private Context mContext;
 
     public DatabaseOpenHelper(Context context) {
-        super (context, DB_NAME, null, 1);
+        super (context, DB_NAME, null, dbVersion);
+
         if(Build.VERSION.SDK_INT>=17)
         {
             DB_PATH = context.getApplicationInfo().dataDir+"/databases/";

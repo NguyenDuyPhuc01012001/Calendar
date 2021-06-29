@@ -91,7 +91,7 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endHour = cursor.getInt(6);
                 int startMinute = cursor.getInt(7);
                 int endMinute = cursor.getInt(8);
-                EventInfo eventInfo = new EventInfo(ID,title,Day,Month,Year,startHour,startMinute,endHour,endMinute);
+                EventInfo eventInfo = new EventInfo(ID,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, 1, false);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }
@@ -135,7 +135,7 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endHour = cursor.getInt(6);
                 int startMinute = cursor.getInt(7);
                 int endMinute = cursor.getInt(8);
-                EventInfo eventInfo = new EventInfo(ID,title,Day,Month,Year,startHour,startMinute,endHour,endMinute);
+                EventInfo eventInfo = new EventInfo(ID,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, 1, false);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }

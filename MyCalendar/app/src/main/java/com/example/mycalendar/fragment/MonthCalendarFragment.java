@@ -1,6 +1,7 @@
 package com.example.mycalendar.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,19 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.mycalendar.AddEvent;
 import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.EventDialog;
 import com.example.mycalendar.OnSwipeTouchListener;
@@ -29,16 +24,19 @@ import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.CalendarAdapter;
 import com.example.mycalendar.adapter.EventAdapter;
 import com.example.mycalendar.database.EventDatabase;
+import com.example.mycalendar.database.EventDatabaseOpenHelper;
 import com.example.mycalendar.model.EventInfo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
-public class MonthCalendarFragment extends Fragment implements CalendarAdapter.OnItemListener {
+public class MonthCalendarFragment extends Fragment implements CalendarAdapter.OnItemListener, EventAdapter.OnItemListener {
     private TextView monthYearText;
     private TextView eventIn;
     private RecyclerView calendarRecyclerView;
@@ -93,7 +91,17 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     {
         EventDatabase eventDatabase = new EventDatabase(getActivity());
         listEvent = (ArrayList<EventInfo>) eventDatabase.getEventday(day,selectedDate.getMonthValue(),selectedDate.getYear());
-        EventAdapter eventAdapter = new EventAdapter(listEvent);
+
+        EventDatabaseOpenHelper eventDatabaseOpenHelper = new EventDatabaseOpenHelper(getContext());
+        eventDatabaseOpenHelper.CreateDatabase();
+        eventDatabaseOpenHelper.openDatabase();
+        eventDatabaseOpenHelper.getEventday(day,selectedDate.getMonthValue(),listEvent,true);
+        ChinaCalendar chinaCalendar = new ChinaCalendar(day, selectedDate.getMonthValue(), selectedDate.getYear(), 7);
+        Date date = chinaCalendar.ConVertToLunar();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        eventDatabaseOpenHelper.getEventday(localDate.getDayOfMonth(),localDate.getMonthValue(),listEvent,false);
+
+        EventAdapter eventAdapter = new EventAdapter(listEvent, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
         eventRecyclerView.setLayoutManager(layoutManager);
         eventRecyclerView.setAdapter(eventAdapter);
@@ -233,5 +241,17 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     public void onItemClick(int position, String dayText) {
         eventIn.setText("Sự kiện trong ngày " + dayText + " " + monthYearFromDate(selectedDate));
         setEventView(Integer.valueOf(dayText));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onEventClick(int position,int type) {
+        if (type == 1)
+        {
+            Intent detailIntent = new Intent(getActivity(), AddEvent.class);
+            detailIntent.putExtra("position",position);
+            startActivity(detailIntent);
+            Check = 1;
+        }
     }
 }
