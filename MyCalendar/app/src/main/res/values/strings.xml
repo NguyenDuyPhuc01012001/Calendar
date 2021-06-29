@@ -34,8 +34,8 @@
     <string-array name="contentPageAstrology">
         <item>Tử vi 2021</item>
         <item>Tử vi trọn đời</item>
-        <item>Xem sao coi hạn</item>
-        <item>Bói phương đông</item>
+        <item>Giải mộng</item>
+        <item>Bói phương Đông</item>
         <item>Xem ngày tốt</item>
         <item>Xem bói</item>
         <item>Cung hoàng đạo</item>
@@ -97,5 +97,738 @@
     <string-array name="sex_picker_array">
         <item>Nam</item>
         <item>Nữ</item>
+    </string-array>
+
+    <string-array name="alphabet_picker_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>G</item>
+        <item>H</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>X</item>
+    </string-array>
+    <string-array name="A">
+        <item>Ảnh</item>
+        <item>Áo</item>
+        <item>Áp lực</item>
+        <item>Ăn</item>
+        <item>Âm nhạc</item>
+        <item>Ẩu đả</item>
+    </string-array>
+    <string-array name="B">
+        <item>Bạc</item>
+        <item>Bãi</item>
+        <item>Bàn</item>
+        <item>Bạn</item>
+        <item>Ban công</item>
+        <item>Bàn ủi</item>
+        <item>Bánh</item>
+        <item>Bao</item>
+        <item>Báo</item>
+        <item>Bảo</item>
+        <item>Bão</item>
+        <item>Bát</item>
+        <item>Bắt</item>
+        <item>Bầu</item>
+        <item>Bay</item>
+        <item>Bầy</item>
+        <item>Bè</item>
+        <item>Beo</item>
+        <item>Bếp</item>
+        <item>Bia</item>
+        <item>Bị rượt đuổi</item>
+        <item>Bích</item>
+        <item>Biển</item>
+        <item>Biệt ly</item>
+        <item>Bị lạc( hoặc mắc kẹt)</item>
+        <item>Bị liệt</item>
+        <item>Binh</item>
+        <item>Bình</item>
+        <item>Bịnh</item>
+        <item>Bò</item>
+        <item>Bỏ</item>
+        <item>Bó</item>
+        <item>Bọ</item>
+        <item>Bồ câu</item>
+        <item>Bồ tát</item>
+        <item>Bơi</item>
+        <item>Bói</item>
+        <item>Bú</item>
+        <item>Búa</item>
+        <item>Bùa</item>
+        <item>Bụi</item>
+        <item>Bùi nhùi</item>
+        <item>Bùn</item>
+        <item>Buôn bán</item>
+        <item>Buồn</item>
+        <item>Buồng</item>
+        <item>Bưởi</item>
+        <item>Bướm</item>
+        <item>Bút</item>
+        <item>Bãi tha ma</item>
+    </string-array>
+    <string-array name="C">
+        <item>Cá</item>
+        <item>Cà</item>
+        <item>Cãi</item>
+        <item>Cam</item>
+        <item>Cân</item>
+        <item>Cánh</item>
+        <item>Cạo</item>
+        <item>Cào</item>
+        <item>Cắt</item>
+        <item>Câu</item>
+        <item>Cầu</item>
+        <item>Cây</item>
+        <item>Cấy</item>
+        <item>Chải</item>
+        <item>Chăn</item>
+        <item>Chân</item>
+        <item>Cha mẹ</item>
+        <item>Chanh</item>
+        <item>Cháy</item>
+        <item>Chạy</item>
+        <item>Chậu</item>
+        <item>Chém</item>
+        <item>Chén</item>
+        <item>Chết</item>
+        <item>Chiếu</item>
+        <item>Chim</item>
+        <item>Chó</item>
+        <item>Chợ</item>
+        <item>Chơi</item>
+        <item>Chớp</item>
+        <item>Chổi</item>
+        <item>Chồng vợ</item>
+        <item>Chôn</item>
+        <item>Chồn</item>
+        <item>Chột</item>
+        <item>Chủ</item>
+        <item>Chùa</item>
+        <item>Chuối</item>
+        <item>Chuỗi</item>
+        <item>Chuồn</item>
+        <item>Chuồn chuồn</item>
+        <item>Chuông</item>
+        <item>Chuột</item>
+        <item>Chữ thập</item>
+        <item>Cò</item>
+        <item>Cỏ</item>
+        <item>Cổ</item>
+        <item>Cờ</item>
+        <item>Cóc</item>
+        <item>Cối</item>
+        <item>Công</item>
+        <item>Cờ-Bài</item>
+        <item>Cổng</item>
+        <item>Chim cú</item>
+        <item>Cù lao</item>
+        <item>Củ</item>
+        <item>Cua</item>
+        <item>Cúc</item>
+        <item>Củi</item>
+        <item>Cùm</item>
+        <item>Cung</item>
+        <item>Cửa</item>
+        <item>Cười</item>
+        <item>Cưới</item>
+        <item>Cương</item>
+        <item>Cưỡng</item>
+        <item>Cướp</item>
+    </string-array>
+
+    <string-array name="D">
+        <item>Đám ma</item>
+        <item>Đánh bạc</item>
+        <item>Đánh nhau</item>
+        <item>Dạ lý</item>
+        <item>Dao</item>
+        <item>Dâu rể hôn sự</item>
+        <item>Dâu</item>
+        <item>Dầu</item>
+        <item>Dây</item>
+        <item>Dép</item>
+        <item>Dê</item>
+        <item>Dế</item>
+        <item>Di chúc</item>
+        <item>Dĩa</item>
+        <item>Dơi</item>
+        <item>Dời</item>
+        <item>Dối trá</item>
+        <item>Du</item>
+        <item>Dù</item>
+        <item>Dưa</item>
+        <item>Đá</item>
+        <item>Đám</item>
+        <item>Đánh</item>
+        <item>Đàn</item>
+        <item>Đàn bà</item>
+        <item>Đàn ông</item>
+        <item>Đào</item>
+        <item>Đấm</item>
+        <item>Đất</item>
+        <item>Đầu</item>
+        <item>Đậu</item>
+        <item>Đẩu</item>
+        <item>Đầy</item>
+        <item>Đe</item>
+        <item>Đè</item>
+        <item>Đẻ</item>
+        <item>Đèn</item>
+        <item>Đẽn</item>
+        <item>Đèo</item>
+        <item>Đẽo</item>
+        <item>Đêm</item>
+        <item>Đền, chùa, đình, miếu, nhà</item>
+        <item>Đi</item>
+        <item>Đỉa</item>
+        <item>Địa</item>
+        <item>Điếm</item>
+        <item>Điên</item>
+        <item>Điện</item>
+        <item>Đinh</item>
+        <item>Đò</item>
+        <item>Đỏ</item>
+        <item>Đói</item>
+        <item>Đóm</item>
+        <item>Độc</item>
+        <item>Đồn</item>
+        <item>Đồng</item>
+        <item>Động</item>
+        <item>Đu</item>
+        <item>Đứa trẻ</item>
+        <item>Đũa</item>
+        <item>Đuốc</item>
+        <item>Đuối</item>
+        <item>Đuổi</item>
+        <item>Đường</item>
+    </string-array>
+
+    <string-array name="E">
+        <item>Éc</item>
+        <item>Ẹc</item>
+        <item>Én</item>
+        <item>Ếch</item>
+    </string-array>
+
+    <string-array name="G">
+        <item>Ga</item>
+        <item>Gà</item>
+        <item>Gác</item>
+        <item>Gai</item>
+        <item>Gái</item>
+        <item>Gãi đầu</item>
+        <item>Gáy</item>
+        <item>Gạo</item>
+        <item>Gặt</item>
+        <item>Gấm</item>
+        <item>Gấu</item>
+        <item>Gậy</item>
+        <item>Ghen</item>
+        <item>Ghẹo</item>
+        <item>Ghế</item>
+        <item>Ghim</item>
+        <item>Gia</item>
+        <item>Gia</item>
+        <item>Gia tài</item>
+        <item>Giá</item>
+        <item>Già</item>
+        <item>Giam</item>
+        <item>Gián</item>
+        <item>Giao</item>
+        <item>Giáo</item>
+        <item>Giáp</item>
+        <item>Giày</item>
+        <item>Giặc</item>
+        <item>Giặt</item>
+        <item>Giấm</item>
+        <item>Giấy</item>
+        <item>Gieo</item>
+        <item>Giếng</item>
+        <item>Giết</item>
+        <item>Gió</item>
+        <item>Giường</item>
+        <item>Gốc</item>
+        <item>Gối</item>
+        <item>Gội</item>
+        <item>Gỗ</item>
+        <item>Gông</item>
+        <item>Guốc</item>
+        <item>Gươm</item>
+        <item>Gương</item>
+    </string-array>
+
+    <string-array name="H">
+        <item>Hạc</item>
+        <item>Hang</item>
+        <item>Hàng</item>
+        <item>Hành</item>
+        <item>Hạnh</item>
+        <item>Hào</item>
+        <item>Hầm</item>
+        <item>Hấp</item>
+        <item>Hẹn</item>
+        <item>Heo</item>
+        <item>Hoa</item>
+        <item>Hòa</item>
+        <item>Họa</item>
+        <item>Hoàng</item>
+        <item>Hỏi</item>
+        <item>Hòm</item>
+        <item>Hố</item>
+        <item>Hồ</item>
+        <item>Hổ</item>
+        <item>Hội</item>
+        <item>Hôn</item>
+        <item>Hồng</item>
+        <item>Hộp</item>
+        <item>Hơi</item>
+        <item>Huệ</item>
+        <item>Huy</item>
+        <item>Hương</item>
+        <item>Hươu</item>
+    </string-array>
+
+    <string-array name="K">
+        <item>Kẻ</item>
+        <item>Kẽm</item>
+        <item>Kén</item>
+        <item>Kèn</item>
+        <item>Kéo</item>
+        <item>Két</item>
+        <item>Khánh Tận</item>
+        <item>Khách</item>
+        <item>Khánh</item>
+        <item>Khăn</item>
+        <item>Khí</item>
+        <item>Khỉ</item>
+        <item>Khiêu</item>
+        <item>Kho</item>
+        <item>Khóa</item>
+        <item>Khỏa</item>
+        <item>Khóc</item>
+        <item>Khói</item>
+        <item>Khuê</item>
+        <item>Khung</item>
+        <item>Kịch</item>
+        <item>Kiếm</item>
+        <item>Kiến</item>
+        <item>Kiện</item>
+        <item>Kiệu</item>
+        <item>Kim</item>
+        <item>Kim cương</item>
+        <item>Kinh</item>
+        <item>Kỳ</item>
+    </string-array>
+
+    <string-array name="L">
+        <item>Lá</item>
+        <item>Lạc</item>
+        <item>Lái</item>
+        <item>Lài</item>
+        <item>Lan</item>
+        <item>Lang</item>
+        <item>Làng</item>
+        <item>Lạnh</item>
+        <item>La hét</item>
+        <item>Lao</item>
+        <item>Lạy</item>
+        <item>Lân</item>
+        <item>Lâu đài</item>
+        <item>Lầu</item>
+        <item>Le le</item>
+        <item>Lê</item>
+        <item>Lều</item>
+        <item>Lịch</item>
+        <item>Liệm</item>
+        <item>Liệt</item>
+        <item>Liễu</item>
+        <item>Lò</item>
+        <item>Lọ</item>
+        <item>Lọng</item>
+        <item>Lông</item>
+        <item>Lồng</item>
+        <item>Lỡ tàu, xe, máy bay</item>
+        <item>Lợp</item>
+        <item>Lúa</item>
+        <item>Lụa</item>
+        <item>Luật</item>
+        <item>Lùn</item>
+        <item>Luống</item>
+        <item>Lừa</item>
+        <item>Lửa</item>
+        <item>Lứa đôi hạnh phúc</item>
+        <item>Lược</item>
+        <item>Lưới</item>
+        <item>Lưỡi</item>
+        <item>Lươn</item>
+    </string-array>
+
+    <string-array name="M">
+        <item>Ma</item>
+        <item>Má</item>
+        <item>Mả</item>
+        <item>Mạ</item>
+        <item>Mai</item>
+        <item>Máy móc bị hỏng</item>
+        <item>Mái</item>
+        <item>Mài</item>
+        <item>Màn</item>
+        <item>Máu</item>
+        <item>Măng</item>
+        <item>Mắt</item>
+        <item>Mặt</item>
+        <item>Mất</item>
+        <item>Màu sắc</item>
+        <item>Mây</item>
+        <item>Mè</item>
+        <item>Mẹ</item>
+        <item>Mèo</item>
+        <item>Mền chăn</item>
+        <item>Miệng</item>
+        <item>Miếu</item>
+        <item>Mình</item>
+        <item>Móng</item>
+        <item>Mỏ</item>
+        <item>Mõ</item>
+        <item>Mọi</item>
+        <item>Một</item>
+        <item>Mồ</item>
+        <item>Mổ</item>
+        <item>Mộ</item>
+        <item>Mơ</item>
+        <item>Mù</item>
+        <item>Mủ</item>
+        <item>Mũ</item>
+        <item>Mua</item>
+        <item>Mục</item>
+        <item>Mui</item>
+        <item>Mùi</item>
+        <item>Mũi</item>
+        <item>Muỗi</item>
+        <item>Muống</item>
+        <item>Muỗng</item>
+        <item>Mưa</item>
+        <item>Mực</item>
+    </string-array>
+
+    <string-array name="N">
+        <item>Nai</item>
+        <item>Nam châm</item>
+        <item>Nạng</item>
+        <item>Nến</item>
+        <item>Ngà</item>
+        <item>Ngã</item>
+        <item>Ngân</item>
+        <item>Nghèo</item>
+        <item>Nghẹt</item>
+        <item>Nghị</item>
+        <item>Nghỉ</item>
+        <item>Nghĩa</item>
+        <item>Ngọc</item>
+        <item>Ngói</item>
+        <item>Ngón</item>
+        <item>Ngỗng</item>
+        <item>Ngủ</item>
+        <item>Ngựa</item>
+        <item>Người</item>
+        <item>Người yêu cũ</item>
+        <item>Nhà</item>
+        <item>Nhạc</item>
+        <item>Nhạn</item>
+        <item>Nhảy</item>
+        <item>Nhẫn</item>
+        <item>Nhện</item>
+        <item>Nho</item>
+        <item>Nhục</item>
+        <item>Nhung</item>
+        <item>Nhựt</item>
+        <item>Ni</item>
+        <item>Nóc</item>
+        <item>Nón</item>
+        <item>Nổ</item>
+        <item>Nồi</item>
+        <item>Nôn</item>
+        <item>Nông</item>
+        <item>Núi</item>
+        <item>Nút</item>
+        <item>Nước</item>
+        <item>Nữ trang - đá quý</item>
+    </string-array>
+
+    <string-array name="O">
+        <item>Ó</item>
+        <item>Oanh</item>
+        <item>Ong</item>
+        <item>Ô dù</item>
+        <item>Ốc</item>
+        <item>Ôm</item>
+        <item>Ốm</item>
+        <item>Ống</item>
+        <item>Ở</item>
+    </string-array>
+
+    <string-array name="P">
+        <item>Pha</item>
+        <item>Phà</item>
+        <item>Phá</item>
+        <item>Phách</item>
+        <item>Pháp</item>
+        <item>Phản</item>
+        <item>Pháo</item>
+        <item>Phạt</item>
+        <item>Phân</item>
+        <item>Phật</item>
+        <item>Phi cơ</item>
+        <item>Phi</item>
+        <item>Phòng</item>
+        <item>Phu</item>
+        <item>Phụ</item>
+        <item>Phủ</item>
+        <item>Phục</item>
+        <item>Phung</item>
+        <item>Phúng</item>
+    </string-array>
+
+    <string-array name="Q">
+        <item>Quà</item>
+        <item>Quả</item>
+        <item>Quạ</item>
+        <item>Quái</item>
+        <item>Quan</item>
+        <item>Quát</item>
+        <item>Quạt</item>
+        <item>Quân</item>
+        <item>Quần</item>
+        <item>Què</item>
+        <item>Quê</item>
+        <item>Quét</item>
+        <item>Quẹt</item>
+        <item>Quỉ</item>
+        <item>Quít</item>
+    </string-array>
+
+    <string-array name="R">
+        <item>Rác</item>
+        <item>Rái cá</item>
+        <item>Rào</item>
+        <item>Rạng</item>
+        <item>Rau</item>
+        <item>Rắn</item>
+        <item>Răng</item>
+        <item>Rận</item>
+        <item>Râu</item>
+        <item>Rèm</item>
+        <item>Rễ</item>
+        <item>Rệp</item>
+        <item>Rêu</item>
+        <item>Rết</item>
+        <item>Roi</item>
+        <item>Rô</item>
+        <item>Rốn</item>
+        <item>Rồng</item>
+        <item>Rơm</item>
+        <item>Rùa</item>
+        <item>Ruồi</item>
+        <item>Ruộng</item>
+        <item>Rước đám</item>
+        <item>Rương</item>
+        <item>Rượu</item>
+    </string-array>
+
+    <string-array name="S">
+        <item>Sa</item>
+        <item>Sa mạc</item>
+        <item>Sam</item>
+        <item>Sao</item>
+        <item>Say</item>
+        <item>Sách</item>
+        <item>Sáng</item>
+        <item>Sáo</item>
+        <item>Sáp</item>
+        <item>Săn</item>
+        <item>Sắt</item>
+        <item>Sân</item>
+        <item>Sâu</item>
+        <item>Sấm</item>
+        <item>Sầu</item>
+        <item>Sậy</item>
+        <item>Sen</item>
+        <item>Sên</item>
+        <item>Sinh</item>
+        <item>Sò</item>
+        <item>Sóc</item>
+        <item>Sóng</item>
+        <item>Số</item>
+        <item>Sông</item>
+        <item>Súng</item>
+        <item>Suối</item>
+        <item>Sư</item>
+        <item>Sữa</item>
+        <item>Sương</item>
+    </string-array>
+
+    <string-array name="T">
+        <item>Tai</item>
+        <item>Tay</item>
+        <item>Tang</item>
+        <item>Táo</item>
+        <item>Tát</item>
+        <item>Tàn</item>
+        <item>Tàn sát</item>
+        <item>Tàu</item>
+        <item>Tạp</item>
+        <item>Tắm</item>
+        <item>Tằm</item>
+        <item>Thả</item>
+        <item>Thác</item>
+        <item>Thái</item>
+        <item>Thảm</item>
+        <item>Than</item>
+        <item>Thang</item>
+        <item>Thánh</item>
+        <item>Thành</item>
+        <item>Tháp</item>
+        <item>Thằn lằn</item>
+        <item>Thắt cổ</item>
+        <item>Thần</item>
+        <item>The</item>
+        <item>Thép</item>
+        <item>Thể</item>
+        <item>Thêu</item>
+        <item>Thi thể</item>
+        <item>Thia thia</item>
+        <item>Thiếc</item>
+        <item>Thịt</item>
+        <item>Thoa</item>
+        <item>Thóc</item>
+        <item>Thổ huyết - thổ tả</item>
+        <item>Thơ</item>
+        <item>Thờ</item>
+        <item>Thợ</item>
+        <item>Thông</item>
+        <item>Thú</item>
+        <item>Thua</item>
+        <item>Thung lũng</item>
+        <item>Thùng</item>
+        <item>Thuốc</item>
+        <item>Thủy</item>
+        <item>Thuyền</item>
+        <item>Thừng</item>
+        <item>Thương tích</item>
+        <item>Tiền</item>
+        <item>Tiểu</item>
+        <item>Tím</item>
+        <item>Tòa</item>
+        <item>Tóc</item>
+        <item>Tỏi</item>
+        <item>Tổ</item>
+        <item>Tối</item>
+        <item>Tôm</item>
+        <item>Tra</item>
+        <item>Trà</item>
+        <item>Trai</item>
+        <item>Trái</item>
+        <item>Trán</item>
+        <item>Trang sức</item>
+        <item>Tràng hoa</item>
+        <item>Tranh</item>
+        <item>Trắc</item>
+        <item>Trăn</item>
+        <item>Trăng</item>
+        <item>Trần</item>
+        <item>Trâu</item>
+        <item>Tre</item>
+        <item>Trẻ</item>
+        <item>Trèo</item>
+        <item>Trĩ</item>
+        <item>Triệu phú</item>
+        <item>Triều</item>
+        <item>Tro</item>
+        <item>Trò</item>
+        <item>Trộm</item>
+        <item>Trốn</item>
+        <item>Trống</item>
+        <item>Trồng cây</item>
+        <item>Trời</item>
+        <item>Trùng</item>
+        <item>Trụy lạc</item>
+        <item>Trứng</item>
+        <item>Trường</item>
+        <item>Trừu</item>
+        <item>Tu</item>
+        <item>Tù</item>
+        <item>Túi</item>
+        <item>Tùng</item>
+        <item>Tuyết</item>
+        <item>Tự</item>
+        <item>Tưới</item>
+        <item>Tường</item>
+        <item>Tượng</item>
+    </string-array>
+
+    <string-array name="U">
+        <item>Ụa</item>
+        <item>Uế</item>
+        <item>Ung thư</item>
+        <item>Uống</item>
+        <item>Ước</item>
+        <item>Ươi</item>
+        <item>Ướp</item>
+        <item>Ướt</item>
+    </string-array>
+
+    <string-array name="V">
+        <item>Vá</item>
+        <item>Vai</item>
+        <item>Vái</item>
+        <item>Vải</item>
+        <item>Ván</item>
+        <item>Váng</item>
+        <item>Vàng</item>
+        <item>Vay</item>
+        <item>Vảy</item>
+        <item>Vắng</item>
+        <item>Vật</item>
+        <item>Vẫy</item>
+        <item>Ve</item>
+        <item>Vé</item>
+        <item>Ví</item>
+        <item>Vịt</item>
+        <item>Viết</item>
+        <item>Vỏ</item>
+        <item>Voi</item>
+        <item>Vòng</item>
+        <item>Võng</item>
+        <item>Vôi</item>
+        <item>Vớ</item>
+        <item>Vú</item>
+        <item>Vua</item>
+        <item>Vui</item>
+        <item>Vụn</item>
+        <item>Vựa</item>
+        <item>Vực</item>
+        <item>Vượn</item>
+        <item>Vườn</item>
+    </string-array>
+
+    <string-array name="X">
+        <item>Xe gặp rắc rối</item>
+        <item>Xe hơi</item>
+        <item>Xác chết</item>
     </string-array>
 </resources>
