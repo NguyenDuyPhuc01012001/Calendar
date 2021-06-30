@@ -156,7 +156,6 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
             @Override
             public void onClick(View v) {
                 ShowDialog();
-
             }
         });
     }
@@ -165,7 +164,6 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
         FragmentManager mine = getActivity().getSupportFragmentManager();
         BottomDialog dialogFragment = new BottomDialog(this);
         dialogFragment.show(mine, BottomDialog.TAG);
-
     }
 
     private void LoadWallpaper(boolean isPlusDay) {
