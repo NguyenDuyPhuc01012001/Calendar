@@ -252,19 +252,15 @@
     </string-array>
 
     <string-array name="D">
-        <item>Đám ma</item>
-        <item>Đánh bạc</item>
-        <item>Đánh nhau</item>
-        <item>Dạ lý</item>
+        <item>Đám</item>
+        <item>Đánh</item>
         <item>Dao</item>
-        <item>Dâu rể hôn sự</item>
         <item>Dâu</item>
         <item>Dầu</item>
         <item>Dây</item>
         <item>Dép</item>
         <item>Dê</item>
         <item>Dế</item>
-        <item>Di chúc</item>
         <item>Dĩa</item>
         <item>Dơi</item>
         <item>Dời</item>
@@ -293,7 +289,7 @@
         <item>Đèo</item>
         <item>Đẽo</item>
         <item>Đêm</item>
-        <item>Đền, chùa, đình, miếu, nhà</item>
+        <item>Đền</item>
         <item>Đi</item>
         <item>Đỉa</item>
         <item>Địa</item>

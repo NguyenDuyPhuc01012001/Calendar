@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/sleep"
     android:clickable="true"
     android:focusable="true">
 
     <LinearLayout
         android:id="@+id/pickerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="40sp"
@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="Chữ bắt đầu:"
+                android:text="Bộ lọc:"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
             <Spinner
@@ -45,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Giấc mộng về:"
+                android:textStyle="bold"
                 android:textSize="20sp" />
 
             <Spinner
@@ -54,15 +56,19 @@
                 android:layout_marginLeft="5dp"
                  />
         </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/lifetime_astrology_relative_layout_background">
-
+            android:layout_margin="10dp"
+            android:background="#99000000">
             <TextView
                 android:id="@+id/dreamDescription"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:text="this is text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
         </ScrollView>

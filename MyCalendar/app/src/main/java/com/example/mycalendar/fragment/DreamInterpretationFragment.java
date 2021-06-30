@@ -10,15 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.mycalendar.R;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,6 +24,8 @@ public class DreamInterpretationFragment extends Fragment {
     ArrayAdapter<CharSequence> dreamPickerArrayAdapter;
     String alphabetValue;
     TextView dreamDescription;
+    String folderName = "dreaminterpretation";
+    String dreamValue;
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.fragment_dream_interpretation,container,false);
         Mapping(view);
@@ -46,9 +41,44 @@ public class DreamInterpretationFragment extends Fragment {
 
             }
         });
+        dreamPicker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dreamValue = parent.getItemAtPosition(position).toString();
+                LoadDreamDescription();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         SetAlphabetPickerValue();
         return view;
     }
+
+    private void LoadDreamDescription() {
+        String fileLocation = folderName+"/"+alphabetValue+"/"+dreamValue+".txt";
+        Log.d(TAG, "LoadDreamDescription: "+fileLocation);
+        try {
+            InputStream inputStream = getContext().getAssets().open(fileLocation);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuffer stringBuffer = new StringBuffer();
+            String data = "";
+            if(inputStream!=null)
+            {
+                while((data= bufferedReader.readLine())!= null)
+                {
+                    stringBuffer.append(data+"\n");
+                }
+                dreamDescription.setText(stringBuffer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     private void SetDreamPickerValue() {
         SetDreamPickerArrayAdapter();
