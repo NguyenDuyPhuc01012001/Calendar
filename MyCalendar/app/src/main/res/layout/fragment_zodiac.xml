@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+
         android:layout_alignParentTop="true"
         android:orientation="vertical"
 
@@ -34,7 +35,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -44,10 +44,11 @@
             android:textSize="30sp"
             android:layout_alignBottom="@id/zodiacName"
             android:layout_centerInParent="true"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="#ADD8E6"
             android:text="21/11 - 21/12"/>
 
         <Button
@@ -65,13 +66,14 @@
         android:layout_below="@id/zodiacSelector"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:layout_margin="10dp"
         android:layout_centerInParent="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -98,11 +100,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="20sp">
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    android:visibility="invisible"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
                 <TextView
                     android:id="@+id/colorSuitTV"
                     android:textSize="20dp"
