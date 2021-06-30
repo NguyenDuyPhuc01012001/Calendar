@@ -6,6 +6,9 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -51,7 +54,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, final int position) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-        String today = LocalDate.now().format(formatter);
+        String selectedDate = this.selectedDate.format(formatter);
         String dayOfMonth = daysOfMonth.get(position);
         int[] sunday = {6, 13, 20, 27, 34, 41};
         FrameLayout layout = holder.background;
@@ -66,7 +69,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         if (IntStream.of(sunday).anyMatch(x -> x == position)) {
             layout.setBackgroundResource(R.drawable.sunday_card);
         }
-        if (today.equalsIgnoreCase(dayOfMonth)) {
+        if (selectedDate.equalsIgnoreCase(dayOfMonth)) {
             layout.setBackgroundResource(R.drawable.today_card);
         }
         if (dayLunar.startsWith("01") || dayLunar.startsWith("15")) {

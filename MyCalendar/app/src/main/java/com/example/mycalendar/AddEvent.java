@@ -181,14 +181,14 @@ public class AddEvent extends AppCompatActivity {
             @Override
             public void onDateSet(android.widget.DatePicker view, int year, int month, int dayOfMonth) {
                 day1 = dayOfMonth;
-                month1 = month;
+                month1 = month+1;
                 year1 = year;
                 String date = day1 + "/" + month1 + "/" + year1;
                 Date.setText(date);
             }
         }, year1, month1, day1);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        datePickerDialog.updateDate(year1,month1,day1);
+        datePickerDialog.updateDate(year1,month1-1,day1);
         datePickerDialog.show();
     }
 
