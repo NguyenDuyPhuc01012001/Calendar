@@ -3,13 +3,14 @@ package com.example.mycalendar.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.text.method.ScrollingMovementMethod;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.mycalendar.R;
@@ -22,9 +23,7 @@ import com.example.mycalendar.R;
 public class PrayerContentFragment extends Fragment {
 
     TextView textView;
-    ImageButton zoomIn;
-    ImageButton zoomOut;
-    float scale = 20;
+    ScaleGestureDetector scaleGestureDetector;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,6 +62,7 @@ public class PrayerContentFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        scaleGestureDetector = new ScaleGestureDetector(this.getActivity().getApplicationContext(), new PinchToZoomGestureListener());
     }
 
     @Override
@@ -74,24 +74,37 @@ public class PrayerContentFragment extends Fragment {
         textView.setMovementMethod(new ScrollingMovementMethod());
         textView.setText(getArguments().getString("key"));
 
-        zoomOut = view.findViewById(R.id.zoomOut);  //thu nhỏ
-        zoomIn = view.findViewById(R.id.zoomIn);    //phóng to
-        zoomOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scale -= 2;
-                textView.setTextSize(scale);
-            }
-        });
-        zoomIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scale += 2;
-                textView.setTextSize(scale);
-            }
-        });
+        // zoom bằng cử chỉ 2 ngón tay
+        textView.setOnTouchListener(new View.OnTouchListener()
+        {
 
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                scaleGestureDetector.onTouchEvent(event);
+                return v.performClick();
+
+            }
+        });
         // Inflate the layout for this fragment
         return view;
+    }
+
+    public class PinchToZoomGestureListener extends
+            ScaleGestureDetector.SimpleOnScaleGestureListener
+    {
+        @Override
+        public boolean onScale(ScaleGestureDetector detector)
+        {
+            float size = textView.getTextSize();
+
+            float factor = detector.getScaleFactor();
+
+            float product = size * factor;
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, product);
+
+            size = textView.getTextSize();
+            return true;
+        }
     }
 }
