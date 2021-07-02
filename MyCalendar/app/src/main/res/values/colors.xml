@@ -18,4 +18,7 @@
     <color name="bgBottomNavigation">#fe485a</color>
     <color name ="yellow">#FFFF00</color>
     <color name="text_color">#FF000000</color>
+    <color name="light_green">#b2e6b1</color>
+    <color name="white_light">#fafafa</color>
+    <color name="blue_light">#6ecaff</color>
 </resources>
