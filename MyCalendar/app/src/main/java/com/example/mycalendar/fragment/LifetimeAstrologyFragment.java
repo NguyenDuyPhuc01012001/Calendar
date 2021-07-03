@@ -15,7 +15,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.mycalendar.R;
-import com.example.mycalendar.handler.LifeTimeAstrologyHandler;
+import com.example.mycalendar.handler.GetAstrologyHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,8 +50,7 @@ public class LifetimeAstrologyFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                birthYear = 2001;
-                LoadZodiacImage(birthYear);
+
             }
         });
         sexPicker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -71,8 +70,7 @@ public class LifetimeAstrologyFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                sex="nam";
-                LoadZodiacDescription(birthYear,sex);
+
             }
         });
         return  view;
@@ -108,8 +106,8 @@ public class LifetimeAstrologyFragment extends Fragment {
     }
     private void LoadZodiacDescription(int birthYear,String sex)
     {
-        LifeTimeAstrologyHandler lifeTimeAstrologyHandler = new LifeTimeAstrologyHandler();
-        String fileName =lifeTimeAstrologyHandler.GetFileName(birthYear)+"_"+sex+".txt";
+        GetAstrologyHandler getAstrologyHandler = new GetAstrologyHandler();
+        String fileName =getAstrologyHandler.GetFileName(birthYear)+"_"+sex+".txt";
         String fileLocation = folderName+"/"+fileName;
         Log.d(TAG, "LoadZodiacDescription: "+fileLocation);
         try {

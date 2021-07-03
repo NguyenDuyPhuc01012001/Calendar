@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 
-public class LifeTimeAstrologyHandler {
+public class GetAstrologyHandler {
     private String TAG = "LifeTimeAstrologyHandler";
     private final int zodiacCount = 12;
     public String GetFileName(int birthYear)
