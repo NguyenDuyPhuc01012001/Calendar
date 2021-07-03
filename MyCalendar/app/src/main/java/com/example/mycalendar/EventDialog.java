@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class EventDialog extends AppCompatDialogFragment {
     private Button localBtn;
-    private Button GoogleBtn;
+    private Button OnlineBtn;
     @NonNull
     @NotNull
     @Override
@@ -34,11 +34,18 @@ public class EventDialog extends AppCompatDialogFragment {
                     }
                 });
         localBtn = view.findViewById(R.id.AddLocal);
-        GoogleBtn = view.findViewById(R.id.AddGoogle);
+        OnlineBtn = view.findViewById(R.id.AddOnline);
         localBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),AddEvent.class);
+                startActivity(intent);
+            }
+        });
+        OnlineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),LoginEvent.class);
                 startActivity(intent);
             }
         });

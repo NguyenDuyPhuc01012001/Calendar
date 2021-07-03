@@ -11,12 +11,12 @@
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:id="@+id/AddGoogle"
+        android:id="@+id/AddOnline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/AddLocal"
         android:layout_centerInParent="true"
-        android:text="Đồng bộ google calendar"/>
+        android:text="Thêm sự kiện online"/>
 
 
 </RelativeLayout>

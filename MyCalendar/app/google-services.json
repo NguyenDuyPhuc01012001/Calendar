@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "114061361186",
+    "project_id": "ascendant-nova-318320",
+    "storage_bucket": "ascendant-nova-318320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114061361186:android:4a03eb5b1a901f2c0a4a7b",
+        "android_client_info": {
+          "package_name": "com.example.mycalendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114061361186-f8kdolcek0rdh1d339kdj4l3dqhp0f5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEMtNJN06owWq94qhhBS1irdTIlSioAdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114061361186-f8kdolcek0rdh1d339kdj4l3dqhp0f5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

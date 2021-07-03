@@ -819,4 +819,8 @@
         <item>Xưởng</item>
         <item>Xỉ vả</item>
     </string-array>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Họ tên</string>
+
 </resources>
