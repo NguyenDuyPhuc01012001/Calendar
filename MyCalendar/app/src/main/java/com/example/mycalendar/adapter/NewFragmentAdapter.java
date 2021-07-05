@@ -1,6 +1,11 @@
 package com.example.mycalendar.adapter;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +15,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mycalendar.AlertDirectedDialog;
 import com.example.mycalendar.R;
 import com.example.mycalendar.fragment.Astrology2021Fragment;
 import com.example.mycalendar.fragment.ChangeDateFragment;
@@ -22,14 +30,19 @@ import com.example.mycalendar.fragment.CompassFragment;
 import com.example.mycalendar.fragment.DreamInterpretationFragment;
 import com.example.mycalendar.fragment.HistoryEventFragment;
 import com.example.mycalendar.fragment.LifetimeAstrologyFragment;
+import com.example.mycalendar.fragment.MoreFragment;
 import com.example.mycalendar.fragment.PrayerFragment;
 import com.example.mycalendar.fragment.WeatherFragment;
 import com.example.mycalendar.fragment.ZodiacFragment;
 
 import org.jetbrains.annotations.NotNull;
 
-public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.NewFragmentViewHolder>{
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.List;
 
+public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.NewFragmentViewHolder>{
+    private String TAG = "NewFragmentAdapter";
     private final String[] titleOfFragment;
     private final int[] idPictureOfFragment;
 
@@ -88,7 +101,7 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
     }
 
     private void LoadFragmentInMore(int position) {
-        Fragment fragment;
+        Fragment fragment = null;
         switch (position){
             case 0:
                 fragment = new WeatherFragment();
@@ -117,6 +130,7 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
             case 7:
                 break;
             case 8:
+                LoadDialog();
                 break;
             case 9:
                 break;
@@ -163,8 +177,13 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
-
-
+    private void LoadDialog()
+    {
+        FragmentManager mine = ((AppCompatActivity)context).getSupportFragmentManager();
+        AlertDirectedDialog alertDirectedDialog = new AlertDirectedDialog();
+        alertDirectedDialog.show(mine,"dialog");
+        
+    }
     @Override
     public int getItemCount() {
         return titleOfFragment.length;
