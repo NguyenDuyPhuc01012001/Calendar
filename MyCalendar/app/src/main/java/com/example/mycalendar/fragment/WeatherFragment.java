@@ -22,6 +22,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mycalendar.AlertDirectedDialog;
 import com.example.mycalendar.R;
+import com.mannan.translateapi.Language;
+import com.mannan.translateapi.TranslateAPI;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -32,6 +34,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class WeatherFragment extends Fragment {
+    private String TAG = "WeatherFragment";
     String city;
     String API = "5a0aeaee604f73e90337988b11cf7ae0";
     String degreeUnit = "metric";
@@ -50,6 +53,7 @@ public class WeatherFragment extends Fragment {
     private ImageView img;
     private Button searchBTN;
     private EditText findTXT;
+    private String weatherDes;
     private ProgressBar progressBar;
     public WeatherFragment() {
         // Required empty public constructor
@@ -94,7 +98,7 @@ public class WeatherFragment extends Fragment {
                     JSONObject wind1 = jsonObject1.getJSONObject("wind");
                     JSONObject weather1 = jsonObject1.getJSONArray("weather").getJSONObject(0);
                     Long updatedAt1 = jsonObject1.getLong("dt");
-                    String updatedAtText1 = "Updated At: "+ new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(new Date(updatedAt1*1000));
+                    String updatedAtText1 = "Cập nhật lúc: "+ new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(new Date(updatedAt1*1000));
                     String temp1 = main1.getString("temp");
                     Double a = Double.valueOf(temp1);
                     temp1= String.valueOf(a.intValue());
@@ -114,6 +118,19 @@ public class WeatherFragment extends Fragment {
                     String windSpeed1 = wind1.getString("speed");
 
                     String weatherDescription1 = weather1.getString("description");
+                    TranslateAPI translateAPI = new TranslateAPI(Language.AUTO_DETECT,Language.VIETNAMESE,weatherDescription1);
+                    translateAPI.setTranslateListener(new TranslateAPI.TranslateListener() {
+                        @Override
+                        public void onSuccess(String translatedText) {
+                            weatherDes = translatedText;
+                            Log.d(TAG, "onSuccess: "+weatherDes+" "+translatedText);
+                        }
+
+                        @Override
+                        public void onFailure(String ErrorText) {
+                            weatherDes = weatherDescription1;
+                        }
+                    });
                     String address1 = jsonObject1.getString("name")+", "+sys1.getString("country");
                     String icon =weather1.getString("icon");
                     Log.d("picture code: ", icon);
@@ -126,7 +143,7 @@ public class WeatherFragment extends Fragment {
                     temperature.setText(temp);
                     minTemperature.setText(tempMin);
                     maxTemperature.setText(tempMax);
-                    status.setText(weatherDescription1);
+                    status.setText(weatherDes);
                     windSpeed.setText(windSpeed1);
                     pressure.setText(pressure1);
                     humidity.setText(humidity1);

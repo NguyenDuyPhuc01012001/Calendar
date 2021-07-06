@@ -29,7 +29,7 @@
                 <EditText
                     android:id="@+id/findCityTxt"
                     android:textColor="@color/white"
-                    android:hint="Enter city, state"
+                    android:hint="Nhập vào tên thành phố"
                     android:textColorHint="@color/white"
                     android:layout_weight="2"
                     android:layout_width="0dp"
@@ -52,7 +52,7 @@
             <TextView
                 android:id="@+id/updateAt"
                 android:textSize="14sp"
-                android:text="Updated at"
+                android:text="Cập nhật lúc"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -153,7 +153,7 @@
                     </Space>
                     <TextView
                         android:textSize="12sp"
-                        android:text="Sunrise"
+                        android:text="Mặt tròi mọc"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -188,7 +188,7 @@
                     </Space>
                     <TextView
                         android:textSize="12sp"
-                        android:text="Sunset"
+                        android:text="Mặt trời lặn"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -223,7 +223,7 @@
                     </Space>
                     <TextView
                         android:textSize="12sp"
-                        android:text="Wind"
+                        android:text="Gió"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -268,7 +268,7 @@
                     </Space>
                     <TextView
                         android:textSize="12sp"
-                        android:text="Pressure"
+                        android:text="Áp suất"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -303,7 +303,7 @@
                     </Space>
                     <TextView
                         android:textSize="12sp"
-                        android:text="Humidity"
+                        android:text="Độ ẩm"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
