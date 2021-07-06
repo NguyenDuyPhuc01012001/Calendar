@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.facebook.FacebookSdk;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -130,12 +131,15 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
             case 7:
                 break;
             case 8:
-                LoadDialog();
+                LoadAlertDialog();
                 break;
             case 9:
+                LoadSharingDialog();
                 break;
         }
     }
+
+
 
     private void LoadFragmentInAstrology(int position) {
         Fragment fragment;
@@ -177,13 +181,28 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
-    private void LoadDialog()
+    private void LoadAlertDialog()
     {
         FragmentManager mine = ((AppCompatActivity)context).getSupportFragmentManager();
         AlertDirectedDialog alertDirectedDialog = new AlertDirectedDialog();
         alertDirectedDialog.show(mine,"dialog");
-        
     }
+    private void LoadSharingDialog() {
+        String gitHubLink = GetGitHubLink();
+        String shareContent = "Ứng dụng Lịch Việt của sinh viên UIT "+gitHubLink;
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,shareContent);
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent,null);
+        context.startActivity(shareIntent);
+    }
+
+    private String GetGitHubLink() {
+        return "https://github.com/NguyenDuyPhuc01012001/Calendar";
+    }
+
     @Override
     public int getItemCount() {
         return titleOfFragment.length;
