@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:id="@+id/event_cell"
     android:background="@drawable/rounded_corner"
@@ -19,21 +19,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
         <TextView
             android:id="@+id/timeTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="9"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="00"
             android:textColor="@color/black"/>
+        <ImageView
+            android:id="@+id/eventIcon"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+
+            />
+
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
+
 
 </LinearLayout>

@@ -11,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCalendar">
-        <activity android:name=".LoginEvent">
-
-        </activity>
+        <activity android:name=".OnlineEvent"></activity>
+        <activity android:name=".LoginEvent"></activity>
         <activity android:name=".RegisterEvent" />
         <activity
             android:name=".AddEvent"
@@ -27,9 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider android:authorities="com.facebook.app.FacebookContentProvider141267634775573"
+
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider141267634775573"
+            android:exported="true" />
     </application>
 
 </manifest>

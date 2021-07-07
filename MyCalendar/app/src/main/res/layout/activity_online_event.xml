@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddEvent"
+    tools:context=".OnlineEvent"
     android:background="@color/gray_blue">
 
     <LinearLayout
@@ -18,16 +18,19 @@
         android:background="@color/white"
         >
         <TextView
-            android:id="@+id/titleTV"
+            android:id="@+id/userName"
             android:layout_width="0dp"
             android:layout_weight="6"
-            android:textSize="30dp"
-            android:text="Thêm sự kiện"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"
-            android:textAlignment="center"
+            android:textSize="14dp"
             android:layout_height="wrap_content"
             />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="3.5"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_200"
+            android:text="Đăng xuất"
+            android:onClick="LogOutOnClick"/>
 
     </LinearLayout>
     <View
@@ -43,7 +46,7 @@
         android:background="@color/white">
 
         <EditText
-            android:id="@+id/titleET"
+            android:id="@+id/ContentET"
             android:background="@color/white"
             android:layout_width="0dp"
             android:layout_weight="9"
@@ -102,7 +105,7 @@
             android:background="@color/white"
             />
         <TextView
-            android:id="@+id/datepickerTV"
+            android:id="@+id/DateStart"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="9"
@@ -132,7 +135,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/white"
-            android:onClick="startOnClick">
+            android:onClick="timeStartOnClick">
             <TextView
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
@@ -141,7 +144,7 @@
                 android:textSize="30dp"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/startTime"
+                android:id="@+id/TimeStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -172,7 +175,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/white"
-            android:onClick="endOnClick">
+            android:onClick="TimeEndOnClick">
             <TextView
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
@@ -181,7 +184,7 @@
                 android:textSize="30dp"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/endTime"
+                android:id="@+id/TimeEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -212,7 +215,6 @@
             android:text="Lưu"
             android:textSize="20dp"
             android:backgroundTint="@color/purple_200"
-            android:onClick="saveOnClick"
             android:visibility="invisible"
             />
         <Button
@@ -223,7 +225,7 @@
             android:text="Lưu"
             android:textSize="20dp"
             android:backgroundTint="@color/purple_200"
-            android:onClick="saveOnClick"
+            android:onClick="Save1OnClick"
             />
         <Button
             android:id="@+id/deleteBtn"
@@ -233,7 +235,6 @@
             android:textSize="20dp"
             android:text="Xóa"
             android:visibility="invisible"
-            android:onClick="deleteOnClick"
             android:backgroundTint="@color/purple_200" />
     </LinearLayout>
     <ProgressBar

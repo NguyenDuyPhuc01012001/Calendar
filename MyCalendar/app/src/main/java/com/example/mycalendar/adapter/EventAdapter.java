@@ -1,11 +1,14 @@
 package com.example.mycalendar.adapter;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,13 +40,27 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
         holder.title.setText(eventInfoArrayList.get(position).getTitle());
         if(eventInfoArrayList.get(position).getType() == 1)
         {
-            holder.time.setText(String.valueOf(eventInfoArrayList.get(position).getStartHour() + " : " + eventInfoArrayList.get(position).getStartMinute() + " - " + eventInfoArrayList.get(position).getEndHour() + " : " + eventInfoArrayList.get(position).getEndMinute() ));
+            holder.time.setText(String.valueOf(eventInfoArrayList.get(position).getStartHour() + " : " + eventInfoArrayList.get(position).getStartMinute() + " - " + eventInfoArrayList.get(position).getEndHour() + " : " + eventInfoArrayList.get(position).getEndMinute()));
+            holder.iconEvent.setImageResource(R.drawable.ic_phone);
         }
         else if(eventInfoArrayList.get(position).getType() == 2)
         {
             holder.time.setText("Cả ngày");
-            holder.title.setTextColor(Color.parseColor("#FF0000"));
-            holder.time.setTextColor(Color.parseColor("#FF0000"));
+            holder.iconEvent.setImageResource(R.drawable.lotus);
+        }
+        else
+        {
+            if(eventInfoArrayList.get(position).isAllDay() == true)
+            {
+                holder.time.setText("Cả ngày");
+
+            }
+            else
+            {
+                Log.i("Event title",holder.title.getText().toString());
+                holder.time.setText(String.valueOf(eventInfoArrayList.get(position).getStartHour() + " : " + eventInfoArrayList.get(position).getStartMinute() + " - " + eventInfoArrayList.get(position).getEndHour() + " : " + eventInfoArrayList.get(position).getEndMinute() ));
+            }
+            holder.iconEvent.setImageResource(R.drawable.ic_wifi);
         }
     }
 
@@ -56,11 +73,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView title;
         private TextView time;
+        private ImageView iconEvent;
         private OnItemListener onItemListener;
 
         public ViewHolder(View itemView, OnItemListener onItemListener)
         {
             super(itemView);
+            iconEvent = itemView.findViewById(R.id.eventIcon);
             title = (TextView) itemView.findViewById(R.id.titleTV);
             time = (TextView) itemView.findViewById(R.id.timeTV);
             this.onItemListener =onItemListener;

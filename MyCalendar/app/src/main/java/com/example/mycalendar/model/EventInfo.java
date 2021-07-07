@@ -1,7 +1,7 @@
 package com.example.mycalendar.model;
 
 public class EventInfo {
-    private int id;
+    private String id;
     private String title;
     private int day;
     private int month;
@@ -10,6 +10,7 @@ public class EventInfo {
     private int startMinute;
     private int endHour;
     private int endMinute;
+    private String date;
 
     public int getType() {
         return type;
@@ -30,8 +31,9 @@ public class EventInfo {
     }
 
     private boolean isAllDay;
+    public EventInfo(){}
 
-    public EventInfo(int id, String title, int day, int month, int year, int startHour, int startMinute, int endHour, int endMinute, int type, boolean isAllDay) {
+    public EventInfo(String id, String title, int day, int month, int year, int startHour, int startMinute, int endHour, int endMinute, String date, int type, boolean isAllDay) {
         this.id = id;
         this.title = title;
         this.day = day;
@@ -41,8 +43,17 @@ public class EventInfo {
         this.startMinute = startMinute;
         this.endHour = endHour;
         this.endMinute = endMinute;
+        this.date = date;
         this.type = type;
         this.isAllDay = isAllDay;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
@@ -60,11 +71,11 @@ public class EventInfo {
                 '}';
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

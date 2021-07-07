@@ -135,11 +135,25 @@
             android:text="@string/event_in"
             android:textColor="@color/text_color"
             android:layout_marginTop="@dimen/margin_top"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/eventRecyclerView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="371dp" />
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/eventRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scrollbars="vertical"/>
+            <ProgressBar
+                android:id="@+id/monthPB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+
 
 
 

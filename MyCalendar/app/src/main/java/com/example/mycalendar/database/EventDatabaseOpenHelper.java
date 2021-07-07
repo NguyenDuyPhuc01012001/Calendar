@@ -125,7 +125,8 @@ public class EventDatabaseOpenHelper extends SQLiteOpenHelper {
                 String title = cursor.getString(1);
                 int Day = cursor.getInt(2);
                 int Month = cursor.getInt(3);
-                EventInfo eventInfo = new EventInfo(ID,title,Day,Month,0,0,0,0,0, 2, true);
+                String str_id = String.valueOf(ID);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,0,0,0,0,0, "", 2, true);
                 eventInfos.add(eventInfo);
             }while(cursor.moveToNext());
         }

@@ -2,10 +2,14 @@ package com.example.mycalendar.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.mycalendar.AddEvent;
@@ -30,6 +35,14 @@ import com.example.mycalendar.database.EventDatabase;
 import com.example.mycalendar.database.EventDatabaseOpenHelper;
 import com.example.mycalendar.model.EventInfo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -38,7 +51,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.CountDownLatch;
 
 public class MonthCalendarFragment extends Fragment implements CalendarAdapter.OnItemListener, EventAdapter.OnItemListener,BottomDialog.OnSelected {
     private TextView tvMonthYearText;
@@ -47,11 +62,14 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     private RecyclerView eventRecyclerView;
     private FloatingActionButton addEvent;
     private ImageButton btnToday;
-
+    private FirebaseAuth auth;
+    private FirebaseDatabase db = FirebaseDatabase.getInstance("https://ascendant-nova-318320-default-rtdb.asia-southeast1.firebasedatabase.app/");
     private LocalDate selectedDate;
+    private ProgressBar progressBar;
     public static ArrayList<EventInfo> listEvent = new ArrayList<EventInfo>();
     private ArrayList<String> daysInMonth=null;
     public static int Check = 0;
+
 
     public MonthCalendarFragment() {
         // Required empty public constructor
@@ -122,6 +140,9 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setEventView(int day)
     {
+        progressBar.setVisibility(View.VISIBLE);
+        eventRecyclerView.setVisibility(View.INVISIBLE);
+        listEvent.clear();
         EventDatabase eventDatabase = new EventDatabase(getActivity());
         listEvent = (ArrayList<EventInfo>) eventDatabase.getEventday(day,selectedDate.getMonthValue(),selectedDate.getYear());
 
@@ -134,10 +155,45 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         eventDatabaseOpenHelper.getEventday(localDate.getDayOfMonth(),localDate.getMonthValue(),listEvent,false);
 
+
+        for(EventInfo eventInfo : listEvent)
+        {
+            Log.i("all the title",eventInfo.getTitle().toString());
+        }
+
         EventAdapter eventAdapter = new EventAdapter(listEvent, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
         eventRecyclerView.setLayoutManager(layoutManager);
         eventRecyclerView.setAdapter(eventAdapter);
+        String UserId =  auth.getCurrentUser().getUid();
+        Query query = db.getReference(UserId + "/Events/").orderByChild("date").equalTo(day + "_" + selectedDate.getMonthValue() + "_" + selectedDate.getYear());
+        query.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(snapshot.exists())
+                {
+                    for(DataSnapshot snapshot1 : snapshot.getChildren())
+                    {
+                        EventInfo eventInfo = snapshot1.getValue(EventInfo.class);
+                        listEvent.add(eventInfo);
+                        Log.i("event tag",eventInfo.getId().toString());
+                    }
+                    eventAdapter.notifyDataSetChanged();
+                }
+                progressBar.setVisibility(View.INVISIBLE);
+                eventRecyclerView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                progressBar.setVisibility(View.INVISIBLE);
+                eventRecyclerView.setVisibility(View.VISIBLE);
+            }
+
+        });
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -148,6 +204,8 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         tvEventIn = v.findViewById(R.id.eventIn);
         addEvent = v.findViewById(R.id.addEventBtn);
         btnToday=v.findViewById(R.id.btnToday);
+        auth = FirebaseAuth.getInstance();
+        progressBar = v.findViewById(R.id.monthPB);
         tvEventIn.setText("Sự kiện trong ngày " + selectedDate.getDayOfMonth() + " " + monthYearFromDate(selectedDate));
 
     }
@@ -300,4 +358,5 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         this.selectedDate=selectedDate.toLocalDate();
         loadData();
     }
+
 }

@@ -91,7 +91,8 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endHour = cursor.getInt(6);
                 int startMinute = cursor.getInt(7);
                 int endMinute = cursor.getInt(8);
-                EventInfo eventInfo = new EventInfo(ID,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, 1, false);
+                String str_id = String.valueOf(ID);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, false);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }
@@ -106,7 +107,7 @@ public class EventDatabase extends SQLiteOpenHelper {
     }
     public void EditEvent(EventInfo eventInfo)
     {
-        int id = eventInfo.getId();
+        int id = Integer.parseInt(eventInfo.getId());
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TITLE,eventInfo.getTitle());
@@ -135,7 +136,8 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endHour = cursor.getInt(6);
                 int startMinute = cursor.getInt(7);
                 int endMinute = cursor.getInt(8);
-                EventInfo eventInfo = new EventInfo(ID,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, 1, false);
+                String str_id = String.valueOf(ID);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, false);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }

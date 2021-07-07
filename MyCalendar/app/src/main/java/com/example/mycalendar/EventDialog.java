@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.mycalendar.fragment.MonthCalendarFragment;
+
 import org.jetbrains.annotations.NotNull;
 
 public class EventDialog extends AppCompatDialogFragment {
@@ -39,6 +41,8 @@ public class EventDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),AddEvent.class);
+                intent.putExtra("id",-1);
+                MonthCalendarFragment.Check = 0;
                 startActivity(intent);
             }
         });

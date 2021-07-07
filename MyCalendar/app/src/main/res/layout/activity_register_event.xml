@@ -34,6 +34,8 @@
             android:id="@+id/nameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -45,13 +47,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/outlinedTextFieldName"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         style="@style/Widget.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/EmailET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -60,10 +64,11 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/password"
+        app:passwordToggleEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/outlinedTextFieldEmail"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         style="@style/Widget.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -71,20 +76,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:maxLines="1"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/errorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/outlinedTextFieldPassword"
-        android:textColor="@color/red"
-        android:text="Lỗi đăng nhập"
-        android:visibility="invisible"
-        android:layout_marginTop="70dp"/>
     <Button
         android:id="@+id/RegisterBtn"
         android:layout_width="wrap_content"
@@ -94,9 +89,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/outlinedTextFieldPassword"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="@color/purple_200"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/blue_light"
         />
-
+    <ProgressBar
+        android:id="@+id/registerPB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/RegisterBtn"
+        android:layout_marginTop="60dp"
+        android:visibility="invisible"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

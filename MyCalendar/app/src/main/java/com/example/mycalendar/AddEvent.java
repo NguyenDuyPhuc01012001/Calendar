@@ -39,6 +39,8 @@ public class AddEvent extends AppCompatActivity {
     int day1 = calendar.get(Calendar.DAY_OF_MONTH);
     String Title;
     Button DeleteBtn;
+    Button Save1Btn;
+    Button Save2Btn;
 
 
     @Override
@@ -46,15 +48,6 @@ public class AddEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         init();
-        Button btnExit = (Button) findViewById(R.id.exitBtn);
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                finish();
-            }
-        });
-
     }
 
     private void getID() {
@@ -64,7 +57,7 @@ public class AddEvent extends AppCompatActivity {
         {
             int position = preIntent.getIntExtra("position", 0);
             eventInfo = MonthCalendarFragment.listEvent.get(position);
-            id = eventInfo.getId();
+            id = Integer.parseInt(eventInfo.getId());
             showResult(eventInfo.getTitle(),eventInfo.getDay(),eventInfo.getMonth(),eventInfo.getYear(),eventInfo.getStartHour(),eventInfo.getStartMinute(),eventInfo.getEndHour(),eventInfo.getEndMinute());
         }
         if(MonthCalendarFragment.Check == 0)
@@ -76,19 +69,25 @@ public class AddEvent extends AppCompatActivity {
     private void init() {
         TextView Date = (TextView) findViewById(R.id.datepickerTV);
         DeleteBtn = (Button) findViewById(R.id.deleteBtn);
-        TitleText = (TextView)findViewById(R.id.titleTV);
+        Save1Btn = (Button) findViewById(R.id.save1Btn);
+        Save2Btn = (Button) findViewById(R.id.save2Btn);
+        TitleText = (TextView) findViewById(R.id.titleTV);
         String date = day1 + "/" + month1 + "/" + year1;
         Date.setText(date);
         getID();
         if(id != -1 )
         {
             DeleteBtn.setVisibility(View.VISIBLE);
-            TitleText.setText("Update Event");
+            Save1Btn.setVisibility(View.INVISIBLE);
+            Save2Btn.setVisibility(View.VISIBLE);
+            TitleText.setText("Sửa sự kiện");
         }
         else
         {
             DeleteBtn.setVisibility(View.INVISIBLE);
-            TitleText.setText("Add Event");
+            Save1Btn.setVisibility(View.VISIBLE);
+            Save2Btn.setVisibility(View.INVISIBLE);
+            TitleText.setText("Thêm sự kiện");
         }
     }
 
@@ -202,7 +201,9 @@ public class AddEvent extends AppCompatActivity {
         listEvent = (ArrayList<EventInfo>) eventDatabase.CheckID(id);
         if(listEvent.size() == 1)
         {
-            eventInfo = new EventInfo(id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, 1, false);
+
+            String str_id = String.valueOf(id);
+            eventInfo = new EventInfo(str_id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, false);
             eventDatabase.EditEvent(eventInfo);
             Toast.makeText(AddEvent.this,"Edit successfully",Toast.LENGTH_SHORT).show();
         }
@@ -214,7 +215,7 @@ public class AddEvent extends AppCompatActivity {
                     Toast.makeText(AddEvent.this,"unavailable title",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    eventInfo = new EventInfo(-1,Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, 1, false);
+                    eventInfo = new EventInfo("-1",Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, false);
                     eventDatabase.addOne(eventInfo);
                     Toast.makeText(AddEvent.this,"Saved successfully",Toast.LENGTH_SHORT).show();
 
