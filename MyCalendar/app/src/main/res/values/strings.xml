@@ -31,7 +31,6 @@
     <string name="str_year_lunar">Năm Tân Sửu</string>
     <string name="tab_more">Mở rộng</string>
     <string name="leap_month">Nhuận</string>
-    <string name="facebook_app_id">141267634775573</string>
     <string-array name="contentPageAstrology">
         <item>Tử vi 2021</item>
         <item>Tử vi trọn đời</item>
@@ -823,5 +822,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="name">Họ tên</string>
+    <string name="facebook_app_id">400564128007679</string> <string name="fb_login_protocol_scheme">fb400564128007679</string>
+
 
 </resources>

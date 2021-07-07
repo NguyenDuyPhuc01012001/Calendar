@@ -165,33 +165,42 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
         eventRecyclerView.setLayoutManager(layoutManager);
         eventRecyclerView.setAdapter(eventAdapter);
-        String UserId =  auth.getCurrentUser().getUid();
-        Query query = db.getReference(UserId + "/Events/").orderByChild("date").equalTo(day + "_" + selectedDate.getMonthValue() + "_" + selectedDate.getYear());
-        query.addValueEventListener(new ValueEventListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot snapshot1 : snapshot.getChildren())
+        try {
+            String UserId =  auth.getCurrentUser().getUid();
+            Query query = db.getReference(UserId + "/Events/").orderByChild("date").equalTo(day + "_" + selectedDate.getMonthValue() + "_" + selectedDate.getYear());
+            query.addValueEventListener(new ValueEventListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    if(snapshot.exists())
                     {
-                        EventInfo eventInfo = snapshot1.getValue(EventInfo.class);
-                        listEvent.add(eventInfo);
-                        Log.i("event tag",eventInfo.getId().toString());
+                        for(DataSnapshot snapshot1 : snapshot.getChildren())
+                        {
+                            EventInfo eventInfo = snapshot1.getValue(EventInfo.class);
+                            listEvent.add(eventInfo);
+                            Log.i("event tag",eventInfo.getId().toString());
+                        }
+                        eventAdapter.notifyDataSetChanged();
                     }
-                    eventAdapter.notifyDataSetChanged();
+                    progressBar.setVisibility(View.INVISIBLE);
+                    eventRecyclerView.setVisibility(View.VISIBLE);
                 }
-                progressBar.setVisibility(View.INVISIBLE);
-                eventRecyclerView.setVisibility(View.VISIBLE);
-            }
 
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                progressBar.setVisibility(View.INVISIBLE);
-                eventRecyclerView.setVisibility(View.VISIBLE);
-            }
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    eventRecyclerView.setVisibility(View.VISIBLE);
+                }
 
-        });
+            });
+        }
+        catch (Exception e)
+        {
+            Log.i("login","does not have account here!");
+        }
+        progressBar.setVisibility(View.INVISIBLE);
+        eventRecyclerView.setVisibility(View.VISIBLE);
+
 
 
     }

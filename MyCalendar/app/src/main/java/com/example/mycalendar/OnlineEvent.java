@@ -21,10 +21,12 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.mycalendar.model.EventInfo;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,6 +68,7 @@ public class OnlineEvent extends AppCompatActivity {
     int minuteEnd = 0;
     List<EventInfo> eventInfoList;
     FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser user = auth.getCurrentUser();
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,19 +87,23 @@ public class OnlineEvent extends AppCompatActivity {
         endLL = findViewById(R.id.timeEndLL);
         reference = db.getReference().child(UserId).child("Events");
         Date.setText(day1 + "/" + month1 + "/" + year1 + " >");
-        DocumentReference UserRef = firestore.document("users/" + UserId);
-        UserRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-                    Name.setText(documentSnapshot.getString("email"));
+        if(user.getDisplayName() != "")
+        {
+            Name.setText(user.getDisplayName());
+        }
+        else {
+            DocumentReference UserRef = firestore.document("users/" + UserId);
+            UserRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.exists()) {
+                        Name.setText(documentSnapshot.getString("Name"));
+                    } else {
+                        Toast.makeText(OnlineEvent.this, "the user does not have name", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else
-                {
-                    Toast.makeText(OnlineEvent.this,"the user does not have name",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+            });
+        }
         isAllDay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -116,6 +123,7 @@ public class OnlineEvent extends AppCompatActivity {
 
     public void LogOutOnClick(View view) {
         FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
         finish();
     }
 

@@ -87,7 +87,6 @@ public class RegisterEvent extends AppCompatActivity implements RegisterInterfac
                 if(task.isSuccessful())
                 {
                     Toast.makeText(RegisterEvent.this,"Tạo tài khoản thành công!",Toast.LENGTH_SHORT).show();
-                    UserID = auth.getCurrentUser().getUid();
                     DocumentReference documentReference = firestore.collection("users").document(email);
                     Map<String,Object> user = new HashMap<>();
                     user.put("Name",name);
