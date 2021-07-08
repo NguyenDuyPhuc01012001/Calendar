@@ -18,8 +18,15 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,6 +38,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -44,9 +52,15 @@ public class LoginEvent extends AppCompatActivity{
     private FirebaseAuth auth;
     private String txt_email;
     private String txt_password;
+
     private String TAG = "FACEBOOK LOGIN";
     private CallbackManager mCallbackManager;
-    private LoginButton loginButton;
+    private LoginButton FBloginButton;
+
+    private String GGTAG = "GOOGLE LOGIN";
+    private SignInButton GoogleLoginButton;
+    private static final int RC_SIGN_IN = 100;
+    private GoogleSignInClient googleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +70,9 @@ public class LoginEvent extends AppCompatActivity{
 
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
-        loginButton = findViewById(R.id.fb_login_button);
-        loginButton.setReadPermissions("email", "public_profile");
-        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        FBloginButton = findViewById(R.id.fb_login_button);
+        FBloginButton.setReadPermissions("email", "public_profile");
+        FBloginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
@@ -75,6 +89,22 @@ public class LoginEvent extends AppCompatActivity{
                 Log.d(TAG, "facebook:onError", error);
             }
         });
+
+
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions);
+        GoogleLoginButton = findViewById(R.id.google_sign_in_button);
+        GoogleLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = googleSignInClient.getSignInIntent();
+                startActivityForResult(intent,RC_SIGN_IN);
+            }
+        });
+
 
         email = findViewById(R.id.emailLogET);
         password = findViewById(R.id.passwordLogET);
@@ -145,26 +175,64 @@ public class LoginEvent extends AppCompatActivity{
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressBar.setVisibility(View.VISIBLE);
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = auth.getCurrentUser();
                             Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.i(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginEvent.this, "Đăng nhập thất bại!",
+                            Toast.makeText(LoginEvent.this, "Email đã tồn tại hoặc lỗi hệ thống",
                                     Toast.LENGTH_SHORT).show();
+                            LoginManager.getInstance().logOut();
                         }
                     }
                 });
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RC_SIGN_IN)
+        {
+            Log.d(GGTAG,"onActivityResult: google SigninResult");
+            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try{
+                //google sign in success
+                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
+                FirebaseAuthwithGoogleAccount(account);
+            } catch (Exception e) {
+                Log.d(GGTAG,"onActivityResult: " + e.getMessage());
+                Toast.makeText(this,"Lỗi đăng nhập!",Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void FirebaseAuthwithGoogleAccount(GoogleSignInAccount account) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
+        auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
+                    finish();
+                }
+                else
+                {
+                    Log.i(GGTAG, "signInWithCredential:failure", task.getException());
+                    Toast.makeText(LoginEvent.this, "Email đã tồn tại hoặc lỗi hệ thống",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }

@@ -128,7 +128,7 @@
             android:id="@+id/google_sign_in_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"/>
+            android:layout_marginLeft="30dp"/>
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fb_login_button"
             android:layout_width="wrap_content"
@@ -142,9 +142,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toTopOf="@id/googleLL"
+        android:layout_marginTop="100dp"
         android:visibility="invisible"
         />
 

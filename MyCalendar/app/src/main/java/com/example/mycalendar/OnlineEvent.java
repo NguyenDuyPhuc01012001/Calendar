@@ -177,7 +177,7 @@ public class OnlineEvent extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         hourStart =hourOfDay;
                         minuteStart=minute;
-                        String time = hourStart + ":" + minuteStart;
+                        String time = hourStart + ":" + minuteStart + " >";
                         SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
                         try{
                             java.util.Date date =f24Hours.parse(time);
@@ -193,7 +193,7 @@ public class OnlineEvent extends AppCompatActivity {
                                 {
                                     hourEnd = hourStart + 1;
                                 }
-                                time = hourEnd + ":" + minuteEnd + ">";
+                                time = hourEnd + ":" + minuteEnd + " >";
                                 Date date2 =f24Hours.parse(time);
                                 timeEnd.setText(f24Hours.format(date2));
                             }
@@ -216,7 +216,7 @@ public class OnlineEvent extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         hourEnd =hourOfDay;
                         minuteEnd=minute;
-                        String time = hourEnd + ":" + minuteEnd;
+                        String time = hourEnd + ":" + minuteEnd + " >";
                         SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
                         try{
                             Date date =f24Hours.parse(time);

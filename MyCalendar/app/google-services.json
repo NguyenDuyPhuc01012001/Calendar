@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "114061361186",
+    "firebase_url": "https://ascendant-nova-318320-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "ascendant-nova-318320",
     "storage_bucket": "ascendant-nova-318320.appspot.com"
   },
@@ -13,6 +14,30 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "114061361186-57e1frsvq64c1k1s0a0jm6slt5mveh3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mycalendar",
+            "certificate_hash": "215dbdd4864dbf05792ec11983f60af33da1081d"
+          }
+        },
+        {
+          "client_id": "114061361186-7p9mmra3v65g95k79f10m9ka3cqpeikm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mycalendar",
+            "certificate_hash": "87711b2e8c1dcd19e028e2b0502fd96544b3ac88"
+          }
+        },
+        {
+          "client_id": "114061361186-mf8mg8bkkm8rgsnhpbttnghp7c7rhdsd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mycalendar",
+            "certificate_hash": "dc3f53ad8f63b7e87b31cdf3df3b45f2842ede2a"
+          }
+        },
         {
           "client_id": "114061361186-f8kdolcek0rdh1d339kdj4l3dqhp0f5s.apps.googleusercontent.com",
           "client_type": 3
