@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:text="Cả ngày"
-        android:textSize="30sp" />
+        android:textSize="30dp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"

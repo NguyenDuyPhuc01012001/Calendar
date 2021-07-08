@@ -1,8 +1,10 @@
 package com.example.mycalendar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,6 +54,7 @@ public class LoginEvent extends AppCompatActivity{
     private FirebaseAuth auth;
     private String txt_email;
     private String txt_password;
+    private FirebaseUser user;
 
     private String TAG = "FACEBOOK LOGIN";
     private CallbackManager mCallbackManager;
@@ -112,7 +115,8 @@ public class LoginEvent extends AppCompatActivity{
         error = findViewById(R.id.errorText);
         progressBar = findViewById(R.id.progressBar);
         auth = FirebaseAuth.getInstance();
-        if(auth.getCurrentUser() != null)
+        user = auth.getCurrentUser();
+        if(user != null && user.isEmailVerified() )
         {
             startActivity(new Intent(this,OnlineEvent.class));
             Toast.makeText(this,"đăng nhập thành công!",Toast.LENGTH_SHORT).show();
@@ -144,7 +148,6 @@ public class LoginEvent extends AppCompatActivity{
     public void registerOnClick(View view) {
         Intent intent = new Intent(this,RegisterEvent.class);
         startActivity(intent);
-        finish();
     }
     private void loginUser(String txt_email, String txt_password) {
 
@@ -153,15 +156,23 @@ public class LoginEvent extends AppCompatActivity{
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
-                    finish();
+                    if(auth.getCurrentUser().isEmailVerified())
+                    {
+                        Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
+                        finish();
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginEvent.this,"Vui lòng xác thực tài khoản trên email của bạn",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 else
                 {
                     Toast.makeText(LoginEvent.this,"Email hoặc password không tồn tại!",Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);
                 }
+                progressBar.setVisibility(View.GONE);
             }
         });
 
@@ -235,4 +246,39 @@ public class LoginEvent extends AppCompatActivity{
         });
     }
 
+    public void forgotOnClick(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginEvent.this,R.style.AlertDialog);
+        final View forgotDialog = getLayoutInflater().inflate(R.layout.forgot_password_dialog,null);
+        builder.setView(forgotDialog);
+        builder.setTitle("Quên mật khẩu");
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setPositiveButton("Gửi email", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                progressBar.setVisibility(View.VISIBLE);
+                EditText forgotPassword = forgotDialog.findViewById(R.id.forgotET);
+                auth.sendPasswordResetEmail(forgotPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        progressBar.setVisibility(View.GONE);
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(LoginEvent.this,"đã gửi thông báo đến email của bạn!",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(LoginEvent.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }

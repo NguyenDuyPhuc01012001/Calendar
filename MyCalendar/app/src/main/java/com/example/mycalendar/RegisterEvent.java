@@ -86,25 +86,37 @@ public class RegisterEvent extends AppCompatActivity implements RegisterInterfac
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(RegisterEvent.this,"Tạo tài khoản thành công!",Toast.LENGTH_SHORT).show();
-                    DocumentReference documentReference = firestore.collection("users").document(email);
-                    Map<String,Object> user = new HashMap<>();
-                    user.put("Name",name);
-                    user.put("email",email);
-                    user.put("Password",password);
-                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onSuccess(Void unused) {
-                            Log.i("User profile","created successfully");
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull @NotNull Exception e) {
-                            Log.i("User profile","cannot insert user profile");
+                        public void onComplete(@NonNull @NotNull Task<Void> task) {
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(RegisterEvent.this,"Tạo tài khoản thành công, vui lòng kiểm tra email để xác thực",Toast.LENGTH_SHORT).show();
+                                DocumentReference documentReference = firestore.collection("users").document(UserID);
+                                Map<String,Object> user = new HashMap<>();
+                                user.put("Name",name);
+                                user.put("email",email);
+                                user.put("Password",password);
+                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Log.i("User profile","created successfully");
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull @NotNull Exception e) {
+                                        Log.i("User profile","cannot insert user profile");
+                                    }
+                                });
+                                finish();
+                            }
+                            else
+                            {
+                                Toast.makeText(RegisterEvent.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
-                    startActivity(new Intent(RegisterEvent.this,OnlineEvent.class));
-                    finish();
+
                 }
                 else
                 {
