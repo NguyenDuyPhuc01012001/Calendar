@@ -44,6 +44,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+
 public class LoginEvent extends AppCompatActivity{
 
     private EditText email;
@@ -58,10 +60,10 @@ public class LoginEvent extends AppCompatActivity{
 
     private String TAG = "FACEBOOK LOGIN";
     private CallbackManager mCallbackManager;
-    private LoginButton FBloginButton;
+    private Button FBloginButton;
 
     private String GGTAG = "GOOGLE LOGIN";
-    private SignInButton GoogleLoginButton;
+    private Button GoogleLoginButton;
     private static final int RC_SIGN_IN = 100;
     private GoogleSignInClient googleSignInClient;
     @Override
@@ -74,24 +76,49 @@ public class LoginEvent extends AppCompatActivity{
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
         FBloginButton = findViewById(R.id.fb_login_button);
-        FBloginButton.setReadPermissions("email", "public_profile");
-        FBloginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        FBloginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "facebook:onSuccess:" + loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(LoginEvent.this, Arrays.asList("email", "public_profile"));
+                LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                        handleFacebookAccessToken(loginResult.getAccessToken());
+//                        mProgressbarAuth.setVisibility(View.VISIBLE);
+                    }
 
-            @Override
-            public void onCancel() {
-                Log.d(TAG, "facebook:onCancel");
-            }
+                    @Override
+                    public void onCancel() {
+                        Log.d(TAG, "facebook:onCancel");
+                    }
 
-            @Override
-            public void onError(FacebookException error) {
-                Log.d(TAG, "facebook:onError", error);
+                    @Override
+                    public void onError(FacebookException error) {
+                        Log.d(TAG, "facebook:onError", error);
+                    }
+                });
+
             }
         });
+//        FBloginButton.setReadPermissions("email", "public_profile");
+//        FBloginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                Log.d(TAG, "facebook:onSuccess:" + loginResult);
+//                handleFacebookAccessToken(loginResult.getAccessToken());
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                Log.d(TAG, "facebook:onCancel");
+//            }
+//
+//            @Override
+//            public void onError(FacebookException error) {
+//                Log.d(TAG, "facebook:onError", error);
+//            }
+//        });
 
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

@@ -222,7 +222,10 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setMonthView() {
-        tvMonthYearText.setText("Tháng "+selectedDate.getMonthValue()+" - "+selectedDate.getYear());
+        boolean isNewMonth=false;
+        if(Integer.valueOf(tvMonthYearText.getText().toString().split(" ")[1])!=selectedDate.getMonthValue())
+            isNewMonth=true;
+
         daysInMonth = daysInMonthArray(selectedDate);
         ArrayList<String> daysLunar = daysLunarArray(selectedDate);
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, daysLunar, selectedDate, tvEventIn, this);
@@ -230,7 +233,10 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
-        calendarRecyclerView.scheduleLayoutAnimation();
+        if(isNewMonth){
+            calendarRecyclerView.scheduleLayoutAnimation();
+            tvMonthYearText.setText("Tháng "+selectedDate.getMonthValue()+" - "+selectedDate.getYear());
+        }
 
         if(selectedDate.isEqual(LocalDate.now()))
             btnToday.setVisibility(View.GONE);

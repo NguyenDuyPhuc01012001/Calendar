@@ -35,12 +35,7 @@
         <item>Tử vi 2021</item>
         <item>Tử vi trọn đời</item>
         <item>Giải mộng</item>
-        <item>Bói phương Đông</item>
-        <item>Xem ngày tốt</item>
-        <item>Xem bói</item>
         <item>Cung hoàng đạo</item>
-        <item>Phong thủy nhà cửa</item>
-        <item>Gieo quẻ</item>
     </string-array>
 
     <string-array name="contentPageMore">
@@ -48,10 +43,8 @@
         <item>Văn khấn</item>
         <item>La bàn</item>
         <item>Đổi ngày</item>
-        <item>Ý nghĩa ngày lễ</item>
         <item>Sự kiện lịch sử</item>
-        <item>Phản hồi</item>
-        <item>Chính sách bảo mật</item>
+        <item>Hướng dẫn</item>
         <item>Đánh giá</item>
         <item>Chia sẻ</item>
     </string-array>

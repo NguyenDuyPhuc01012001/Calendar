@@ -7,7 +7,7 @@ public class DateTimeInfo {
     String dayOfWeek;
     String timeLunar;
     boolean isGoodTime;
-    int isGoodDay;
+    String isGoodDay;
 
     public boolean getIsGoodTime() {
         return isGoodTime;
@@ -17,11 +17,11 @@ public class DateTimeInfo {
         isGoodTime = goodTime;
     }
 
-    public int getIsGoodDay() {
+    public String getIsGoodDay() {
         return isGoodDay;
     }
 
-    public void setIsGoodDay(int isGoodDay) {
+    public void setIsGoodDay(String isGoodDay) {
         this.isGoodDay = isGoodDay;
     }
 

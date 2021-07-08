@@ -79,13 +79,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
             tvDaySolar.setTextColor(Color.parseColor("#a9a9a9"));
 
         int monthLunar=Integer.parseInt(daysLunar.get(position).substring(3, 5));
-        if(IsGoodOrBadDay(dayOfMonth,monthLunar)==1){
+        if(IsGoodOrBadDay(dayOfMonth,monthLunar).equals("Good")){
             holder.imgGoodOrBadDay.setVisibility(View.VISIBLE);
             holder.imgGoodOrBadDay.setImageResource(R.mipmap.yin_yang_red);
         }
-        if(IsGoodOrBadDay(dayOfMonth,monthLunar)==0)
+        if(IsGoodOrBadDay(dayOfMonth,monthLunar).equals("Normal"))
             holder.imgGoodOrBadDay.setVisibility(View.GONE);
-        if(IsGoodOrBadDay(dayOfMonth,monthLunar)==-1){
+        if(IsGoodOrBadDay(dayOfMonth,monthLunar).equals("Bad")){
             holder.imgGoodOrBadDay.setVisibility(View.VISIBLE);
             holder.imgGoodOrBadDay.setImageResource(R.mipmap.yin_yang_black);
         }
@@ -95,7 +95,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private int IsGoodOrBadDay(String dayOfMonth,int LunarMonth) {
+    private String IsGoodOrBadDay(String dayOfMonth,int LunarMonth) {
         ChinaCalendar chinaCalendar=null;
         if(isInMonth(dayOfMonth)){
             LocalDate date=selectedDate;

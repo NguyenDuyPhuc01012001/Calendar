@@ -46,7 +46,13 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
 
     private ImageView imgIsGoodDay,imgIsGoodTime;
     private ImageSwitcher imageSwitcher;
-    private Integer ListWallpaper[]={R.drawable.wallpaper_pic1,R.drawable.wallpaper_pic2,R.drawable.wallpaper_pic3};
+    private Integer ListWallpaper[]={R.drawable.wallpaper_pic1,R.drawable.wallpaper_pic2,
+            R.drawable.wallpaper_pic3,R.drawable.wallpaper_pic4,
+            R.drawable.wallpaper_pic5,R.drawable.wallpaper_pic6,
+            R.drawable.wallpaper_pic7,R.drawable.wallpaper_pic8,
+            R.drawable.wallpaper_pic9,R.drawable.wallpaper_pic10,
+            R.drawable.wallpaper_pic11,R.drawable.wallpaper_pic12,
+            R.drawable.wallpaper_pic13};
     private Integer lengthListWallpaper=ListWallpaper.length;
     private Integer counter=0;
 
@@ -207,13 +213,13 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
         tvStrYearLunar.setText("Năm "+dateTimeInfo.getStrYearLunar());
         tvStrTimeLunar.setText(dateTimeInfo.getTimeLunar());
 
-        if(dateTimeInfo.getIsGoodDay()==1){
+        if(dateTimeInfo.getIsGoodDay().equals("Good")){
             imgIsGoodDay.setVisibility(View.VISIBLE);
             imgIsGoodDay.setImageResource(R.mipmap.yin_yang_red);
         }
-        if(dateTimeInfo.getIsGoodDay()==0)
+        if(dateTimeInfo.getIsGoodDay().equals("Normal"))
             imgIsGoodDay.setVisibility(View.GONE);
-        if(dateTimeInfo.getIsGoodDay()==-1){
+        if(dateTimeInfo.getIsGoodDay().equals("Bad")){
             imgIsGoodDay.setVisibility(View.VISIBLE);
             imgIsGoodDay.setImageResource(R.mipmap.yin_yang_black);
         }

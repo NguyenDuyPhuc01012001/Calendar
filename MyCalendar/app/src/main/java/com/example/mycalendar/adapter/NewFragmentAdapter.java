@@ -121,19 +121,15 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
                 LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 4:
-                break;
-            case 5:
                 fragment = new HistoryEventFragment();
                 LoadFragment(R.id.moreContainer,fragment);
                 break;
+            case 5:
+                break;
             case 6:
-                break;
-            case 7:
-                break;
-            case 8:
                 LoadAlertDialog();
                 break;
-            case 9:
+            case 7:
                 LoadSharingDialog();
                 break;
         }
@@ -157,18 +153,8 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
                 LoadFragment(R.id.astrologyContainer,fragment);
                 break;
             case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
                 fragment = new ZodiacFragment();
                 LoadFragment(R.id.astrologyContainer,fragment);
-                break;
-            case 7:
-                break;
-            case 8:
                 break;
         }
     }

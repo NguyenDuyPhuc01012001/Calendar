@@ -33,11 +33,7 @@ public class AstrologyFragment extends Fragment {
         titleOfFragment = getResources().getStringArray(R.array.contentPageAstrology);
         idPictureOfFragment = new int[]{
                 R.drawable.feng_shui_2021, R.drawable.feng_shui_life,
-                R.drawable.feng_shui_star, R.drawable.feng_shui_east,
-                R.drawable.feng_shui_good_day, R.drawable.feng_shui,
-                R.drawable.feng_shui_astrology, R.drawable.feng_shui_home,
-                R.drawable.feng_shui_good_teller};
-        
+                R.drawable.feng_shui_dream, R.drawable.feng_shui_astrology};
     }
 
     @Override
