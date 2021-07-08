@@ -43,7 +43,7 @@
         android:background="@color/white">
 
         <EditText
-            android:id="@+id/titleET"
+            android:id="@+id/contentET"
             android:background="@color/white"
             android:layout_width="0dp"
             android:layout_weight="9"
@@ -117,7 +117,7 @@
         android:layout_height="2dp"
         android:background="?android:attr/listDivider" />
     <LinearLayout
-        android:id="@+id/timeStartLL"
+        android:id="@+id/startLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -127,7 +127,6 @@
             android:layout_height="2dp"
             android:background="?android:attr/listDivider" />
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -157,7 +156,7 @@
 
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/timeEndLL"
+        android:id="@+id/endLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -167,7 +166,6 @@
             android:layout_height="2dp"
             android:background="?android:attr/listDivider" />
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

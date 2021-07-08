@@ -40,7 +40,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
         holder.title.setText(eventInfoArrayList.get(position).getTitle());
         if(eventInfoArrayList.get(position).getType() == 1)
         {
-            holder.time.setText(String.valueOf(eventInfoArrayList.get(position).getStartHour() + " : " + eventInfoArrayList.get(position).getStartMinute() + " - " + eventInfoArrayList.get(position).getEndHour() + " : " + eventInfoArrayList.get(position).getEndMinute()));
+            if(eventInfoArrayList.get(position).isAllDay() == true)
+            {
+                holder.time.setText("Cả ngày");
+            }
+            else
+            {
+                holder.time.setText(String.valueOf(eventInfoArrayList.get(position).getStartHour() + " : " + eventInfoArrayList.get(position).getStartMinute() + " - " + eventInfoArrayList.get(position).getEndHour() + " : " + eventInfoArrayList.get(position).getEndMinute()));
+            }
+
             holder.iconEvent.setImageResource(R.drawable.ic_phone);
         }
         else if(eventInfoArrayList.get(position).getType() == 2)

@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -92,6 +93,7 @@ public class RegisterEvent extends AppCompatActivity implements RegisterInterfac
                             if(task.isSuccessful())
                             {
                                 Toast.makeText(RegisterEvent.this,"Tạo tài khoản thành công, vui lòng kiểm tra email để xác thực",Toast.LENGTH_SHORT).show();
+                                UserID = auth.getCurrentUser().getUid();
                                 DocumentReference documentReference = firestore.collection("users").document(UserID);
                                 Map<String,Object> user = new HashMap<>();
                                 user.put("Name",name);

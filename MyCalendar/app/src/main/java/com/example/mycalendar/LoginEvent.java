@@ -116,12 +116,18 @@ public class LoginEvent extends AppCompatActivity{
         progressBar = findViewById(R.id.progressBar);
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        if(user != null && user.isEmailVerified() )
-        {
-            startActivity(new Intent(this,OnlineEvent.class));
-            Toast.makeText(this,"đăng nhập thành công!",Toast.LENGTH_SHORT).show();
-            finish();
+        try{
+            if((user != null && user.isEmailVerified()) || user.getDisplayName() != "" )
+            {
+                startActivity(new Intent(this,OnlineEvent.class));
+                Toast.makeText(this,"đăng nhập thành công!",Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
+        catch (Exception e)
+        {
+        }
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

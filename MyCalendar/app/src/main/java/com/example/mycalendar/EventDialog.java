@@ -50,6 +50,7 @@ public class EventDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),LoginEvent.class);
+                MonthCalendarFragment.Check = 0;
                 startActivity(intent);
             }
         });

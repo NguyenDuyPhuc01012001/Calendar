@@ -28,6 +28,7 @@ import com.example.mycalendar.BottomDialog;
 import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.EventDialog;
 import com.example.mycalendar.OnSwipeTouchListener;
+import com.example.mycalendar.OnlineEvent;
 import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.CalendarAdapter;
 import com.example.mycalendar.adapter.EventAdapter;
@@ -352,12 +353,18 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onEventClick(int position,int type) {
+        Check = 1;
         if (type == 1)
         {
             Intent detailIntent = new Intent(getActivity(), AddEvent.class);
             detailIntent.putExtra("position",position);
             startActivity(detailIntent);
-            Check = 1;
+        }
+        else if(type == 3)
+        {
+            Intent onlineEvent = new Intent(getActivity(), OnlineEvent.class);
+            onlineEvent.putExtra("position",position);
+            startActivity(onlineEvent);
         }
     }
 

@@ -10,7 +10,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 import com.example.mycalendar.database.EventDatabase;
 import com.example.mycalendar.fragment.MonthCalendarFragment;
 import com.example.mycalendar.model.EventInfo;
+
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,6 +46,13 @@ public class AddEvent extends AppCompatActivity {
     Button DeleteBtn;
     Button Save1Btn;
     Button Save2Btn;
+    Switch alldaySW;
+    TextView Date;
+    TextView startTime;
+    TextView endTime;
+    EditText content;
+    LinearLayout startlayout;
+    LinearLayout endlayout;
 
 
     @Override
@@ -48,6 +60,22 @@ public class AddEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         init();
+        getID();
+        alldaySW.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true)
+                {
+                    startlayout.setVisibility(View.GONE);
+                    endlayout.setVisibility(View.GONE);
+                }
+                else
+                {
+                    startlayout.setVisibility(View.VISIBLE);
+                    endlayout.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     private void getID() {
@@ -58,20 +86,26 @@ public class AddEvent extends AppCompatActivity {
             int position = preIntent.getIntExtra("position", 0);
             eventInfo = MonthCalendarFragment.listEvent.get(position);
             id = Integer.parseInt(eventInfo.getId());
-            showResult(eventInfo.getTitle(),eventInfo.getDay(),eventInfo.getMonth(),eventInfo.getYear(),eventInfo.getStartHour(),eventInfo.getStartMinute(),eventInfo.getEndHour(),eventInfo.getEndMinute());
+            showResult(eventInfo.getTitle(),eventInfo.getDay(),eventInfo.getMonth(),eventInfo.getYear(),eventInfo.getStartHour(),eventInfo.getStartMinute(),eventInfo.getEndHour(),eventInfo.getEndMinute(),eventInfo.isAllDay());
         }
-        if(MonthCalendarFragment.Check == 0)
+        else if(MonthCalendarFragment.Check == 0)
         {
             id = preIntent.getIntExtra("id",-1);
         }
     }
 
     private void init() {
-        TextView Date = (TextView) findViewById(R.id.datepickerTV);
+        Date = (TextView) findViewById(R.id.datepickerTV);
         DeleteBtn = (Button) findViewById(R.id.deleteBtn);
         Save1Btn = (Button) findViewById(R.id.save1Btn);
         Save2Btn = (Button) findViewById(R.id.save2Btn);
         TitleText = (TextView) findViewById(R.id.titleTV);
+        alldaySW = (Switch) findViewById(R.id.AllDaySW);
+        startTime = (TextView) findViewById(R.id.startTime);
+        endTime = (TextView) findViewById(R.id.endTime);
+        startlayout = findViewById(R.id.startLL);
+        endlayout = findViewById(R.id.endLL);
+        content = findViewById(R.id.contentET);
         String date = day1 + "/" + month1 + "/" + year1;
         Date.setText(date);
         getID();
@@ -92,8 +126,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void startOnClick(View view) {
-        TextView startTime = (TextView) findViewById(R.id.startTime);
-        TextView endTime = (TextView) findViewById(R.id.endTime);
+
         TimePickerDialog timePickerDialog = new TimePickerDialog(AddEvent.this,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                 new TimePickerDialog.OnTimeSetListener() {
@@ -192,8 +225,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void saveOnClick(View view) {
-        EditText title = (EditText) findViewById(R.id.titleET);
-        Title = title.getText().toString();
+        Title = content.getText().toString();
         EventInfo eventInfo;
         EventDatabase eventDatabase = new EventDatabase(AddEvent.this);
 
@@ -203,7 +235,7 @@ public class AddEvent extends AppCompatActivity {
         {
 
             String str_id = String.valueOf(id);
-            eventInfo = new EventInfo(str_id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, false);
+            eventInfo = new EventInfo(str_id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, alldaySW.isChecked());
             eventDatabase.EditEvent(eventInfo);
             Toast.makeText(AddEvent.this,"Edit successfully",Toast.LENGTH_SHORT).show();
         }
@@ -215,7 +247,7 @@ public class AddEvent extends AppCompatActivity {
                     Toast.makeText(AddEvent.this,"unavailable title",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    eventInfo = new EventInfo("-1",Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, false);
+                    eventInfo = new EventInfo("-1",Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, alldaySW.isChecked());
                     eventDatabase.addOne(eventInfo);
                     Toast.makeText(AddEvent.this,"Saved successfully",Toast.LENGTH_SHORT).show();
 
@@ -228,12 +260,8 @@ public class AddEvent extends AppCompatActivity {
         finish();
     }
 
-    public void showResult(String Title, int day,int month, int year, int hourstart,int minutestart, int hourend,int minuteend)
+    public void showResult(String Title, int day,int month, int year, int hourstart,int minutestart, int hourend,int minuteend, boolean allday)
     {
-        TextView title = (TextView) findViewById(R.id.titleET);
-        TextView date = (TextView) findViewById(R.id.datepickerTV);
-        TextView startTime = (TextView) findViewById(R.id.startTime);
-        TextView endTime = (TextView) findViewById(R.id.endTime);
         SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
 
         day1 = day;
@@ -244,8 +272,21 @@ public class AddEvent extends AppCompatActivity {
         hourEnd = hourend;
         minuteEnd = minuteend;
 
-        title.setText(Title);
-        date.setText(day + "/" + month + "/" + year);
+        content.setText(Title);
+        Toast.makeText(this,TitleText.getText().toString(),Toast.LENGTH_SHORT).show();
+        alldaySW.setChecked(allday);
+        if(allday == true)
+        {
+            startlayout.setVisibility(View.GONE);
+            endlayout.setVisibility(View.GONE);
+        }
+        else
+        {
+            startlayout.setVisibility(View.VISIBLE);
+            endlayout.setVisibility(View.VISIBLE);
+        }
+
+        Date.setText(day + "/" + month + "/" + year);
         String time = hourStart + ":" + minuteStart;
         Date date2;
         try {

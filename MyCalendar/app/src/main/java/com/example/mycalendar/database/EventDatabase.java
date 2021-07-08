@@ -25,6 +25,7 @@ public class EventDatabase extends SQLiteOpenHelper {
     public static final String COLUMN_START_MINUTE = "STARTMINUTE";
     public static final String COLUMN_END_MINUTE = "ENDMINUTE";
     public static final String COLUMN_TITLE = "TITLE";
+    public static final String COLUMN_ALL_DAY = "ALLDAY";
 //
 
     public EventDatabase(@Nullable Context context) {
@@ -42,7 +43,8 @@ public class EventDatabase extends SQLiteOpenHelper {
                 + COLUMN_START_HOUR + " INT,"
                 + COLUMN_END_HOUR + " INT,"
                 + COLUMN_START_MINUTE + " INT,"
-                + COLUMN_END_MINUTE + " INT)";
+                + COLUMN_END_MINUTE + " INT,"
+                + COLUMN_ALL_DAY + " BOOLEAN)";
 
         db.execSQL(createTableStatement);
     }
@@ -67,8 +69,8 @@ public class EventDatabase extends SQLiteOpenHelper {
         cv.put(COLUMN_START_MINUTE,eventInfo.getStartMinute());
         cv.put(COLUMN_END_HOUR,eventInfo.getEndHour());
         cv.put(COLUMN_END_MINUTE,eventInfo.getEndMinute());
+        cv.put(COLUMN_ALL_DAY, eventInfo.isAllDay());
         db.insert(EVENT_TABLE,null,cv);
-
     }
 
     public List<EventInfo> getEventday(int day, int month,int year){
@@ -91,8 +93,9 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endHour = cursor.getInt(6);
                 int startMinute = cursor.getInt(7);
                 int endMinute = cursor.getInt(8);
+                boolean isAllDay = cursor.getInt(9) > 0;
                 String str_id = String.valueOf(ID);
-                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, false);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, isAllDay);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }
@@ -118,6 +121,7 @@ public class EventDatabase extends SQLiteOpenHelper {
         cv.put(COLUMN_START_MINUTE,eventInfo.getStartMinute());
         cv.put(COLUMN_END_HOUR,eventInfo.getEndHour());
         cv.put(COLUMN_END_MINUTE,eventInfo.getEndMinute());
+        cv.put(COLUMN_ALL_DAY,eventInfo.isAllDay());
         db.update(EVENT_TABLE,cv,"ID = " + id, null);
     }
     public List<EventInfo>  CheckID(int ID){
@@ -136,8 +140,9 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endHour = cursor.getInt(6);
                 int startMinute = cursor.getInt(7);
                 int endMinute = cursor.getInt(8);
+                boolean isAllDay = cursor.getInt(9) > 0;
                 String str_id = String.valueOf(ID);
-                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, false);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, isAllDay);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }
