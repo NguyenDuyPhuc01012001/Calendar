@@ -1,5 +1,6 @@
 package com.example.mycalendar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.mycalendar.fragment.AstrologyFragment;
 import com.example.mycalendar.fragment.DayCalendarFragment;
+import com.example.mycalendar.fragment.DayDetailFragment;
 import com.example.mycalendar.fragment.MonthCalendarFragment;
 import com.example.mycalendar.fragment.MoreFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -47,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new MoreFragment();
                     loadFragment(fragment);
                     return true;
+                case R.id.tab_detail_day:
+                    fragment = new DayDetailFragment();
+                    loadFragment(fragment);
+                    return true;
             }
             return true;
         }
@@ -56,5 +62,15 @@ public class MainActivity extends AppCompatActivity {
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        requestCode &= 0xffff;
+        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+            if (fragment != null) {
+                fragment.onActivityResult(requestCode, resultCode, data);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

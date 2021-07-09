@@ -3,6 +3,7 @@ package com.example.mycalendar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -151,6 +152,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
                 {
                     Toast.makeText(OnlineEvent.this,"Thêm thành công!",Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.INVISIBLE);
+                    setResult(Activity.RESULT_OK);
                     finish();
                 }
             }
@@ -343,6 +345,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
                     Toast.makeText(OnlineEvent.this,"Lưu dữ liệu không thành công!",Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.INVISIBLE);
+                setResult(Activity.RESULT_OK);
                 finish();
             }
         });
@@ -361,6 +364,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
                     Toast.makeText(OnlineEvent.this,"xóa dữ liệu không thành công!",Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.INVISIBLE);
+                setResult(Activity.RESULT_OK);
                 finish();
             }
         });

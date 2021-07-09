@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/tab_day_calendar"
         android:icon="@drawable/tab_day_calendar"
         android:title="@string/tab_day_calendar"/>
     <item
+        android:id="@+id/tab_detail_day"
+        android:enabled="true"
+        android:icon="@drawable/yin_yang_calendar"
+        android:title="Lịch chi tiết"/>
+    <item
         android:id="@+id/tab_monh_calendar"
         android:enabled="true"
         android:icon="@drawable/tab_monh_calendar"
         android:title="@string/tab_monh_calendar"/>
+
     <item
         android:id="@+id/tab_astrology"
         android:enabled="true"
@@ -20,4 +27,5 @@
         android:enabled="true"
         android:icon="@drawable/tab_more"
         android:title="@string/tab_more"/>
+
 </menu>

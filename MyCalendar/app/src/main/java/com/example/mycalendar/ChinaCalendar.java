@@ -243,7 +243,7 @@ public class ChinaCalendar {
         mLunarDay = lunar_day;
         mLunarMonth= lunar_month;
         mLunarYear = lunar_year;
-        Date date = new Date(lunar_year,lunar_month-1,lunar_day);
+        Date date = new Date(lunar_year - 1900,lunar_month-1,lunar_day);
         return date;
     }
 
@@ -290,12 +290,8 @@ public class ChinaCalendar {
             lunarDate+="0"+String.valueOf(lunar_month);
         else
             lunarDate+=String.valueOf(lunar_month);
-//        dateTimeInfo.setDayOfMonthLunar(lunar_day);
-//        dateTimeInfo.setMonthLunar(lunar_month);
-//        ChinaCalendar chinaCalendar = new ChinaCalendar(day, month, year, 7);
-//        Date date = chinaCalendar.ConVertToLunar();
-//        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM", new Locale("vn"));
+        lunarDate += "/" +String.valueOf(lunar_year);
+        Log.i("lunarDate",lunarDate);
         return lunarDate;
     }
 

@@ -2,6 +2,7 @@ package com.example.mycalendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -237,26 +238,27 @@ public class AddEvent extends AppCompatActivity {
             String str_id = String.valueOf(id);
             eventInfo = new EventInfo(str_id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, alldaySW.isChecked());
             eventDatabase.EditEvent(eventInfo);
-            Toast.makeText(AddEvent.this,"Edit successfully",Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddEvent.this,"Sửa thành công!",Toast.LENGTH_SHORT).show();
         }
         else
         {
             try {
                 if(Title.isEmpty())
                 {
-                    Toast.makeText(AddEvent.this,"unavailable title",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddEvent.this,"Nội dung không được trống",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     eventInfo = new EventInfo("-1",Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, alldaySW.isChecked());
                     eventDatabase.addOne(eventInfo);
-                    Toast.makeText(AddEvent.this,"Saved successfully",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddEvent.this,"Thêm thành công",Toast.LENGTH_SHORT).show();
 
                 }
             }
             catch (Exception e){
-                Toast.makeText(AddEvent.this,"undetectable error",Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddEvent.this,"Lỗi không xác định",Toast.LENGTH_SHORT).show();
             }
         }
+        setResult(Activity.RESULT_OK);
         finish();
     }
 
@@ -309,9 +311,8 @@ public class AddEvent extends AppCompatActivity {
     public void deleteOnClick(View view) {
         EventDatabase eventDatabase = new EventDatabase(AddEvent.this);
         eventDatabase.deleteDatabase(id);
-        Toast.makeText(AddEvent.this,"Deleted successfully",Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
+        Toast.makeText(AddEvent.this,"Xóa thành công!",Toast.LENGTH_SHORT).show();
+        setResult(Activity.RESULT_OK);
         finish();
     }
 }

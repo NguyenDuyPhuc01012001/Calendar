@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -146,9 +147,9 @@ public class LoginEvent extends AppCompatActivity{
         try{
             if((user != null && user.isEmailVerified()) || user.getDisplayName() != "" )
             {
-                startActivity(new Intent(this,OnlineEvent.class));
+                startActivityForResult(new Intent(this,OnlineEvent.class),10001);
                 Toast.makeText(this,"đăng nhập thành công!",Toast.LENGTH_SHORT).show();
-                finish();
+                setResult(Activity.RESULT_OK);
             }
         }
         catch (Exception e)
@@ -193,7 +194,6 @@ public class LoginEvent extends AppCompatActivity{
                     {
                         Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
-                        finish();
                     }
                     else
                     {
@@ -224,8 +224,7 @@ public class LoginEvent extends AppCompatActivity{
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
-                            finish();
+                            startActivityForResult(new Intent(LoginEvent.this,OnlineEvent.class),10001);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.i(TAG, "signInWithCredential:failure", task.getException());
@@ -251,6 +250,11 @@ public class LoginEvent extends AppCompatActivity{
                 Toast.makeText(this,"Lỗi đăng nhập!",Toast.LENGTH_SHORT).show();
             }
         }
+        else if ((requestCode == 10001) && (resultCode == Activity.RESULT_OK))
+        {
+            setResult(Activity.RESULT_OK);
+            finish();
+        }
         else
         {
             mCallbackManager.onActivityResult(requestCode, resultCode, data);
@@ -266,8 +270,7 @@ public class LoginEvent extends AppCompatActivity{
                 if(task.isSuccessful())
                 {
                     Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
-                    finish();
+                    startActivityForResult(new Intent(LoginEvent.this,OnlineEvent.class),10001);
                 }
                 else
                 {

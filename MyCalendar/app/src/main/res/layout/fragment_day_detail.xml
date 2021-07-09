@@ -15,16 +15,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvMonthYear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/rounded_corner"
-                android:text="Tháng 5 - 2021"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_title_in_detail_day"
-                android:gravity="center" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,7 +23,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="@dimen/margin_top">
                 <Button
-                    android:id="@+id/nextMonth"
+                    android:id="@+id/previousDay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -48,21 +38,21 @@
                     android:layout_weight="2.6"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Thứ tư, 19-05-2021"
+                    android:text="19-05-2021"
                     android:textStyle="bold"
                     android:textSize="@dimen/text_size"
                     android:textAlignment="center"
                     android:textColor="@color/black"/>
 
                 <Button
-                    android:id="@+id/previousMonth"
+                    android:id="@+id/NextDay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/forward"
                     android:background="@null"
                     android:textStyle="bold"
-                    android:textSize="@dimen/text_size"/>
+                    android:textSize="@dimen/text_size" />
             </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -110,6 +100,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp">
                     <TextView
+                        android:id="@+id/dayNumberTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="8"
@@ -117,6 +108,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_content_in_detail_day"></TextView>
                     <TextView
+                        android:id="@+id/monthNumberTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="4"
@@ -124,6 +116,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_content_in_detail_day"></TextView>
                     <TextView
+                        android:id="@+id/yearNumberTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="2021"
@@ -135,6 +128,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp">
                     <TextView
+                        android:id="@+id/dayStringTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Đinh Mão"
@@ -142,6 +136,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_content_in_detail_day"></TextView>
                     <TextView
+                        android:id="@+id/monthStringTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Quý Tỵ"
@@ -149,6 +144,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_content_in_detail_day"></TextView>
                     <TextView
+                        android:id="@+id/yearStringTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Tân Sửu"
@@ -157,6 +153,18 @@
                         android:textSize="@dimen/text_size_content_in_detail_day"></TextView>
                 </TableRow>
             </TableLayout>
+            <TextView
+                android:id="@+id/NgayDaoTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+            <ImageView
+                android:id="@+id/NgayDaoImage"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,15 +190,28 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
-            <HorizontalScrollView
+            <TextView
+                android:id="@+id/GioHoangDaoTV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/GoodTimeRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top"/>
-            </HorizontalScrollView>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="GIỜ HẮC ĐẠO"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_title_in_detail_day"
+                android:layout_gravity="center"></TextView>
+            <TextView
+                android:id="@+id/GioHacDaoTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -221,15 +242,31 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:layout_marginTop="@dimen/margin_top"
-                android:text="- SAO TỐT: Thiên Ân, Lục Hợp, Bất Tương, Phổ Hộ, Trừ Thần, Minh Phệ, Bảo Quang \n- SAO XẤU: Đại Thời, Đại Bại, Hàm Trì, Tiểu Hao, Ngũ Hư, Thổ Phù"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_content_in_detail_day"
-                android:layout_gravity="center"></TextView>
+                android:orientation="vertical"
+                android:background="@drawable/rounded_corner">
+                <TextView
+                    android:id="@+id/SaoTotTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:text="- SAO TỐT: Thiên Ân, Lục Hợp, Bất Tương, Phổ Hộ, Trừ Thần, Minh Phệ, Bảo Quang"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_content_in_detail_day"
+                    android:layout_gravity="center"></TextView>
+                <TextView
+                    android:id="@+id/SaoXauTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:text="- SAO XẤU: Đại Thời, Đại Bại, Hàm Trì, Tiểu Hao, Ngũ Hư, Thổ Phù"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_content_in_detail_day"
+                    android:layout_gravity="center"></TextView>
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -241,6 +278,7 @@
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <TextView
+                android:id="@+id/NenLamTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
@@ -260,6 +298,7 @@
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <TextView
+                android:id="@+id/KhongNenTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"

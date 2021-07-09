@@ -43,7 +43,7 @@ public class EventDialog extends AppCompatDialogFragment {
                 Intent intent = new Intent(getActivity(),AddEvent.class);
                 intent.putExtra("id",-1);
                 MonthCalendarFragment.Check = 0;
-                startActivity(intent);
+                startActivityForResult(intent,10001);
             }
         });
         OnlineBtn.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class EventDialog extends AppCompatDialogFragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),LoginEvent.class);
                 MonthCalendarFragment.Check = 0;
-                startActivity(intent);
+                startActivityForResult(intent,10001);
             }
         });
         return builder.create();

@@ -1,6 +1,7 @@
 package com.example.mycalendar.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.os.Build;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mycalendar.AddEvent;
 import com.example.mycalendar.BottomDialog;
@@ -85,6 +87,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         initWidgets(v);
         setEvent();
         loadData();
+        Toast.makeText(getActivity(),"Test rebuild",Toast.LENGTH_SHORT).show();
         return v;
     }
 
@@ -182,6 +185,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
                             Log.i("event tag",eventInfo.getId().toString());
                         }
                         eventAdapter.notifyDataSetChanged();
+
                     }
                     progressBar.setVisibility(View.INVISIBLE);
                     eventRecyclerView.setVisibility(View.VISIBLE);
@@ -199,8 +203,6 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         {
             Log.i("login","does not have account here!");
         }
-        progressBar.setVisibility(View.INVISIBLE);
-        eventRecyclerView.setVisibility(View.VISIBLE);
 
 
 
@@ -364,13 +366,13 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         {
             Intent detailIntent = new Intent(getActivity(), AddEvent.class);
             detailIntent.putExtra("position",position);
-            startActivity(detailIntent);
+            startActivityForResult(detailIntent,10001);
         }
         else if(type == 3)
         {
             Intent onlineEvent = new Intent(getActivity(), OnlineEvent.class);
             onlineEvent.putExtra("position",position);
-            startActivity(onlineEvent);
+            startActivityForResult(onlineEvent,10001);
         }
     }
 
@@ -379,6 +381,14 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     public void LoadNewDate(LocalDateTime selectedDate) {
         this.selectedDate=selectedDate.toLocalDate();
         loadData();
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("requestresult",requestCode + "-" + resultCode);
+        setEventView(selectedDate.getDayOfMonth());
     }
 
 }

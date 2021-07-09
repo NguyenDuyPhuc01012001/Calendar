@@ -100,21 +100,21 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         if(isInMonth(dayOfMonth)){
             LocalDate date=selectedDate;
             int day=Integer.parseInt(dayOfMonth.split("/")[0]);
-            int month=date.getMonthValue()+1;
+            int month=date.getMonthValue();
             int year=date.getYear();
             chinaCalendar=new ChinaCalendar(day,month,year,7);
         }
         if(isInPreviousMonth(dayOfMonth)){
             LocalDate date=selectedDate.withDayOfMonth(1).minusDays(1);
             int day=Integer.parseInt(dayOfMonth.split("/")[0]);
-            int month=date.getMonthValue()+1;
+            int month=date.getMonthValue();
             int year=date.getYear();
             chinaCalendar=new ChinaCalendar(day,month,year,7);
         }
         if(isInNextMonth(dayOfMonth)){
             LocalDate date=selectedDate.withDayOfMonth(1).plusMonths(1);
             int day=Integer.parseInt(dayOfMonth.split("/")[0]);
-            int month=date.getMonthValue()+1;
+            int month=date.getMonthValue();
             int year=date.getYear();
             chinaCalendar=new ChinaCalendar(day,month,year,7);
         }
