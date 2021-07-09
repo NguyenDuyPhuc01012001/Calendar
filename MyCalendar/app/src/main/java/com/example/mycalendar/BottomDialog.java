@@ -48,7 +48,7 @@ public class BottomDialog extends BottomSheetDialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.bottom_dialog, container, false);
+        View v=inflater.inflate(R.layout.dialog_bottom, container, false);
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         return v;
     }

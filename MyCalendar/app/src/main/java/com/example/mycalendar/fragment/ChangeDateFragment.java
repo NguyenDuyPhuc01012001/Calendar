@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -83,6 +85,7 @@ public class ChangeDateFragment extends Fragment {
                     ckbIsLeapMonth.setChecked(false);
             }
         });
+
         dpLunarDay.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -92,10 +95,23 @@ public class ChangeDateFragment extends Fragment {
                 Lunar2Solar(lunarYear, lunarMonth, lunarDay);
             }
         });
+
         ckbIsLeapMonth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Lunar2Solar(lunarYear, lunarMonth, lunarDay);
+            }
+        });
+
+        btnShowDayDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DayDetailFragment dayDetailFragment = new DayDetailFragment();
+                FragmentManager fragmentManager = getChildFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.dayCalendarContainer, dayDetailFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
     }

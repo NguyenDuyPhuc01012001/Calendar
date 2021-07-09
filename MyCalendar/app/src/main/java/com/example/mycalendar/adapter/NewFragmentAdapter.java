@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.mycalendar.fragment.GuideFragment;
 import com.facebook.FacebookSdk;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,7 +76,7 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
     @Override
     public NewFragmentViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.new_fragment_cell, parent, false);
+        View view = inflater.inflate(R.layout.cell_new_fragment, parent, false);
         NewFragmentViewHolder viewHolder = new NewFragmentViewHolder(view);
         return viewHolder;
     }
@@ -125,6 +127,8 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
                 LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 5:
+                fragment = new GuideFragment();
+                LoadFragment(R.id.moreContainer,fragment);
                 break;
             case 6:
                 LoadAlertDialog();

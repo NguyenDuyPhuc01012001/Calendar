@@ -284,7 +284,7 @@ public class LoginEvent extends AppCompatActivity{
 
     public void forgotOnClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginEvent.this,R.style.AlertDialog);
-        final View forgotDialog = getLayoutInflater().inflate(R.layout.forgot_password_dialog,null);
+        final View forgotDialog = getLayoutInflater().inflate(R.layout.dialog_forgot_password,null);
         builder.setView(forgotDialog);
         builder.setTitle("Quên mật khẩu");
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {

@@ -143,8 +143,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setEventView(int day)
     {
-        progressBar.setVisibility(View.VISIBLE);
-        eventRecyclerView.setVisibility(View.INVISIBLE);
+
         listEvent.clear();
         EventDatabase eventDatabase = new EventDatabase(getActivity());
         listEvent = (ArrayList<EventInfo>) eventDatabase.getEventday(day,selectedDate.getMonthValue(),selectedDate.getYear());
@@ -169,6 +168,8 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         eventRecyclerView.setLayoutManager(layoutManager);
         eventRecyclerView.setAdapter(eventAdapter);
         try {
+            progressBar.setVisibility(View.VISIBLE);
+            eventRecyclerView.setVisibility(View.INVISIBLE);
             String UserId =  auth.getCurrentUser().getUid();
             Query query = db.getReference(UserId + "/Events/").orderByChild("date").equalTo(day + "_" + selectedDate.getMonthValue() + "_" + selectedDate.getYear());
             query.addValueEventListener(new ValueEventListener() {
@@ -186,21 +187,21 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
                         eventAdapter.notifyDataSetChanged();
 
                     }
-                    progressBar.setVisibility(View.INVISIBLE);
-                    eventRecyclerView.setVisibility(View.VISIBLE);
                 }
 
                 @Override
                 public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    eventRecyclerView.setVisibility(View.VISIBLE);
                 }
 
             });
         }
         catch (Exception e)
         {
-            Log.i("login","does not have account here!");
+            Log.i("login",e.getMessage());
+        }
+        finally {
+            progressBar.setVisibility(View.INVISIBLE);
+            eventRecyclerView.setVisibility(View.VISIBLE);
         }
 
 

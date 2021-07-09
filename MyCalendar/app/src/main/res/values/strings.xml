@@ -815,7 +815,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="name">Họ tên</string>
-    <string name="facebook_app_id">400564128007679</string> <string name="fb_login_protocol_scheme">fb400564128007679</string>
+    <string name="facebook_app_id">400564128007679</string>
+    <string name="fb_login_protocol_scheme">fb400564128007679</string>
 
 
 </resources>

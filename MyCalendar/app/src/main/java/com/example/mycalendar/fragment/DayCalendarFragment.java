@@ -112,8 +112,6 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
             }
         });
 
-
-
         containerLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
             public void onSwipeRight() {
                 Animation in = AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);

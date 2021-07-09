@@ -251,7 +251,6 @@ public class AddEvent extends AppCompatActivity {
                     eventInfo = new EventInfo("-1",Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, alldaySW.isChecked());
                     eventDatabase.addOne(eventInfo);
                     Toast.makeText(AddEvent.this,"Thêm thành công",Toast.LENGTH_SHORT).show();
-
                 }
             }
             catch (Exception e){

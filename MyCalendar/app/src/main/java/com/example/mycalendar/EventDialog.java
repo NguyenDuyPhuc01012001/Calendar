@@ -26,7 +26,7 @@ public class EventDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.add_event_dialog,null);
+        View view = inflater.inflate(R.layout.dialog_add_event,null);
         builder.setView(view)
                 .setTitle("Thêm sự kiện")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {

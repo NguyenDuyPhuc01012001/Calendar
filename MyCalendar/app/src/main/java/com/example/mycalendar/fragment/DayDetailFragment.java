@@ -74,24 +74,10 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
         init(v);
         ddPresenter.getData(selectedDate);
         setEventView(selectedDate.getDayOfMonth());
-        nextDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedDate = selectedDate.plusDays(1);
-                ddPresenter.getData(selectedDate);
-                setEventView(selectedDate.getDayOfMonth());
-            }
-        });
-        previousDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedDate = selectedDate.minusDays(1);
-                ddPresenter.getData(selectedDate);
-                setEventView(selectedDate.getDayOfMonth());
-            }
-        });
+        setEvent();
         return v;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void init(View v)
     {
@@ -113,6 +99,29 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
         auth = FirebaseAuth.getInstance();
         ddPresenter = new DayDetailPresenter(this);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void setEvent() {
+        nextDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedDate = selectedDate.plusDays(1);
+                ddPresenter.getData(selectedDate);
+                setEventView(selectedDate.getDayOfMonth());
+            }
+        });
+
+        previousDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedDate = selectedDate.minusDays(1);
+                ddPresenter.getData(selectedDate);
+                setEventView(selectedDate.getDayOfMonth());
+            }
+        });
+    }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setEventView(int day)
@@ -177,6 +186,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
 
 
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void LoadData(DateTimeInfo dateTimeInfo) {
