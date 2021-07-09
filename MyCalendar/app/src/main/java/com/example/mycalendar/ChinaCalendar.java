@@ -397,4 +397,40 @@ public class ChinaCalendar {
         Log.d("Good/Bad Day", "Good/Bad Day: " + LunarCoreHelper.rateDay(chiDay, lunnarmonth));
         return LunarCoreHelper.rateDay(chiDay, lunnarmonth);
     }
+    public String GetUnZodiacTime()
+    {
+        String dayChi = LunarCoreHelper.getChiDayLunar(mDay,mMonth,mYear), saveTmp = "";
+
+        if (dayChi == "Dần" || dayChi =="Thân")
+            saveTmp = "Dần (3h - 5h), Mão (5h - 7h), Ngọ (11h - 13h), Thân (15h -17h), Dậu (17h - 19h), Hợi (21h - 23h)";
+        if (dayChi == "Mão"|| dayChi == "Dậu")
+            saveTmp = "Sửu (1h - 3h), Thìn (7h - 9h), Tỵ (9h - 11h), Thân (15h - 17h), Tuất (19h - 21h), Hợi (21h - 23h)";
+        if (dayChi == "Thìn" || dayChi == "Tuất")
+            saveTmp = "Tý (23h - 1h), Sửu (1h - 3h), Mão (5h - 7h), Ngọ (11h - 13h), Mùi (13h - 15h), Tuất (19h - 21h)";
+        if (dayChi == "Tỵ" || dayChi == "Hợi")
+            saveTmp = "Tý (23h - 1h), Dần (3h - 5h), Mão (5h - 7h), Tỵ (9h - 11h), Thân (15h - 17h), Dậu (17h - 19h)";
+        if (dayChi == "Tý" || dayChi == "Ngọ")
+            saveTmp = "Dần (3h - 5h), Thìn (7h - 9h), Tỵ (9h - 11h), Mùi (13h - 15h), Tuất (19h - 21h), Hợi (21h - 23h)";
+        if (dayChi == "Sửu" || dayChi == "Mùi")
+            saveTmp = "Tý (23h - 1h), Sửu (1h - 3h), Thìn (7h - 9h), Ngọ (11h - 13h), Mùi (13h - 25h), Dậu (17h -19h)";
+        return saveTmp;
+    }
+    public String GetZodiacTime()
+    {
+        String dayChi = LunarCoreHelper.getChiDayLunar(mDay,mMonth,mYear), saveTmp = "";
+
+        if (dayChi == "Dần" || dayChi =="Thân")
+            saveTmp = "Tý (23h -1h),Sửu (1h - 3h),Thìn (7h - 9h),Tỵ (9h - 11h),Mùi (13h - 15h),Tuất (19h - 21h)";
+        if (dayChi == "Mão"|| dayChi == "Dậu")
+            saveTmp = "Tý (23h - 1h),Dần (3h - 5h),Mão (5h - 7h),Ngọ (11h - 13h),Mùi (13h - 15h),Dậu (17h - 19h)";
+        if (dayChi == "Thìn" || dayChi == "Tuất")
+            saveTmp = "Dần (3h - 5h),Thìn (7h - 9h),Tỵ (9h - 11h),Thân (15h - 17h),Dậu (17h - 19h),Hợi (21h - 23h)";
+        if (dayChi == "Tỵ" || dayChi == "Hợi")
+            saveTmp = "Sửu (1h - 3h),Thìn (7h - 9h),Ngọ (11h - 13h),Mùi (13h - 15h),Tuất (19h - 21h),Hợi (21h - 23h)";
+        if (dayChi == "Tý" || dayChi == "Ngọ")
+            saveTmp = "Tý (23h - 1h),Sửu (1h - 3h),Mão (5h - 7h),Ngọ (11h - 13h),Thân (15h - 17h),Dậu (17h - 19h)";
+        if (dayChi == "Sửu" || dayChi == "Mùi")
+            saveTmp = "Dần (3h - 5h),Mão (5h - 7h),Tỵ (9h - 11h),Thân (15h - 17h),Tuất (19h - 21h),Hợi (21h - 23h)";
+        return saveTmp;
+    }
 }

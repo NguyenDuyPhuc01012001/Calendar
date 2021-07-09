@@ -275,7 +275,6 @@ public class AddEvent extends AppCompatActivity {
         minuteEnd = minuteend;
 
         content.setText(Title);
-        Toast.makeText(this,TitleText.getText().toString(),Toast.LENGTH_SHORT).show();
         alldaySW.setChecked(allday);
         if(allday == true)
         {

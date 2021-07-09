@@ -87,7 +87,6 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         initWidgets(v);
         setEvent();
         loadData();
-        Toast.makeText(getActivity(),"Test rebuild",Toast.LENGTH_SHORT).show();
         return v;
     }
 

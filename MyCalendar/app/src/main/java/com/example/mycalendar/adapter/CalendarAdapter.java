@@ -62,7 +62,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         TextView tvDayLunar = holder.dayLunar;
         String dayLunar;
         if (daysLunar.get(position).startsWith("01"))
-            dayLunar = daysLunar.get(position);
+            dayLunar = daysLunar.get(position).substring(0, 5);
         else
             dayLunar = daysLunar.get(position).substring(0, 2);
 

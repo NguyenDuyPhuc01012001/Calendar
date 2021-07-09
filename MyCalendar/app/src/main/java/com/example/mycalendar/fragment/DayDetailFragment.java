@@ -5,9 +5,13 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,21 +19,43 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.R;
+import com.example.mycalendar.adapter.EventAdapter;
+import com.example.mycalendar.database.EventDatabase;
+import com.example.mycalendar.database.EventDatabaseOpenHelper;
 import com.example.mycalendar.model.DateTimeInfo;
+import com.example.mycalendar.model.EventInfo;
 import com.example.mycalendar.presenter.DayDetailInterface;
 import com.example.mycalendar.presenter.DayDetailPresenter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class DayDetailFragment extends Fragment implements DayDetailInterface {
+public class DayDetailFragment extends Fragment implements DayDetailInterface,EventAdapter.OnItemListener {
 
     private LocalDateTime selectedDate;
     private TextView dateSelectTV,numberDayTV,numberMonthTV,numberYearTV,stringDayTV,stringMonthTV,stringYearTV;
-    private TextView ngayDaoTV;
+    private TextView ngayDaoTV,gioHoangDaoTV,gioHacDaoTV;
     private Button nextDay, previousDay;
     private ImageView ngayDaoImage;
+    private RecyclerView eventRV;
     DayDetailPresenter ddPresenter;
+    public static ArrayList<EventInfo> listEvent = new ArrayList<EventInfo>();
+    private FirebaseAuth auth;
+    private FirebaseDatabase db = FirebaseDatabase.getInstance("https://ascendant-nova-318320-default-rtdb.asia-southeast1.firebasedatabase.app/");
     public DayDetailFragment() {
         // Required empty public constructor
     }
@@ -47,11 +73,13 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface {
         View v = inflater.inflate(R.layout.fragment_day_detail, container, false);
         init(v);
         ddPresenter.getData(selectedDate);
+        setEventView(selectedDate.getDayOfMonth());
         nextDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedDate = selectedDate.plusDays(1);
                 ddPresenter.getData(selectedDate);
+                setEventView(selectedDate.getDayOfMonth());
             }
         });
         previousDay.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +87,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface {
             public void onClick(View v) {
                 selectedDate = selectedDate.minusDays(1);
                 ddPresenter.getData(selectedDate);
+                setEventView(selectedDate.getDayOfMonth());
             }
         });
         return v;
@@ -78,9 +107,76 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface {
         ngayDaoImage = v.findViewById(R.id.NgayDaoImage);
         nextDay = v.findViewById(R.id.NextDay);
         previousDay = v.findViewById(R.id.previousDay);
+        eventRV = v.findViewById(R.id.eventRecyclerView);
+        gioHoangDaoTV = v.findViewById(R.id.GioHoangDaoTV);
+        gioHacDaoTV = v.findViewById(R.id.GioHacDaoTV);
+        auth = FirebaseAuth.getInstance();
         ddPresenter = new DayDetailPresenter(this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void setEventView(int day)
+    {
+        listEvent.clear();
+        eventRV.setVisibility(View.INVISIBLE);
+        EventDatabase eventDatabase = new EventDatabase(getActivity());
+        listEvent = (ArrayList<EventInfo>) eventDatabase.getEventday(day,selectedDate.getMonthValue(),selectedDate.getYear());
+
+        EventDatabaseOpenHelper eventDatabaseOpenHelper = new EventDatabaseOpenHelper(getContext());
+        eventDatabaseOpenHelper.CreateDatabase();
+        eventDatabaseOpenHelper.openDatabase();
+        eventDatabaseOpenHelper.getEventday(day,selectedDate.getMonthValue(),listEvent,true);
+        ChinaCalendar chinaCalendar = new ChinaCalendar(day, selectedDate.getMonthValue(), selectedDate.getYear(), 7);
+        Date date = chinaCalendar.ConVertToLunar();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        eventDatabaseOpenHelper.getEventday(localDate.getDayOfMonth(),localDate.getMonthValue(),listEvent,false);
+
+
+        for(EventInfo eventInfo : listEvent)
+        {
+            Log.i("all the title",eventInfo.getTitle().toString());
+        }
+
+        EventAdapter eventAdapter = new EventAdapter(listEvent, this);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
+        eventRV.setLayoutManager(layoutManager);
+        eventRV.setAdapter(eventAdapter);
+        try {
+            String UserId =  auth.getCurrentUser().getUid();
+            Query query = db.getReference(UserId + "/Events/").orderByChild("date").equalTo(day + "_" + selectedDate.getMonthValue() + "_" + selectedDate.getYear());
+            query.addValueEventListener(new ValueEventListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    if(snapshot.exists())
+                    {
+                        for(DataSnapshot snapshot1 : snapshot.getChildren())
+                        {
+                            EventInfo eventInfo = snapshot1.getValue(EventInfo.class);
+                            listEvent.add(eventInfo);
+                            Log.i("event tag",eventInfo.getId().toString());
+                        }
+                        eventAdapter.notifyDataSetChanged();
+
+                    }
+                    eventRV.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                    eventRV.setVisibility(View.VISIBLE);
+                }
+
+            });
+        }
+        catch (Exception e)
+        {
+            Log.i("login","does not have account here!");
+        }
+
+
+
+    }
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void LoadData(DateTimeInfo dateTimeInfo) {
@@ -114,5 +210,13 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface {
             ngayDaoTV.setText("Hắc đạo");
             ngayDaoTV.setTextColor(Color.BLACK);
         }
+        ChinaCalendar chinaCalendar = new ChinaCalendar(selectedDate.getDayOfMonth(),selectedDate.getMonthValue(),selectedDate.getYear(),7);
+        gioHoangDaoTV.setText(chinaCalendar.GetZodiacTime());
+        gioHacDaoTV.setText(chinaCalendar.GetUnZodiacTime());
+    }
+
+    @Override
+    public void onEventClick(int position, int type) {
+
     }
 }
