@@ -15,6 +15,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,9 +60,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
-                android:text="LỊCH ÂM"
+                android:text="~  LỊCH ÂM  ~"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <TableLayout
@@ -170,9 +172,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
                 android:layout_marginTop="@dimen/margin_top"
-                android:text="SỰ KIỆN"
+                android:text="~  SỰ KIỆN  ~"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <androidx.recyclerview.widget.RecyclerView
@@ -184,9 +186,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
                 android:layout_marginTop="@dimen/margin_top"
-                android:text="GIỜ HOÀNG ĐẠO"
+                android:text="~  GIỜ HOÀNG ĐẠO  ~"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <TextView
@@ -200,9 +202,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
                 android:layout_marginTop="@dimen/margin_top"
-                android:text="GIỜ HẮC ĐẠO"
+                android:text="~  GIỜ HẮC ĐẠO  ~"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <TextView
@@ -216,112 +218,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
-                android:text="HƯỚNG XUẤT HÀNH"
+                android:text="~  HƯỚNG XUẤT HÀNH  ~"
                 android:layout_marginTop="@dimen/margin_top"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <TextView
+                android:id="@+id/XuatHanhTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
                 android:layout_marginTop="@dimen/margin_top"
                 android:text="- Hỷ Thần Đông Bắc \n- Tài Thần Chính Nam \n- Kê Thần Đông Bắc"
                 android:textColor="@color/black"
+                android:textAlignment="center"
                 android:textSize="@dimen/text_size_content_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner"
-                android:text="SAO TỐT - SAO XẤU"
+                android:text="~  NHỊ THẬP BÁT TÚ  ~"
                 android:layout_marginTop="@dimen/margin_top"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
                 android:layout_gravity="center"></TextView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/rounded_corner">
+                android:layout_marginTop="@dimen/margin_top">
                 <TextView
-                    android:id="@+id/SaoTotTV"
+                    android:id="@+id/ThapNhiTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top"
-                    android:text="- SAO TỐT: Thiên Ân, Lục Hợp, Bất Tương, Phổ Hộ, Trừ Thần, Minh Phệ, Bảo Quang"
+
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_content_in_detail_day"
-                    android:layout_gravity="center"></TextView>
-                <TextView
-                    android:id="@+id/SaoXauTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top"
-                    android:text="- SAO XẤU: Đại Thời, Đại Bại, Hàm Trì, Tiểu Hao, Ngũ Hư, Thổ Phù"
-                    android:textColor="@color/black"
+                    android:textAlignment="center"
                     android:textSize="@dimen/text_size_content_in_detail_day"
                     android:layout_gravity="center"></TextView>
             </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:layout_marginTop="@dimen/margin_top"
-                android:text="VIỆC NÊN LÀM"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_title_in_detail_day"
-                android:layout_gravity="center"></TextView>
-            <TextView
-                android:id="@+id/NenLamTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:layout_marginTop="@dimen/margin_top"
-                android:text="@string/should_do"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_content_in_detail_day"
-                android:layout_gravity="center"></TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:text="VIỆC KHÔNG NÊN LÀM"
-                android:layout_marginTop="@dimen/margin_top"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_title_in_detail_day"
-                android:layout_gravity="center"></TextView>
-            <TextView
-                android:id="@+id/KhongNenTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:layout_marginTop="@dimen/margin_top"
-                android:text="@string/should_not_do"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_content_in_detail_day"
-                android:layout_gravity="center"></TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner"
-                android:text="TUỔI XUNG"
-                android:layout_marginTop="@dimen/margin_top"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_title_in_detail_day"
-                android:layout_gravity="center"></TextView>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ConflictAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_top"/>
         </LinearLayout>
+
+
 
     </ScrollView>
 

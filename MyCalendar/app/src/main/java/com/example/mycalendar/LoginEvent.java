@@ -250,7 +250,7 @@ public class LoginEvent extends AppCompatActivity{
                 Toast.makeText(this,"Lỗi đăng nhập!",Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((requestCode == 10001) && (resultCode == Activity.RESULT_OK))
+        else if (requestCode == 10001)
         {
             setResult(Activity.RESULT_OK);
             finish();

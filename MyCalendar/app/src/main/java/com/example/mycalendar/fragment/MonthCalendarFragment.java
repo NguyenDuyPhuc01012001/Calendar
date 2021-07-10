@@ -187,10 +187,14 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
                         eventAdapter.notifyDataSetChanged();
 
                     }
+                    progressBar.setVisibility(View.INVISIBLE);
+                    eventRecyclerView.setVisibility(View.VISIBLE);
                 }
 
                 @Override
                 public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    eventRecyclerView.setVisibility(View.VISIBLE);
                 }
 
             });
@@ -198,13 +202,9 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         catch (Exception e)
         {
             Log.i("login",e.getMessage());
-        }
-        finally {
             progressBar.setVisibility(View.INVISIBLE);
             eventRecyclerView.setVisibility(View.VISIBLE);
         }
-
-
 
     }
 

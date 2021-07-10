@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mycalendar.BottomDialog;
 import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.EventAdapter;
@@ -44,11 +46,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DayDetailFragment extends Fragment implements DayDetailInterface,EventAdapter.OnItemListener {
+public class DayDetailFragment extends Fragment implements DayDetailInterface,EventAdapter.OnItemListener,BottomDialog.OnSelected {
 
     private LocalDateTime selectedDate;
     private TextView dateSelectTV,numberDayTV,numberMonthTV,numberYearTV,stringDayTV,stringMonthTV,stringYearTV;
-    private TextView ngayDaoTV,gioHoangDaoTV,gioHacDaoTV;
+    private TextView ngayDaoTV,gioHoangDaoTV,gioHacDaoTV,xuatHanhTV,NhiThapTV,dateViewTV;
     private Button nextDay, previousDay;
     private ImageView ngayDaoImage;
     private RecyclerView eventRV;
@@ -75,6 +77,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
         ddPresenter.getData(selectedDate);
         setEventView(selectedDate.getDayOfMonth());
         setEvent();
+        ddPresenter.displayOutput(NhiThapTV,getActivity(),ddPresenter.GetStar28(selectedDate));
         return v;
     }
 
@@ -96,6 +99,9 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
         eventRV = v.findViewById(R.id.eventRecyclerView);
         gioHoangDaoTV = v.findViewById(R.id.GioHoangDaoTV);
         gioHacDaoTV = v.findViewById(R.id.GioHacDaoTV);
+        xuatHanhTV = v.findViewById(R.id.XuatHanhTV);
+        NhiThapTV = v.findViewById(R.id.ThapNhiTV);
+        dateViewTV = v.findViewById(R.id.monthYearTV);
         auth = FirebaseAuth.getInstance();
         ddPresenter = new DayDetailPresenter(this);
     }
@@ -108,6 +114,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
                 selectedDate = selectedDate.plusDays(1);
                 ddPresenter.getData(selectedDate);
                 setEventView(selectedDate.getDayOfMonth());
+                ddPresenter.displayOutput(NhiThapTV,getActivity(),ddPresenter.GetStar28(selectedDate));
             }
         });
 
@@ -117,6 +124,13 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
                 selectedDate = selectedDate.minusDays(1);
                 ddPresenter.getData(selectedDate);
                 setEventView(selectedDate.getDayOfMonth());
+                ddPresenter.displayOutput(NhiThapTV,getActivity(),ddPresenter.GetStar28(selectedDate));
+            }
+        });
+        dateViewTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowDialog();
             }
         });
     }
@@ -181,6 +195,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
         catch (Exception e)
         {
             Log.i("login","does not have account here!");
+            eventRV.setVisibility(View.VISIBLE);
         }
 
 
@@ -204,7 +219,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
             ngayDaoImage.setImageResource(R.mipmap.yin_yang_red);
             ngayDaoTV.setText("Hoàng đạo");
             ngayDaoTV.setVisibility(View.VISIBLE);
-            ngayDaoTV.setTextColor(Color.RED);
+            ngayDaoTV.setTextColor(Color.BLUE);
         }
         else if(dateTimeInfo.getIsGoodDay().equals("Normal"))
         {
@@ -220,13 +235,30 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
             ngayDaoTV.setText("Hắc đạo");
             ngayDaoTV.setTextColor(Color.BLACK);
         }
-        ChinaCalendar chinaCalendar = new ChinaCalendar(selectedDate.getDayOfMonth(),selectedDate.getMonthValue(),selectedDate.getYear(),7);
-        gioHoangDaoTV.setText(chinaCalendar.GetZodiacTime());
-        gioHacDaoTV.setText(chinaCalendar.GetUnZodiacTime());
+        gioHoangDaoTV.setText(DayDetailPresenter.GetZodiacTime(selectedDate.getDayOfMonth(),selectedDate.getMonthValue(),selectedDate.getYear()));
+        gioHacDaoTV.setText(DayDetailPresenter.GetUnZodiacTime(selectedDate.getDayOfMonth(),selectedDate.getMonthValue(),selectedDate.getYear()));
+        xuatHanhTV.setText("Đi về hướng " + DayDetailPresenter.GetTaiThan(selectedDate.getDayOfMonth(),selectedDate.getMonthValue(),selectedDate.getYear()) + " để nghênh tiếp Tài Thần \n" +
+                "Đi về hướng " + DayDetailPresenter.GetHyThan(selectedDate.getDayOfMonth(),selectedDate.getMonthValue(),selectedDate.getYear()) + " để đón tiếp Hỷ Thần \n" +
+                "Tránh đi về hướng " + DayDetailPresenter.GetHacThan(selectedDate.getDayOfMonth(),selectedDate.getMonthValue(),selectedDate.getYear()) + " để tránh Hắc Thần");
     }
 
     @Override
     public void onEventClick(int position, int type) {
 
+    }
+
+    private void ShowDialog() {
+        FragmentManager mine = getActivity().getSupportFragmentManager();
+        BottomDialog dialogFragment = new BottomDialog(this);
+        dialogFragment.show(mine, BottomDialog.TAG);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void LoadNewDate(LocalDateTime selectedDate) {
+        this.selectedDate=selectedDate;
+        ddPresenter.getData(selectedDate);
+        setEventView(selectedDate.getDayOfMonth());
+        ddPresenter.displayOutput(NhiThapTV,getActivity(),ddPresenter.GetStar28(selectedDate));
     }
 }
