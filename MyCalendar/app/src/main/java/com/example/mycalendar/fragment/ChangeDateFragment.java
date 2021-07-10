@@ -20,6 +20,10 @@ import android.widget.DatePicker;
 import com.appota.lunarcore.LunarCoreHelper;
 import com.example.mycalendar.R;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ChangeDateFragment extends Fragment {
     private static final String TAG="CHANGE_DATE_FRAGMENT";
     private int lunarLeapMonth;
@@ -106,12 +110,22 @@ public class ChangeDateFragment extends Fragment {
         btnShowDayDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DayDetailFragment dayDetailFragment = new DayDetailFragment();
-                FragmentManager fragmentManager = getChildFragmentManager();
+                int year=dpSolarDay.getYear();
+                int month=dpSolarDay.getMonth()+1;
+                int day=dpSolarDay.getDayOfMonth();
+
+                String date=String.valueOf(day)+"/"+String.valueOf(month)+"/"+String.valueOf(year);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+                LocalDate dateTime = LocalDate.parse(date, formatter);
+                LocalDateTime localDateTime = dateTime.atStartOfDay();
+
+                DayDetailFragment dayDetailFragment = new DayDetailFragment(localDateTime);
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.dayCalendarContainer, dayDetailFragment);
+                fragmentTransaction.replace(R.id.changeDateFragment, dayDetailFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+//                btnShowDayDetail.setVisibility(View.INVISIBLE);
             }
         });
     }

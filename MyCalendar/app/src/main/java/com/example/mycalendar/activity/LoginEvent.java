@@ -1,4 +1,4 @@
-package com.example.mycalendar;
+package com.example.mycalendar.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mycalendar.R;
 import com.example.mycalendar.model.Login;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -23,23 +24,18 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
@@ -147,7 +143,7 @@ public class LoginEvent extends AppCompatActivity{
         try{
             if((user != null && user.isEmailVerified()) || user.getDisplayName() != "" )
             {
-                startActivityForResult(new Intent(this,OnlineEvent.class),10001);
+                startActivityForResult(new Intent(this, OnlineEvent.class),10001);
                 Toast.makeText(this,"đăng nhập thành công!",Toast.LENGTH_SHORT).show();
                 setResult(Activity.RESULT_OK);
             }
@@ -180,7 +176,7 @@ public class LoginEvent extends AppCompatActivity{
     }
 
     public void registerOnClick(View view) {
-        Intent intent = new Intent(this,RegisterEvent.class);
+        Intent intent = new Intent(this, RegisterEvent.class);
         startActivity(intent);
     }
     private void loginUser(String txt_email, String txt_password) {

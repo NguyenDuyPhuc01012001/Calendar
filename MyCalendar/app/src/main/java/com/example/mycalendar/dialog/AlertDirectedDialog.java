@@ -1,4 +1,4 @@
-package com.example.mycalendar;
+package com.example.mycalendar.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.mycalendar.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class AlertDirectedDialog extends BottomSheetDialogFragment {
@@ -17,7 +18,7 @@ public class AlertDirectedDialog extends BottomSheetDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialog);
         Log.d(TAG, "onCreateDialog: created");
 
         builder.setTitle("Xác nhận điều hướng")

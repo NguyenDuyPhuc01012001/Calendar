@@ -1,4 +1,4 @@
-package com.example.mycalendar;
+package com.example.mycalendar.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.mycalendar.activity.LoginEvent;
+import com.example.mycalendar.R;
+import com.example.mycalendar.activity.AddEvent;
 import com.example.mycalendar.fragment.MonthCalendarFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +43,7 @@ public class EventDialog extends AppCompatDialogFragment {
         localBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),AddEvent.class);
+                Intent intent = new Intent(getActivity(), AddEvent.class);
                 intent.putExtra("id",-1);
                 MonthCalendarFragment.Check = 0;
                 startActivityForResult(intent,10001);
@@ -49,7 +52,7 @@ public class EventDialog extends AppCompatDialogFragment {
         OnlineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),LoginEvent.class);
+                Intent intent = new Intent(getActivity(), LoginEvent.class);
                 MonthCalendarFragment.Check = 0;
                 startActivityForResult(intent,10001);
             }

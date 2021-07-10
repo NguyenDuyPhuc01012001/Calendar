@@ -1,7 +1,6 @@
 package com.example.mycalendar.fragment;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -20,7 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mycalendar.BottomDialog;
+import com.example.mycalendar.dialog.BottomDialog;
 import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.EventAdapter;
@@ -44,7 +43,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class DayDetailFragment extends Fragment implements DayDetailInterface,EventAdapter.OnItemListener,BottomDialog.OnSelected {
 
@@ -58,7 +56,9 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
     public static ArrayList<EventInfo> listEvent = new ArrayList<EventInfo>();
     private FirebaseAuth auth;
     private FirebaseDatabase db = FirebaseDatabase.getInstance("https://ascendant-nova-318320-default-rtdb.asia-southeast1.firebasedatabase.app/");
-    public DayDetailFragment() {
+
+    public DayDetailFragment(LocalDateTime selectedDate) {
+        this.selectedDate=selectedDate;
         // Required empty public constructor
     }
 
@@ -84,7 +84,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void init(View v)
     {
-        selectedDate = LocalDateTime.now();
+//        selectedDate = LocalDateTime.now();
         dateSelectTV = v.findViewById(R.id.monthYearTV);
         numberDayTV = v.findViewById(R.id.dayNumberTV);
         numberMonthTV = v.findViewById(R.id.monthNumberTV);

@@ -21,7 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.example.mycalendar.BottomDialog;
+import com.example.mycalendar.dialog.BottomDialog;
 import com.example.mycalendar.OnSwipeTouchListener;
 import com.example.mycalendar.R;
 import com.example.mycalendar.database.MaximDatabase;
@@ -138,10 +138,10 @@ public class DayCalendarFragment extends Fragment implements DayCalendarInterfac
             }
 
             public void onClick(){
-                DayDetailFragment dayDetailFragment = new DayDetailFragment();
+                DayDetailFragment dayDetailFragment = new DayDetailFragment(selectedDate);
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.dayCalendarContainer, dayDetailFragment);
+                fragmentTransaction.add(R.id.dayCalendarContainer, dayDetailFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

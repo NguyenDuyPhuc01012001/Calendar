@@ -6,14 +6,13 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mycalendar.ChinaCalendar;
@@ -25,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
-public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
+public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder> {
     private final ArrayList<String> daysOfMonth;
     private final ArrayList<String> daysLunar;
     private final LocalDate selectedDate;
@@ -126,6 +125,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     public interface  OnItemListener
     {
         void onItemClick(int position, String dayText);
+        void onItemLongClick(int position,String dayText);
     }
 
     @Override
@@ -174,5 +174,39 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         LocalDate ldtDay = LocalDate.parse(day, formatter);
 
         return ldtDay.isAfter(end);
+    }
+
+    public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
+        public CardView calendar_cell;
+        public final TextView dayOfMonth;
+        public final TextView dayLunar;
+        public final FrameLayout background;
+        public final ImageView imgGoodOrBadDay;
+        private final CalendarAdapter.OnItemListener onItemListener;
+
+        public CalendarViewHolder(@NonNull View itemView, CalendarAdapter.OnItemListener onItemListener)
+        {
+            super(itemView);
+            this.calendar_cell=itemView.findViewById(R.id.calendar_cell);
+            this.dayOfMonth = itemView.findViewById(R.id.cellDayText);
+            this.dayLunar = itemView.findViewById(R.id.cellLunarDayText);
+            this.background= itemView.findViewById(R.id.background);
+            this.imgGoodOrBadDay = itemView.findViewById(R.id.imgGoodOrBadDay);
+            this.onItemListener =onItemListener;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onItemListener.onItemClick(getAdapterPosition(),(String) dayOfMonth.getText());
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            onItemListener.onItemClick(getAdapterPosition(),(String) dayOfMonth.getText());
+            onItemListener.onItemLongClick(getAdapterPosition(),(String) dayOfMonth.getText());
+            return true;
+        }
     }
 }

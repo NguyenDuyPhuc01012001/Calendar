@@ -1,4 +1,4 @@
-package com.example.mycalendar;
+package com.example.mycalendar.dialog;
 
 import android.content.Context;
 import android.os.Build;
@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.example.mycalendar.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.time.LocalDate;

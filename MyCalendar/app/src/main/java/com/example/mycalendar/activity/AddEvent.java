@@ -1,4 +1,4 @@
-package com.example.mycalendar;
+package com.example.mycalendar.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,11 +19,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.mycalendar.R;
 import com.example.mycalendar.database.EventDatabase;
 import com.example.mycalendar.fragment.MonthCalendarFragment;
 import com.example.mycalendar.model.EventInfo;
-
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

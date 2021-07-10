@@ -7,11 +7,6 @@
         android:icon="@drawable/tab_day_calendar"
         android:title="@string/tab_day_calendar"/>
     <item
-        android:id="@+id/tab_detail_day"
-        android:enabled="true"
-        android:icon="@drawable/yin_yang_calendar"
-        android:title="Lịch chi tiết"/>
-    <item
         android:id="@+id/tab_monh_calendar"
         android:enabled="true"
         android:icon="@drawable/tab_monh_calendar"

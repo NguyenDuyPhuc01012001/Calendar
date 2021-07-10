@@ -3,8 +3,8 @@
     <string name="app_name">My Calendar</string>
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
-    <string name="tab_day_calendar">Ngày</string>
-    <string name="tab_monh_calendar">Tháng</string>
+    <string name="tab_day_calendar">Lịch ngày</string>
+    <string name="tab_monh_calendar">Lịch tháng</string>
     <string name="tab_astrology">Tử vi</string>
     <string name="event_in">Event in </string>
     <string name="huong_xuat_hanh">
@@ -31,6 +31,13 @@
     <string name="str_year_lunar">Năm Tân Sửu</string>
     <string name="tab_more">Mở rộng</string>
     <string name="leap_month">Nhuận</string>
+    <string-array name="compass">
+        <item>Mặc định</item>
+        <item>24 sơn</item>
+        <item>60 mạch</item>
+        <item>72 long</item>
+        <item>Thiên địa nhân</item>
+    </string-array>
     <string-array name="contentPageAstrology">
         <item>Tử vi 2021</item>
         <item>Tử vi trọn đời</item>

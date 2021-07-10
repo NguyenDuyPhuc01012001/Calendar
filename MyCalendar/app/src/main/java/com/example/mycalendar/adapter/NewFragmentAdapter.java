@@ -1,12 +1,7 @@
 package com.example.mycalendar.adapter;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mycalendar.fragment.GuideFragment;
-import com.facebook.FacebookSdk;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mycalendar.AlertDirectedDialog;
+import com.example.mycalendar.dialog.AlertDirectedDialog;
 import com.example.mycalendar.R;
 import com.example.mycalendar.fragment.Astrology2021Fragment;
 import com.example.mycalendar.fragment.ChangeDateFragment;
@@ -33,16 +26,11 @@ import com.example.mycalendar.fragment.CompassFragment;
 import com.example.mycalendar.fragment.DreamInterpretationFragment;
 import com.example.mycalendar.fragment.HistoryEventFragment;
 import com.example.mycalendar.fragment.LifetimeAstrologyFragment;
-import com.example.mycalendar.fragment.MoreFragment;
 import com.example.mycalendar.fragment.PrayerFragment;
 import com.example.mycalendar.fragment.WeatherFragment;
 import com.example.mycalendar.fragment.ZodiacFragment;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
-import java.util.List;
 
 public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.NewFragmentViewHolder>{
     private String TAG = "NewFragmentAdapter";
@@ -164,7 +152,8 @@ public class NewFragmentAdapter extends RecyclerView.Adapter<NewFragmentAdapter.
     }
 
     private void LoadFragment(int container, Fragment fragment) {
-        FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();;
+
+        FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();//((AppCompatActivity) context);.getSupportFragmentManager();;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
         fragmentTransaction.add(container, fragment);

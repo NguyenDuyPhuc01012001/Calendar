@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frCompass"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_day_detail"
@@ -9,21 +10,76 @@
     android:focusable="true">
 
     <TextView
-        android:id="@+id/tvHeading"
+        android:id="@+id/tvHuong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/text_color"
+        android:textSize="25sp"
+        android:text="Hướng: 0.0" />
+    <ImageView
+        android:layout_below="@id/tvHuong"
+        android:layout_above="@id/frImgCompass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/up" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frImgCompass"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/tvToa"
+        android:layout_below="@id/frImgCompass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:textColor="@color/text_color"
-        android:textSize="30sp"
-        android:text="Heading: 0.0" />
-
-    <ImageView
-        android:id="@+id/imageViewCompass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:textSize="25sp"
+        android:text="Tọa: 0.0" />
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/img_compass" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/tvToa">
+        <Button
+            android:id="@+id/previousCompass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:background="@null"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size"/>
+
+        <TextView
+            android:id="@+id/tvNameCompass"
+            android:layout_width="0dp"
+            android:layout_weight="2.6"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Mặc định"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/nextCompass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/forward"
+            android:background="@null"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size" />
+    </LinearLayout>
+
 </RelativeLayout>

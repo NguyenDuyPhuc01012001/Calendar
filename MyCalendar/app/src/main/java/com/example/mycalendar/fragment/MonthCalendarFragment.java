@@ -1,21 +1,19 @@
 package com.example.mycalendar.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,14 +21,13 @@ import android.os.Build;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.mycalendar.AddEvent;
-import com.example.mycalendar.BottomDialog;
+import com.example.mycalendar.activity.AddEvent;
+import com.example.mycalendar.dialog.BottomDialog;
 import com.example.mycalendar.ChinaCalendar;
-import com.example.mycalendar.EventDialog;
+import com.example.mycalendar.dialog.EventDialog;
 import com.example.mycalendar.OnSwipeTouchListener;
-import com.example.mycalendar.OnlineEvent;
+import com.example.mycalendar.activity.OnlineEvent;
 import com.example.mycalendar.R;
 import com.example.mycalendar.adapter.CalendarAdapter;
 import com.example.mycalendar.adapter.EventAdapter;
@@ -54,9 +51,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.CountDownLatch;
 
 public class MonthCalendarFragment extends Fragment implements CalendarAdapter.OnItemListener, EventAdapter.OnItemListener,BottomDialog.OnSelected {
     private TextView tvMonthYearText;
@@ -356,6 +351,18 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
         selectedDate = LocalDate.parse(day, formatter);
         loadData();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onItemLongClick(int position, String dayText) {
+        LocalDateTime localDateTime = selectedDate.atStartOfDay();
+        DayDetailFragment dayDetailFragment = new DayDetailFragment(localDateTime);
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.month_calendar_fragment, dayDetailFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
