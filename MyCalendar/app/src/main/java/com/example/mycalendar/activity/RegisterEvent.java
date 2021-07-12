@@ -96,7 +96,6 @@ public class RegisterEvent extends AppCompatActivity implements RegisterInterfac
                                 Map<String,Object> user = new HashMap<>();
                                 user.put("Name",name);
                                 user.put("email",email);
-                                user.put("Password",password);
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
