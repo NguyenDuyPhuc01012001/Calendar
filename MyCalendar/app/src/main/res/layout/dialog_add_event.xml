@@ -17,6 +17,4 @@
         android:layout_below="@id/AddLocal"
         android:layout_centerInParent="true"
         android:text="Thêm sự kiện online"/>
-
-
 </RelativeLayout>

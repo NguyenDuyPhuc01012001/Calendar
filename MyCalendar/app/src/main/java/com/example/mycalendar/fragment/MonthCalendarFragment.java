@@ -139,7 +139,6 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setEventView(int day)
     {
-
         listEvent.clear();
         EventDatabase eventDatabase = new EventDatabase(getActivity());
         listEvent = (ArrayList<EventInfo>) eventDatabase.getEventday(day,selectedDate.getMonthValue(),selectedDate.getYear());
@@ -388,6 +387,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         this.selectedDate=selectedDate.toLocalDate();
         loadData();
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)

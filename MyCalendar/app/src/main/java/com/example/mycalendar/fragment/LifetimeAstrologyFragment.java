@@ -133,51 +133,51 @@ public class LifetimeAstrologyFragment extends Fragment {
         int imageCode = birthYear % zodiacCount;
         if(imageCode == 0)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.than);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_than);
         }
         if(imageCode == 1)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.dau);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_dau);
         }
         if(imageCode == 2)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.tuat);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_tuat);
         }
         if(imageCode == 3)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.hoi);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_hoi);
         }
         if(imageCode == 4)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.ty);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_ty);
         }
         if(imageCode == 5)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.suu);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_suu);
         }
         if(imageCode == 6)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.dan);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_dan);
         }
         if(imageCode == 7)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.mao);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_mao);
         }
         if(imageCode == 8)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.thin);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_thin);
         }
         if(imageCode == 9)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.ty);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_ty);
         }
         if(imageCode == 10)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.ngo);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_ngo);
         }
         if(imageCode == 11)
         {
-            lifeTimeZodiacImg.setImageResource(R.drawable.mui);
+            lifeTimeZodiacImg.setImageResource(R.drawable.chinese_zodiac_mui);
         }
     }
 }

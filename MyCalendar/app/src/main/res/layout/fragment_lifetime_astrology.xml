@@ -70,7 +70,7 @@
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/ty" />
+            android:src="@drawable/chinese_zodiac_ty" />
 
         <ScrollView
             android:layout_width="match_parent"

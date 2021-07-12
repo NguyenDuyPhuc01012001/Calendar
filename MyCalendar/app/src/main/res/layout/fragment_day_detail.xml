@@ -14,9 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -181,6 +178,7 @@
                 android:id="@+id/eventRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -190,13 +188,15 @@
                 android:gravity="center"
                 android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
-                android:layout_gravity="center"></TextView>
+                android:layout_gravity="center" />
             <TextView
                 android:id="@+id/GioHoangDaoTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:textColor="@color/text_color"
                 android:textAlignment="center"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -206,12 +206,13 @@
                 android:gravity="center"
                 android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
-                android:layout_gravity="center"></TextView>
+                android:layout_gravity="center" />
             <TextView
                 android:id="@+id/GioHacDaoTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:textColor="@color/text_color"
                 android:textAlignment="center"/>
 
             <TextView
@@ -223,7 +224,8 @@
                 android:gravity="center"
                 android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
-                android:layout_gravity="center"></TextView>
+                android:layout_gravity="center" />
+
             <TextView
                 android:id="@+id/XuatHanhTV"
                 android:layout_width="match_parent"
@@ -231,9 +233,9 @@
                 android:layout_marginTop="@dimen/margin_top"
                 android:text="- Hỷ Thần Đông Bắc \n- Tài Thần Chính Nam \n- Kê Thần Đông Bắc"
                 android:textColor="@color/black"
-                android:textAlignment="center"
                 android:textSize="@dimen/text_size_content_in_detail_day"
-                android:layout_gravity="center"></TextView>
+                android:layout_gravity="center" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -243,21 +245,20 @@
                 android:gravity="center"
                 android:textColor="@color/red"
                 android:textSize="@dimen/text_size_title_in_detail_day"
-                android:layout_gravity="center"></TextView>
+                android:layout_gravity="center" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="@dimen/margin_top">
+
                 <TextView
                     android:id="@+id/ThapNhiTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:textColor="@color/black"
-                    android:textAlignment="center"
                     android:textSize="@dimen/text_size_content_in_detail_day"
-                    android:layout_gravity="center"></TextView>
+                    android:layout_gravity="center" />
             </LinearLayout>
         </LinearLayout>
 

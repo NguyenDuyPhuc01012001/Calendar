@@ -130,51 +130,51 @@ public class Astrology2021Fragment extends Fragment {
         int imageCode = birthYear % zodiacCount;
         if(imageCode == 0)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.than);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_than);
         }
         if(imageCode == 1)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.dau);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_dau);
         }
         if(imageCode == 2)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.tuat);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_tuat);
         }
         if(imageCode == 3)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.hoi);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_hoi);
         }
         if(imageCode == 4)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.ty);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_ty);
         }
         if(imageCode == 5)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.suu);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_suu);
         }
         if(imageCode == 6)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.dan);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_dan);
         }
         if(imageCode == 7)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.mao);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_mao);
         }
         if(imageCode == 8)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.thin);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_thin);
         }
         if(imageCode == 9)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.ty);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_ty);
         }
         if(imageCode == 10)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.ngo);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_ngo);
         }
         if(imageCode == 11)
         {
-            astrology2021ZodiacImage.setImageResource(R.drawable.mui);
+            astrology2021ZodiacImage.setImageResource(R.drawable.chinese_zodiac_mui);
         }
     }
 }
