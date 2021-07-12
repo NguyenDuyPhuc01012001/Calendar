@@ -4,15 +4,19 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.mycalendar.CheckConnection;
 import com.example.mycalendar.activity.LoginEvent;
 import com.example.mycalendar.R;
 import com.example.mycalendar.activity.AddEvent;
@@ -50,11 +54,20 @@ public class EventDialog extends AppCompatDialogFragment {
             }
         });
         OnlineBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), LoginEvent.class);
-                MonthCalendarFragment.Check = 0;
-                startActivityForResult(intent,10001);
+                if(CheckConnection.isConnectedToInternet(getActivity()) == true)
+                {
+                    Intent intent = new Intent(getActivity(), LoginEvent.class);
+                    MonthCalendarFragment.Check = 0;
+                    startActivityForResult(intent,10001);
+                }
+                else
+                {
+                    Toast.makeText(getActivity(),"Wifi không khả dụng!",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         return builder.create();

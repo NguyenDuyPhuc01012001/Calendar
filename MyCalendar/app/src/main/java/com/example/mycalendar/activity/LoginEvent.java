@@ -168,7 +168,6 @@ public class LoginEvent extends AppCompatActivity{
                     Toast.makeText(LoginEvent.this,"Email và password không hợp lệ!",Toast.LENGTH_SHORT).show();
                     return;
                 }
-
             }
 
 
@@ -189,7 +188,7 @@ public class LoginEvent extends AppCompatActivity{
                     if(auth.getCurrentUser().isEmailVerified())
                     {
                         Toast.makeText(LoginEvent.this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginEvent.this,OnlineEvent.class));
+                        startActivityForResult(new Intent(LoginEvent.this,OnlineEvent.class),10001);
                     }
                     else
                     {
@@ -304,7 +303,7 @@ public class LoginEvent extends AppCompatActivity{
                         }
                         else
                         {
-                            Toast.makeText(LoginEvent.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginEvent.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
                         }
                     }
                 });
