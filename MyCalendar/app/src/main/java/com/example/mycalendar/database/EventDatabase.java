@@ -95,7 +95,42 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endMinute = cursor.getInt(8);
                 boolean isAllDay = cursor.getInt(9) > 0;
                 String str_id = String.valueOf(ID);
-                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, isAllDay);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", "", 1, isAllDay);
+                returnList.add(eventInfo);
+            }while(cursor.moveToNext());
+        }
+        else
+        {
+
+        }
+
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+    public List<EventInfo> getEventMonth(int month,int year){
+        List<EventInfo> returnList = new ArrayList<>();
+//
+        String queryString = "SELECT * FROM " + EVENT_TABLE + " WHERE MONTH = "
+                + month + " AND YEAR = " + year;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+        if(cursor.moveToFirst())
+        {
+            do{
+                int ID = cursor.getInt(0);
+                String title = cursor.getString(1);
+                int Day = cursor.getInt(2);
+                int Month = cursor.getInt(3);
+                int Year = cursor.getInt(4);
+                int startHour = cursor.getInt(5);
+                int endHour = cursor.getInt(6);
+                int startMinute = cursor.getInt(7);
+                int endMinute = cursor.getInt(8);
+                boolean isAllDay = cursor.getInt(9) > 0;
+                String str_id = String.valueOf(ID);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", "", 1, isAllDay);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }
@@ -142,7 +177,7 @@ public class EventDatabase extends SQLiteOpenHelper {
                 int endMinute = cursor.getInt(8);
                 boolean isAllDay = cursor.getInt(9) > 0;
                 String str_id = String.valueOf(ID);
-                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", 1, isAllDay);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,Year,startHour,startMinute,endHour,endMinute, "", "", 1, isAllDay);
                 returnList.add(eventInfo);
             }while(cursor.moveToNext());
         }

@@ -101,29 +101,27 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<String> VIETQUERYHISTORY(String day, String month)
+    public List<String> VIETQUERYHISTORY(int day, int month, int year)
     {
         List<String> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c;
-        int dayint = Integer.parseInt(day);
-        int monthint = Integer.parseInt(month);
 
-        if(dayint > 9 && monthint>9)
+        if(day > 9 && month>9)
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
-        else if(dayint > 9 && monthint <=9)
+        else if(day > 9 && month <=9)
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '0" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '0" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
-        else if(dayint <= 9 && monthint > 9)
+        else if(day <= 9 && month > 9)
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
         else
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '0" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '0" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
         while(c.moveToNext()){
             String History = c.getString(0);
@@ -134,29 +132,26 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public List<String> WORLDQUERYHISTORY(String day, String month)
+    public List<String> WORLDQUERYHISTORY(int day, int month, int year)
     {
         List<String> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c;
-        int dayint = Integer.parseInt(day);
-        int monthint = Integer.parseInt(month);
-
-        if(dayint > 9 && monthint>9)
+        if(day > 9 && month>9)
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
-        else if(dayint > 9 && monthint <=9)
+        else if(day > 9 && month <=9)
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '0" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '" + day + "' and strftime('%m',DateEvent) = '0" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
-        else if(dayint <= 9 && monthint > 9)
+        else if(day <= 9 && month > 9)
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
         else
         {
-            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '0" + month + "'",new String[]{});
+            c= db.rawQuery("SELECT NameEvent FROM EventWorldCalendar WHERE strftime('%d',DateEvent) = '0" + day + "' and strftime('%m',DateEvent) = '0" + month + "' and CAST(strftime('%Y',DateEvent) AS interger) <= " + year,new String[]{});
         }
         while(c.moveToNext()){
             String History = c.getString(0);

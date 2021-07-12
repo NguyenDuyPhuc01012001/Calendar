@@ -38,6 +38,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
     @Override
     public void onBindViewHolder(@NonNull  EventAdapter.ViewHolder holder, int position) {
         holder.title.setText(eventInfoArrayList.get(position).getTitle());
+        holder.day.setText(String.valueOf(eventInfoArrayList.get(position).getDay()));
         if(eventInfoArrayList.get(position).getType() == 1)
         {
             if(eventInfoArrayList.get(position).isAllDay() == true)
@@ -50,11 +51,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
             }
 
             holder.iconEvent.setImageResource(R.drawable.ic_phone);
+            holder.day.setTextColor(Color.BLACK);
         }
         else if(eventInfoArrayList.get(position).getType() == 2)
         {
             holder.time.setText("Cả ngày");
             holder.iconEvent.setImageResource(R.drawable.lotus);
+            holder.day.setTextColor(Color.RED);
         }
         else
         {
@@ -69,6 +72,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
                 holder.time.setText(String.valueOf(eventInfoArrayList.get(position).getStartHour() + " : " + eventInfoArrayList.get(position).getStartMinute() + " - " + eventInfoArrayList.get(position).getEndHour() + " : " + eventInfoArrayList.get(position).getEndMinute() ));
             }
             holder.iconEvent.setImageResource(R.drawable.ic_wifi);
+            holder.day.setTextColor(Color.BLACK);
         }
     }
 
@@ -81,6 +85,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView title;
         private TextView time;
+        private TextView day;
         private ImageView iconEvent;
         private OnItemListener onItemListener;
 
@@ -90,6 +95,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder >
             iconEvent = itemView.findViewById(R.id.eventIcon);
             title = (TextView) itemView.findViewById(R.id.titleTV);
             time = (TextView) itemView.findViewById(R.id.timeTV);
+            day = itemView.findViewById(R.id.dayTV);
             this.onItemListener =onItemListener;
             itemView.setOnClickListener(this);
 

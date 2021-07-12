@@ -51,6 +51,7 @@ import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 
@@ -68,6 +69,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     public static ArrayList<EventInfo> listEvent = new ArrayList<EventInfo>();
     private ArrayList<String> daysInMonth=null;
     public static int Check = 0;
+    int EventCheck = 0;
 
 
     public MonthCalendarFragment() {
@@ -83,14 +85,13 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         initWidgets(v);
         setEvent();
         loadData();
+        setEventView(selectedDate.getDayOfMonth());
         return v;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void loadData() {
         setMonthView();
-        setEventView(selectedDate.getDayOfMonth());
-        tvEventIn.setText("Sự kiện trong ngày " + selectedDate.getDayOfMonth() + " tháng "+selectedDate.getMonthValue()+" "+selectedDate.getYear());
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -141,12 +142,12 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     {
         listEvent.clear();
         EventDatabase eventDatabase = new EventDatabase(getActivity());
-        listEvent = (ArrayList<EventInfo>) eventDatabase.getEventday(day,selectedDate.getMonthValue(),selectedDate.getYear());
+        listEvent = (ArrayList<EventInfo>) eventDatabase.getEventMonth(selectedDate.getMonthValue(),selectedDate.getYear());
 
         EventDatabaseOpenHelper eventDatabaseOpenHelper = new EventDatabaseOpenHelper(getContext());
         eventDatabaseOpenHelper.CreateDatabase();
         eventDatabaseOpenHelper.openDatabase();
-        eventDatabaseOpenHelper.getEventday(day,selectedDate.getMonthValue(),listEvent,true);
+        eventDatabaseOpenHelper.getEventmonth(selectedDate.getMonthValue(),listEvent,true);
         ChinaCalendar chinaCalendar = new ChinaCalendar(day, selectedDate.getMonthValue(), selectedDate.getYear(), 7);
         Date date = chinaCalendar.ConVertToLunar();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -167,7 +168,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
                 progressBar.setVisibility(View.VISIBLE);
                 eventRecyclerView.setVisibility(View.INVISIBLE);
                 String UserId = auth.getCurrentUser().getUid();
-                Query query = db.getReference(UserId + "/Events/").orderByChild("date").equalTo(day + "_" + selectedDate.getMonthValue() + "_" + selectedDate.getYear());
+                Query query = db.getReference(UserId + "/Events/").orderByChild("monthYear").equalTo(selectedDate.getMonthValue() + "_" + selectedDate.getYear());
                 query.addValueEventListener(new ValueEventListener() {
                     @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
@@ -178,6 +179,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
                                 listEvent.add(eventInfo);
                                 Log.i("event tag", eventInfo.getId().toString());
                             }
+                            listEvent.sort(Comparator.comparingInt(EventInfo::getDay));
                             eventAdapter.notifyDataSetChanged();
 
                         }
@@ -198,7 +200,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
                 eventRecyclerView.setVisibility(View.VISIBLE);
             }
         }
-
+        listEvent.sort(Comparator.comparingInt(EventInfo::getDay));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -211,14 +213,12 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         btnToday=v.findViewById(R.id.btnToday);
         auth = FirebaseAuth.getInstance();
         progressBar = v.findViewById(R.id.monthPB);
-        tvEventIn.setText("Sự kiện trong ngày " + selectedDate.getDayOfMonth() + " " + monthYearFromDate(selectedDate));
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setMonthView() {
         boolean isNewMonth=false;
-        if(Integer.valueOf(tvMonthYearText.getText().toString().split(" ")[1])!=selectedDate.getMonthValue())
+        if(Integer.valueOf(tvMonthYearText.getText().toString().split(" ")[1])!=selectedDate.getMonthValue() && EventCheck != 0)
             isNewMonth=true;
 
         daysInMonth = daysInMonthArray(selectedDate);
@@ -231,12 +231,14 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
         if(isNewMonth){
             calendarRecyclerView.scheduleLayoutAnimation();
             tvMonthYearText.setText("Tháng "+selectedDate.getMonthValue()+" - "+selectedDate.getYear());
+            setEventView(selectedDate.getDayOfMonth());
         }
 
         if(selectedDate.isEqual(LocalDate.now()))
             btnToday.setVisibility(View.GONE);
         else
             btnToday.setVisibility(View.VISIBLE);
+        EventCheck = 1;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -334,12 +336,14 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     public void previousMonthAction() {
         selectedDate = selectedDate.withDayOfMonth(1).minusMonths(1);
         loadData();
+        setEventView(selectedDate.getDayOfMonth());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextMonthAction() {
         selectedDate = selectedDate.withDayOfMonth(1).plusMonths(1);
         loadData();
+        setEventView(selectedDate.getDayOfMonth());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -386,6 +390,7 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     public void LoadNewDate(LocalDateTime selectedDate) {
         this.selectedDate=selectedDate.toLocalDate();
         loadData();
+        setEventView(selectedDate.getDayOfMonth());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

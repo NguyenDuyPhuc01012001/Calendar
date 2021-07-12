@@ -23,6 +23,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.mycalendar.R;
+import com.example.mycalendar.fragment.DayDetailFragment;
 import com.example.mycalendar.fragment.MonthCalendarFragment;
 import com.example.mycalendar.model.EventInfo;
 import com.example.mycalendar.presenter.OnlineEventInterface;
@@ -49,7 +50,7 @@ import java.util.List;
 
 public class OnlineEvent extends AppCompatActivity implements OnlineEventInterface {
 
-    private TextView Name;
+    private TextView Name,email;
     private String UserId;
     private String UserEmail;
     private EditText Content;
@@ -60,6 +61,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
     private Button save1;
     private Button save2;
     private Button delete;
+    private Button changePassword;
     private ProgressBar progressBar;
     private FirebaseDatabase db = FirebaseDatabase.getInstance("https://ascendant-nova-318320-default-rtdb.asia-southeast1.firebasedatabase.app/");
     private DatabaseReference reference;
@@ -87,6 +89,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
         if(!TextUtils.isEmpty(user.getDisplayName()))
         {
             Name.setText(user.getDisplayName());
+            email.setText(user.getEmail());
         }
         else {
             DocumentReference UserRef = firestore.document("users/" + UserId);
@@ -95,6 +98,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if (documentSnapshot.exists()) {
                         Name.setText("Chào " + documentSnapshot.getString("Name"));
+                        email.setText(documentSnapshot.getString("email"));
                     } else {
                         Toast.makeText(OnlineEvent.this, "the user does not have name", Toast.LENGTH_SHORT).show();
                     }
@@ -111,6 +115,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
     public void init()
     {
         Name = findViewById(R.id.userName);
+        email = findViewById(R.id.emailTV);
         UserId =  auth.getCurrentUser().getUid();
         UserEmail = auth.getCurrentUser().getEmail();
         Date = findViewById(R.id.DateStart);
@@ -138,7 +143,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
         progressBar.setVisibility(View.VISIBLE);
         String id = reference.push().getKey();
         EventInfo eventInfo;
-        eventInfo = new EventInfo(id,Content.getText().toString(),day1,month1,year1,0,0,0,0, day1+"_"+month1 + "_" + year1, 3,isAllDay.isChecked());
+        eventInfo = new EventInfo(id,Content.getText().toString(),day1,month1,year1,0,0,0,0, day1+"_"+month1 + "_" + year1,month1 + "_" + year1 , 3,isAllDay.isChecked());
         reference.child(id).setValue(eventInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -274,10 +279,20 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
         delete.setVisibility(View.VISIBLE);
         Intent preIntent = getIntent();
         int position = preIntent.getIntExtra("position", 0);
-        EventInfo eventInfo = MonthCalendarFragment.listEvent.get(position);
+        int Check = preIntent.getIntExtra("fragment",1);
+        EventInfo eventInfo;
+        if(Check == 1)
+        {
+            eventInfo = MonthCalendarFragment.listEvent.get(position);
+        }
+        else
+        {
+            eventInfo = DayDetailFragment.listEvent.get(position);
+        }
         id = eventInfo.getId();
         showResult(eventInfo.getTitle(),eventInfo.getDay(),eventInfo.getMonth(),eventInfo.getYear(),eventInfo.getStartHour(),eventInfo.getStartMinute(),eventInfo.getEndHour(),eventInfo.getEndMinute(),eventInfo.isAllDay());
     }
+
     public void showResult(String Title, int day,int month, int year, int hourstart,int minutestart, int hourend,int minuteend, boolean allday)
     {
         SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
@@ -291,7 +306,6 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
         minuteEnd = minuteend;
 
         Content.setText(Title);
-        Toast.makeText(this,Content.getText().toString(),Toast.LENGTH_SHORT).show();
         isAllDay.setChecked(allday);
         if(allday == true)
         {
@@ -325,7 +339,7 @@ public class OnlineEvent extends AppCompatActivity implements OnlineEventInterfa
     }
     public void save2OnClick(View view) {
         progressBar.setVisibility(View.VISIBLE);
-        EventInfo eventInfo = new EventInfo(id,Content.getText().toString(),day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd,day1 + "_" + month1 + "_" + year1,3,isAllDay.isChecked());
+        EventInfo eventInfo = new EventInfo(id,Content.getText().toString(),day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd,day1 + "_" + month1 + "_" + year1,  month1 + "_" + year1, 3,isAllDay.isChecked());
 
         reference.child(id).setValue(eventInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

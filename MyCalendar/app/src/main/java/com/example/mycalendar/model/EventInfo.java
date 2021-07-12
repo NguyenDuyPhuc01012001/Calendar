@@ -11,6 +11,7 @@ public class EventInfo {
     private int endHour;
     private int endMinute;
     private String date;
+    private String MonthYear;
 
     public int getType() {
         return type;
@@ -33,7 +34,15 @@ public class EventInfo {
     private boolean isAllDay;
     public EventInfo(){}
 
-    public EventInfo(String id, String title, int day, int month, int year, int startHour, int startMinute, int endHour, int endMinute, String date, int type, boolean isAllDay) {
+    public String getMonthYear() {
+        return MonthYear;
+    }
+
+    public void setMonthYear(String monthYear) {
+        MonthYear = monthYear;
+    }
+
+    public EventInfo(String id, String title, int day, int month, int year, int startHour, int startMinute, int endHour, int endMinute, String date, String monthYear, int type, boolean isAllDay) {
         this.id = id;
         this.title = title;
         this.day = day;
@@ -44,6 +53,7 @@ public class EventInfo {
         this.endHour = endHour;
         this.endMinute = endMinute;
         this.date = date;
+        MonthYear = monthYear;
         this.type = type;
         this.isAllDay = isAllDay;
     }

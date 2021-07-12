@@ -1,5 +1,6 @@
 package com.example.mycalendar.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mycalendar.CheckConnection;
+import com.example.mycalendar.activity.AddEvent;
+import com.example.mycalendar.activity.OnlineEvent;
 import com.example.mycalendar.dialog.BottomDialog;
 import com.example.mycalendar.ChinaCalendar;
 import com.example.mycalendar.R;
@@ -155,12 +158,6 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         eventDatabaseOpenHelper.getEventday(localDate.getDayOfMonth(),localDate.getMonthValue(),listEvent,false);
 
-
-        for(EventInfo eventInfo : listEvent)
-        {
-            Log.i("all the title",eventInfo.getTitle().toString());
-        }
-
         EventAdapter eventAdapter = new EventAdapter(listEvent, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
         eventRV.setLayoutManager(layoutManager);
@@ -217,7 +214,7 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
             ngayDaoImage.setImageResource(R.mipmap.yin_yang_red);
             ngayDaoTV.setText("Hoàng đạo");
             ngayDaoTV.setVisibility(View.VISIBLE);
-            ngayDaoTV.setTextColor(Color.BLUE);
+            ngayDaoTV.setTextColor(Color.RED);
         }
         else if(dateTimeInfo.getIsGoodDay().equals("Normal"))
         {
@@ -242,7 +239,21 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
 
     @Override
     public void onEventClick(int position, int type) {
-
+        MonthCalendarFragment.Check = 1;
+        if (type == 1)
+        {
+            Intent detailIntent = new Intent(getActivity(), AddEvent.class);
+            detailIntent.putExtra("position",position);
+            detailIntent.putExtra("fragment",2);
+            startActivityForResult(detailIntent,10001);
+        }
+        else if(type == 3)
+        {
+            Intent onlineEvent = new Intent(getActivity(), OnlineEvent.class);
+            onlineEvent.putExtra("position",position);
+            onlineEvent.putExtra("fragment",2);
+            startActivityForResult(onlineEvent,10001);
+        }
     }
 
     private void ShowDialog() {
@@ -258,5 +269,13 @@ public class DayDetailFragment extends Fragment implements DayDetailInterface,Ev
         ddPresenter.getData(selectedDate);
         setEventView(selectedDate.getDayOfMonth());
         ddPresenter.displayOutput(NhiThapTV,getActivity(),ddPresenter.GetStar28(selectedDate));
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("requestresult",requestCode + "-" + resultCode);
+        setEventView(selectedDate.getDayOfMonth());
     }
 }

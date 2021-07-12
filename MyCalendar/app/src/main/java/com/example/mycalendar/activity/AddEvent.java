@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.mycalendar.R;
 import com.example.mycalendar.database.EventDatabase;
+import com.example.mycalendar.fragment.DayDetailFragment;
 import com.example.mycalendar.fragment.MonthCalendarFragment;
 import com.example.mycalendar.model.EventInfo;
 
@@ -79,12 +80,20 @@ public class AddEvent extends AppCompatActivity {
     }
 
     private void getID() {
-        EventInfo eventInfo;
         Intent preIntent = getIntent();
         if(MonthCalendarFragment.Check == 1)
         {
             int position = preIntent.getIntExtra("position", 0);
-            eventInfo = MonthCalendarFragment.listEvent.get(position);
+            int Check = preIntent.getIntExtra("fragment",1);
+            EventInfo eventInfo;
+            if(Check == 1)
+            {
+                eventInfo = MonthCalendarFragment.listEvent.get(position);
+            }
+            else
+            {
+                eventInfo = DayDetailFragment.listEvent.get(position);
+            }
             id = Integer.parseInt(eventInfo.getId());
             showResult(eventInfo.getTitle(),eventInfo.getDay(),eventInfo.getMonth(),eventInfo.getYear(),eventInfo.getStartHour(),eventInfo.getStartMinute(),eventInfo.getEndHour(),eventInfo.getEndMinute(),eventInfo.isAllDay());
         }
@@ -235,7 +244,7 @@ public class AddEvent extends AppCompatActivity {
         {
 
             String str_id = String.valueOf(id);
-            eventInfo = new EventInfo(str_id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, alldaySW.isChecked());
+            eventInfo = new EventInfo(str_id, Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", "", 1, alldaySW.isChecked());
             eventDatabase.EditEvent(eventInfo);
             Toast.makeText(AddEvent.this,"Sửa thành công!",Toast.LENGTH_SHORT).show();
         }
@@ -247,7 +256,7 @@ public class AddEvent extends AppCompatActivity {
                     Toast.makeText(AddEvent.this,"Nội dung không được trống",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    eventInfo = new EventInfo("-1",Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", 1, alldaySW.isChecked());
+                    eventInfo = new EventInfo("-1",Title,day1,month1,year1,hourStart,minuteStart,hourEnd,minuteEnd, "", "", 1, alldaySW.isChecked());
                     eventDatabase.addOne(eventInfo);
                     Toast.makeText(AddEvent.this,"Thêm thành công",Toast.LENGTH_SHORT).show();
                 }

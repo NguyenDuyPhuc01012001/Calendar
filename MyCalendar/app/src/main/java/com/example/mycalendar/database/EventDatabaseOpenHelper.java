@@ -126,7 +126,43 @@ public class EventDatabaseOpenHelper extends SQLiteOpenHelper {
                 int Day = cursor.getInt(2);
                 int Month = cursor.getInt(3);
                 String str_id = String.valueOf(ID);
-                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,0,0,0,0,0, "", 2, true);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,0,0,0,0,0, "", "", 2, true);
+                eventInfos.add(eventInfo);
+            }while(cursor.moveToNext());
+        }
+        else
+        {
+
+        }
+
+        cursor.close();
+        db.close();
+    }
+    public void getEventmonth(int month, List<EventInfo> eventInfos, boolean isSolar){
+        String queryString = "";
+        if(isSolar == true)
+        {
+            queryString  = "SELECT * FROM SolarEvent WHERE Month = "
+                    + month;
+        }
+        else
+        {
+            queryString  = "SELECT * FROM LunarEvent WHERE Month = "
+                    + month;
+        }
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+        if(cursor.moveToFirst())
+        {
+            do{
+                int ID = cursor.getInt(0);
+                String title = cursor.getString(1);
+                int Day = cursor.getInt(2);
+                int Month = cursor.getInt(3);
+                String str_id = String.valueOf(ID);
+                EventInfo eventInfo = new EventInfo(str_id,title,Day,Month,0,0,0,0,0, "", "", 2, true);
                 eventInfos.add(eventInfo);
             }while(cursor.moveToNext());
         }

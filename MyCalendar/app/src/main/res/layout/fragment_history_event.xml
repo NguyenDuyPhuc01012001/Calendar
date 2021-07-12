@@ -31,28 +31,13 @@
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
-        <EditText
-            android:id="@+id/date"
-            android:background="@drawable/shape"
-            android:layout_width="80dp"
+        <TextView
+            android:id="@+id/DateSelectTV"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textSize="20sp"
-            android:hint="Ngày"
-            android:gravity="center"
-            android:textColor="#856E88"
-            android:layout_marginRight="10dp"/>
-
-        <EditText
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textSize="20sp"
-            android:hint="Tháng"
-            android:gravity="center"
-            android:textColor="#856E88"
-            android:id="@+id/month"
-            android:background="@drawable/shape"/>
+            android:text="13/7/2021"
+            android:textSize="30sp"
+            />
 
     </LinearLayout>
 

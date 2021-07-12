@@ -44,11 +44,6 @@ import java.util.Locale;
 public class DayDetailPresenter {
     DayDetailInterface dayDetailInterface;
 
-    private static String[] star = {"Giác", "Cang", "Đê", "Phòng", "Tâm", "Vĩ", "Cơ",
-            "Đẩu", "Ngưu", "Nữ", "Hư", "Nguy", "Thất", "Bích",
-            "Khuê", "Lâu", "Vị", "Mão", "Tất", "Chủy", "Sâm",
-            "Tỉnh", "Quỷ", "Liễu", "Tinh", "Trương", "Dực", "Chẩn"};
-
     public DayDetailPresenter(DayDetailInterface dayDetailInterface) {
         this.dayDetailInterface = dayDetailInterface;
     }
