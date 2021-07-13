@@ -218,7 +218,8 @@ public class MonthCalendarFragment extends Fragment implements CalendarAdapter.O
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setMonthView() {
         boolean isNewMonth=false;
-        if(Integer.valueOf(tvMonthYearText.getText().toString().split(" ")[1])!=selectedDate.getMonthValue())
+        if(Integer.valueOf(tvMonthYearText.getText().toString().split(" ")[1])!=selectedDate.getMonthValue()||
+                Integer.valueOf(tvMonthYearText.getText().toString().split(" ")[3])!=selectedDate.getYear())
             isNewMonth=true;
 
         daysInMonth = daysInMonthArray(selectedDate);

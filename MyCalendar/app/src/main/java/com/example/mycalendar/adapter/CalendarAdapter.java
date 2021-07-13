@@ -60,6 +60,9 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
         TextView tvDaySolar = holder.dayOfMonth;
         TextView tvDayLunar = holder.dayLunar;
         String dayLunar;
+        boolean isTet=false;
+        if(daysLunar.get(position).startsWith("02/01")||daysLunar.get(position).startsWith("03/01"))
+            isTet=true;
         if (daysLunar.get(position).startsWith("01"))
             dayLunar = daysLunar.get(position).substring(0, 5);
         else
@@ -72,6 +75,9 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
             layout.setBackgroundResource(R.drawable.today_card);
         }
         if (dayLunar.startsWith("01") || dayLunar.startsWith("15")) {
+            tvDayLunar.setTextColor(Color.parseColor("#FF0000"));
+        }
+        if (isTet) {
             tvDayLunar.setTextColor(Color.parseColor("#FF0000"));
         }
         if (!isInMonth(dayOfMonth))
